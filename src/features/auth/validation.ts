@@ -1,0 +1,24 @@
+export interface LoginFormErrors {
+  email?: string;
+  password?: string;
+}
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+export function validateLoginForm(email: string, password: string): LoginFormErrors {
+  const errors: LoginFormErrors = {};
+
+  if (!email.trim()) {
+    errors.email = 'Email address is required.';
+  } else if (!EMAIL_REGEX.test(email.trim())) {
+    errors.email = 'Enter a valid email address.';
+  }
+
+  if (!password) {
+    errors.password = 'Password is required.';
+  } else if (password.length < 6) {
+    errors.password = 'Password must be at least 6 characters.';
+  }
+
+  return errors;
+}
