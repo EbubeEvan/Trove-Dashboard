@@ -3,8 +3,8 @@ import { Skeleton } from '../../core/design-system/Skeleton';
 
 export function DashboardSkeleton() {
   return (
-    <div className="flex flex-col gap-(--space-5)" aria-busy="true" aria-label="Loading portfolio">
-      <div className="grid grid-cols-[1.2fr_1fr] items-stretch gap-(--space-5) max-[900px]:grid-cols-1">
+    <div className="flex flex-col gap-5" aria-busy="true" aria-label="Loading portfolio">
+      <div className="grid grid-cols-[1.2fr_1fr] items-stretch gap-5 max-[900px]:grid-cols-1">
         <Card>
           <Skeleton width={120} height={13} />
           <div className="mt-3">

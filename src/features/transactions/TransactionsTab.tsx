@@ -20,13 +20,13 @@ export function TransactionsTab({ transactions }: TransactionsTabProps) {
 
   return (
     <div>
-      <div className="mb-(--space-4) flex gap-(--space-2)" role="tablist" aria-label="Filter transactions">
+      <div className="mb-4 flex gap-2" role="tablist" aria-label="Filter transactions">
         {FILTERS.map((f) => (
           <button
             key={f}
             className={cx(
-              'cursor-pointer rounded-(--radius-pill) border border-(--color-border) bg-(--color-surface-card) px-(--space-3) py-1.5 text-(length:--font-size-caption) font-medium text-(--color-text-neutral) transition-all duration-180 ease-in-out hover:border-(--color-primary) hover:text-(--color-primary)',
-              filter === f && 'border-(--color-primary) bg-(--color-primary) text-white hover:text-white',
+              'cursor-pointer rounded-pill border border-border bg-surface-card px-3 py-1.5 text-size-caption font-medium text-text-neutral transition-all duration-180 ease-in-out hover:border-primary hover:text-primary',
+              filter === f && 'border-primary bg-primary text-white hover:text-white',
             )}
             onClick={() => setFilter(f)}
             role="tab"
@@ -40,7 +40,7 @@ export function TransactionsTab({ transactions }: TransactionsTabProps) {
       {filtered.length === 0 ? (
         <EmptyState title="No transactions" description="Nothing matches this filter yet." />
       ) : (
-        <div className="flex max-h-[460px] flex-col gap-(--space-3) overflow-y-auto">
+        <div className="flex max-h-[460px] flex-col gap-3 overflow-y-auto">
           {filtered.map((t) => (
             <TransactionRow key={t.id} transaction={t} />
           ))}

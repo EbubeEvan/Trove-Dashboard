@@ -28,17 +28,17 @@ export function LoginPage() {
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-(--color-bg-page) bg-[radial-gradient(circle_at_15%_20%,rgba(5,154,131,0.06),transparent_40%),radial-gradient(circle_at_85%_85%,rgba(5,154,131,0.07),transparent_45%)] p-(--space-6)">
-      <Card padding="none" className="flex w-full max-w-[420px] flex-col items-center px-(--space-6) py-(--space-8)">
-        <div className="mb-(--space-4) flex h-10 w-10 items-center justify-center rounded-xl bg-(--color-primary) text-base font-semibold text-white">
+    <div className="flex min-h-screen items-center justify-center bg-bg-page bg-[radial-gradient(circle_at_15%_20%,rgba(5,154,131,0.06),transparent_40%),radial-gradient(circle_at_85%_85%,rgba(5,154,131,0.07),transparent_45%)] p-6">
+      <Card padding="none" className="flex w-full max-w-[420px] flex-col items-center px-6 py-8">
+        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-base font-semibold text-white">
           T
         </div>
         <h1 className="m-0 text-[19px] font-semibold">Welcome back</h1>
-        <p className="mb-(--space-6) mt-1 text-(length:--font-size-body) text-(--color-text-neutral)">
+        <p className="mb-6 mt-1 text-size-body text-text-neutral">
           Sign in to your account
         </p>
 
-        <form onSubmit={handleSubmit} noValidate className="flex w-full flex-col gap-(--space-4)">
+        <form onSubmit={handleSubmit} noValidate className="flex w-full flex-col gap-4">
           <Input
             label="Email address"
             type="email"
@@ -61,7 +61,7 @@ export function LoginPage() {
             />
             <button
               type="button"
-              className="absolute right-(--space-3) top-[30px] flex cursor-pointer border-0 bg-transparent p-1 text-(--color-text-neutral)"
+              className="absolute right-3 top-[30px] flex cursor-pointer border-0 bg-transparent p-1 text-text-neutral"
               onClick={() => setShowPassword((s) => !s)}
               aria-label={showPassword ? 'Hide password' : 'Show password'}
               tabIndex={-1}
@@ -72,7 +72,7 @@ export function LoginPage() {
 
           {login.isError && (
             <p
-              className="m-0 rounded-lg bg-(--color-negative-bg) px-(--space-3) py-(--space-2) text-(length:--font-size-caption) text-(--color-negative)"
+              className="m-0 rounded-lg bg-negative-bg px-3 py-2 text-size-caption text-negative"
               role="alert"
             >
               {login.error instanceof Error ? login.error.message : 'Unable to sign in. Try again.'}
@@ -86,14 +86,14 @@ export function LoginPage() {
 
         <a
           href="#"
-          className="mt-(--space-5) block text-center text-(length:--font-size-caption) text-(--color-primary) no-underline hover:underline"
+          className="mt-5 block text-center text-size-caption text-primary no-underline hover:underline"
         >
           Forgot password?
         </a>
 
-        <div className="my-(--space-5) h-px w-full bg-(--color-border)" />
+        <div className="my-5 h-px w-full bg-border" />
 
-        <p className="mb-(--space-3) mt-0 w-full text-center text-(length:--font-size-caption) text-(--color-text-disabled)">
+        <p className="mb-3 mt-0 w-full text-center text-size-caption text-text-disabled">
           Don't have an account?
         </p>
         <Button type="button" variant="secondary" fullWidth>

@@ -15,7 +15,7 @@ export function InvestedVsCurrentChart({ totalInvested, totalCurrentValue }: Inv
   const barColors = ['#92A29F', '#059A83'];
 
   return (
-    <div className="mt-(--space-5)">
+    <div className="mt-5">
       <ResponsiveContainer width="100%" height={140}>
         <BarChart data={data} layout="vertical" margin={{ top: 4, right: 24, bottom: 4, left: 4 }}>
           <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#DBDFDF" />

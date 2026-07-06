@@ -21,16 +21,16 @@ export function AccountList({ holdings, currency }: AccountListProps) {
   }
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-(--space-4)">
+    <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4">
       {groups.map((g) => (
         <Card key={g.category} padding="compact">
-          <p className="mb-(--space-1) mt-0 text-(length:--font-size-card-value) font-semibold text-(--color-text-default)">
+          <p className="mb-1 mt-0 text-size-card-value font-semibold text-text-default">
             {g.category}
           </p>
-          <p className="mb-(--space-3) mt-0 text-(length:--font-size-caption) text-(--color-text-neutral)">
+          <p className="mb-3 mt-0 text-size-caption text-text-neutral">
             {g.positions} {g.positions === 1 ? 'position' : 'positions'}
           </p>
-          <p className="m-0 text-xl font-semibold text-(--color-text-default)">
+          <p className="m-0 text-xl font-semibold text-text-default">
             {formatCurrency(g.totalValue, currency)}
           </p>
         </Card>

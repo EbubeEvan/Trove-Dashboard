@@ -21,11 +21,11 @@ export function NetWorthCard({ holdings, currency }: NetWorthCardProps) {
   return (
     <Card className="flex flex-col">
       <div className="flex items-center justify-between">
-        <span className="text-(length:--font-size-caption) font-medium text-(--color-text-neutral)">
+        <span className="text-size-caption font-medium text-text-neutral">
           Total Net Worth
         </span>
         <button
-          className="flex cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-1 text-(--color-text-neutral) transition-colors duration-180 ease-in-out hover:bg-(--color-bg-default)"
+          className="flex cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-1 text-text-neutral transition-colors duration-180 ease-in-out hover:bg-bg-default"
           onClick={toggleBalance}
           aria-label={balanceHidden ? 'Show balance' : 'Hide balance'}
         >
@@ -33,17 +33,17 @@ export function NetWorthCard({ holdings, currency }: NetWorthCardProps) {
         </button>
       </div>
 
-      <div className="mt-(--space-2) flex flex-wrap items-center gap-(--space-3)">
-        <span className="text-(length:--font-size-net-worth) font-semibold tracking-[-0.5px] text-(--color-text-default)">
+      <div className="mt-2 flex flex-wrap items-center gap-3">
+        <span className="text-size-net-worth font-semibold tracking-[-0.5px] text-text-default">
           {balanceHidden ? '••••••' : formatCurrency(totals.totalCurrentValue, currency)}
         </span>
         {!balanceHidden && (
           <span
             className={cx(
-              'inline-flex items-center gap-1 rounded-(--radius-pill) px-2.5 py-[3px] text-(length:--font-size-body) font-semibold',
+              'inline-flex items-center gap-1 rounded-pill px-2.5 py-[3px] text-size-body font-semibold',
               isPositive
-                ? 'bg-(--color-success-bg) text-(--color-success)'
-                : 'bg-(--color-negative-bg) text-(--color-negative)',
+                ? 'bg-success-bg text-success'
+                : 'bg-negative-bg text-negative',
             )}
           >
             {isPositive ? <TrendingUp size={14} /> : <TrendingDown size={14} />}

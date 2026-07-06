@@ -16,11 +16,11 @@ export function HoldingsTransactionsPanel({ holdings, transactions }: HoldingsTr
 
   return (
     <Card>
-      <div className="mb-(--space-4) flex gap-(--space-1) border-b border-(--color-border)" role="tablist" aria-label="Holdings and transactions">
+      <div className="mb-4 flex gap-1 border-b border-border" role="tablist" aria-label="Holdings and transactions">
         <button
           className={cx(
-            'relative top-px cursor-pointer border-0 border-b-2 border-solid border-b-transparent bg-transparent px-(--space-4) py-(--space-3) text-(length:--font-size-body) font-medium text-(--color-text-neutral) transition-colors duration-180 ease-in-out hover:text-(--color-text-default)',
-            activeTab === 'stocks' && 'border-b-(--color-primary) font-semibold text-(--color-primary)',
+            'relative top-px cursor-pointer border-0 border-b-2 border-solid border-b-transparent bg-transparent px-4 py-3 text-size-body font-medium text-text-neutral transition-colors duration-180 ease-in-out hover:text-text-default',
+            activeTab === 'stocks' && 'border-b-primary font-semibold text-primary',
           )}
           onClick={() => setActiveTab('stocks')}
           role="tab"
@@ -30,8 +30,8 @@ export function HoldingsTransactionsPanel({ holdings, transactions }: HoldingsTr
         </button>
         <button
           className={cx(
-            'relative top-px cursor-pointer border-0 border-b-2 border-solid border-b-transparent bg-transparent px-(--space-4) py-(--space-3) text-(length:--font-size-body) font-medium text-(--color-text-neutral) transition-colors duration-180 ease-in-out hover:text-(--color-text-default)',
-            activeTab === 'orders' && 'border-b-(--color-primary) font-semibold text-(--color-primary)',
+            'relative top-px cursor-pointer border-0 border-b-2 border-solid border-b-transparent bg-transparent px-4 py-3 text-size-body font-medium text-text-neutral transition-colors duration-180 ease-in-out hover:text-text-default',
+            activeTab === 'orders' && 'border-b-primary font-semibold text-primary',
           )}
           onClick={() => setActiveTab('orders')}
           role="tab"

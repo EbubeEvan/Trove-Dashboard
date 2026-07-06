@@ -35,16 +35,16 @@ export function Sidebar() {
   return (
     <aside
       className={cx(
-        'sticky top-0 flex h-screen flex-col border-r border-(--color-border) bg-(--color-surface-card) px-(--space-3) py-(--space-5) transition-[width,min-width] duration-180 ease-in-out',
+        'sticky top-0 flex h-screen flex-col border-r border-border bg-surface-card px-3 py-5 transition-[width,min-width] duration-180 ease-in-out',
         collapsed
-          ? 'w-(--sidebar-width-collapsed) min-w-(--sidebar-width-collapsed)'
-          : 'w-(--sidebar-width-expanded) min-w-(--sidebar-width-expanded)',
+          ? 'w-sidebar-width-collapsed min-w-sidebar-width-collapsed'
+          : 'w-sidebar-width-expanded min-w-sidebar-width-expanded',
       )}
     >
-      <div className="mb-(--space-6) flex items-center justify-between px-(--space-2)">
-        {!collapsed && <span className="overflow-hidden whitespace-nowrap text-lg font-semibold text-(--color-primary)">Trove</span>}
+      <div className="mb-6 flex items-center justify-between px-2">
+        {!collapsed && <span className="overflow-hidden whitespace-nowrap text-lg font-semibold text-primary">Trove</span>}
         <button
-          className="flex shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent p-1.5 text-(--color-text-neutral) transition-colors duration-180 ease-in-out hover:bg-(--color-bg-default)"
+          className="flex shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent p-1.5 text-text-neutral transition-colors duration-180 ease-in-out hover:bg-bg-default"
           onClick={toggleSidebar}
           aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
@@ -52,16 +52,16 @@ export function Sidebar() {
         </button>
       </div>
 
-      <nav className="flex flex-1 flex-col gap-(--space-1)">
+      <nav className="flex flex-1 flex-col gap-1">
         {NAV_ITEMS.map(({ label, icon: Icon, active }) => {
           const item = (
             <button
               key={label}
               className={cx(
-                'flex w-full cursor-pointer items-center gap-(--space-3) overflow-hidden whitespace-nowrap rounded-(--radius-input) border-0 bg-transparent px-(--space-3) py-2.5 text-left text-(length:--font-size-body) font-medium text-(--color-text-neutral) transition-[background,color] duration-180 ease-in-out',
+                'flex w-full cursor-pointer items-center gap-3 overflow-hidden whitespace-nowrap rounded-input border-0 bg-transparent px-3 py-2.5 text-left text-size-body font-medium text-text-neutral transition-[background,color] duration-180 ease-in-out',
                 collapsed && 'justify-center p-2.5',
-                active && 'bg-(--color-primary-light) text-(--color-primary)',
-                !active && 'cursor-not-allowed text-(--color-text-disabled)',
+                active && 'bg-primary-light text-primary',
+                !active && 'cursor-not-allowed text-text-disabled',
               )}
               disabled={!active}
               aria-current={active ? 'page' : undefined}
@@ -81,16 +81,16 @@ export function Sidebar() {
         })}
       </nav>
 
-      <div className="flex items-center gap-(--space-2) border-t border-(--color-border) p-(--space-2) pt-(--space-4)">
-        <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-(--color-primary) text-[13px] font-semibold text-white">
+      <div className="flex items-center gap-2 border-t border-border p-2 pt-4">
+        <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-primary text-[13px] font-semibold text-white">
           A
         </div>
         {!collapsed && (
           <div className="overflow-hidden">
-            <p className="m-0 overflow-hidden text-ellipsis whitespace-nowrap text-(length:--font-size-card-value) text-(--color-text-default)">
+            <p className="m-0 overflow-hidden text-ellipsis whitespace-nowrap text-size-card-value text-text-default">
               Adaeze Okonkwo
             </p>
-            <p className="m-0 whitespace-nowrap text-(length:--font-size-caption) text-(--color-text-neutral)">
+            <p className="m-0 whitespace-nowrap text-size-caption text-text-neutral">
               Premium Member
             </p>
           </div>

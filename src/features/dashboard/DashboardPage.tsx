@@ -26,14 +26,14 @@ export function DashboardPage() {
   const { holdings, transactions, user } = data;
 
   return (
-    <div className="flex flex-col gap-(--space-5)" style={{ opacity: isFetching ? 0.7 : 1 }}>
-      <div className="grid grid-cols-[1.2fr_1fr] items-stretch gap-(--space-5) max-[900px]:grid-cols-1">
+    <div className="flex flex-col gap-5" style={{ opacity: isFetching ? 0.7 : 1 }}>
+      <div className="grid grid-cols-[1.2fr_1fr] items-stretch gap-5 max-[900px]:grid-cols-1">
         <NetWorthCard holdings={holdings} currency="USD" />
         <AllocationBar holdings={holdings} />
       </div>
 
       <div>
-        <h2 className="mb-(--space-3) mt-0 text-(length:--font-size-heading) font-semibold text-(--color-text-default)">
+        <h2 className="mb-3 mt-0 text-size-heading font-semibold text-text-default">
           Accounts
         </h2>
         <AccountList holdings={holdings} currency="USD" />
@@ -41,7 +41,7 @@ export function DashboardPage() {
 
       <HoldingsTransactionsPanel holdings={holdings} transactions={transactions} />
 
-      <p className="text-center text-(length:--font-size-caption) text-(--color-text-disabled)">
+      <p className="text-center text-size-caption text-text-disabled">
         Last updated {new Date(user.lastUpdated).toLocaleString()}
       </p>
     </div>

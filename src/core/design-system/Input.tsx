@@ -14,15 +14,15 @@ export function Input({ label, error, id, className, ...rest }: InputProps) {
   return (
     <div className="flex w-full flex-col gap-1.5">
       {label && (
-        <label htmlFor={inputId} className="text-(length:--font-size-caption) font-medium text-(--color-text-neutral)">
+        <label htmlFor={inputId} className="text-size-caption font-medium text-text-neutral">
           {label}
         </label>
       )}
       <input
         id={inputId}
         className={cx(
-          'h-11.5 rounded-(--radius-input) border border-(--color-border) bg-(--color-bg-default) px-(--space-4) text-(length:--font-size-body) text-(--color-text-default) transition-[border-color,background] duration-180 ease-in-out placeholder:text-(--color-text-disabled) focus:border-(--color-primary) focus:bg-(--color-surface-card) focus:outline-none',
-          error && 'border-(--color-negative)',
+          'h-11.5 rounded-input border border-border bg-bg-default px-4 text-size-body text-text-default transition-[border-color,background] duration-180 ease-in-out placeholder:text-text-disabled focus:border-primary focus:bg-surface-card focus:outline-none',
+          error && 'border-negative',
           className,
         )}
         aria-invalid={!!error}
@@ -30,7 +30,7 @@ export function Input({ label, error, id, className, ...rest }: InputProps) {
         {...rest}
       />
       {error && (
-        <span id={`${inputId}-error`} className="text-(length:--font-size-caption) text-(--color-negative)">
+        <span id={`${inputId}-error`} className="text-size-caption text-negative">
           {error}
         </span>
       )}

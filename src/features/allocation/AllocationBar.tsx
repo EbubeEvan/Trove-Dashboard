@@ -21,16 +21,16 @@ function colorForSector(sector: string, index: number): string {
   return SECTOR_COLORS[sector] ?? ['var(--color-accent-blue)', 'var(--color-purple)', 'var(--color-cream)'][index % 3];
 }
 
-export function AllocationBar({ holdings }: AllocationBarProps) {
+export function AllocationBar({ holdings }: Readonly<AllocationBarProps>) {
   const allocation = computeAllocation(holdings);
 
   if (allocation.length === 0) {
     return (
-      <Card className="flex flex-col gap-(--space-4)">
-        <h2 className="m-0 text-(length:--font-size-heading) font-semibold text-(--color-text-default)">
+      <Card className="flex flex-col gap-4">
+        <h2 className="m-0 text-size-heading font-semibold text-text-default">
           Asset Allocation
         </h2>
-        <p className="m-0 text-(length:--font-size-body) text-(--color-text-neutral)">
+        <p className="m-0 text-size-body text-text-neutral">
           No active holdings to allocate yet.
         </p>
       </Card>
@@ -38,13 +38,13 @@ export function AllocationBar({ holdings }: AllocationBarProps) {
   }
 
   return (
-    <Card className="flex flex-col gap-(--space-4)">
-      <h2 className="m-0 text-(length:--font-size-heading) font-semibold text-(--color-text-default)">
+    <Card className="flex flex-col gap-4">
+      <h2 className="m-0 text-size-heading font-semibold text-text-default">
         Asset Allocation
       </h2>
 
       <div
-        className="flex h-3 w-full overflow-hidden rounded-(--radius-pill) bg-(--color-bg-default)"
+        className="flex h-3 w-full overflow-hidden rounded-pill bg-bg-default"
         role="img"
         aria-label="Portfolio allocation by sector"
       >
@@ -58,15 +58,15 @@ export function AllocationBar({ holdings }: AllocationBarProps) {
         ))}
       </div>
 
-      <div className="flex flex-wrap gap-x-(--space-6) gap-y-(--space-4)">
+      <div className="flex flex-wrap gap-x-6 gap-y-4">
         {allocation.map((a, i) => (
-          <div key={a.sector} className="flex items-center gap-(--space-2)">
+          <div key={a.sector} className="flex items-center gap-2">
             <span className="h-[9px] w-[9px] shrink-0 rounded-full" style={{ background: colorForSector(a.sector, i) }} />
             <div className="flex flex-col gap-px">
-              <span className="text-(length:--font-size-caption) text-(--color-text-neutral)">
+              <span className="text-size-caption text-text-neutral">
                 {a.sector}
               </span>
-              <span className="text-(length:--font-size-card-value) font-semibold text-(--color-text-default)">
+              <span className="text-size-card-value font-semibold text-text-default">
                 {a.percent.toFixed(0)}%
               </span>
             </div>

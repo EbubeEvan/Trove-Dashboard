@@ -11,12 +11,12 @@ interface EmptyStateProps {
 export function EmptyState({ icon, title, description }: EmptyStateProps) {
   return (
     <div
-      className="flex flex-col items-center justify-center gap-(--space-3) px-(--space-4) py-(--space-8) text-center text-(--color-text-neutral)"
+      className="flex flex-col items-center justify-center gap-3 px-4 py-8 text-center text-text-neutral"
       role="status"
     >
-      <div className="text-(--color-text-disabled)">{icon ?? <Inbox size={28} />}</div>
-      <p className="m-0 text-(length:--font-size-heading) font-semibold text-(--color-text-default)">{title}</p>
-      {description && <p className="m-0 max-w-80 text-(length:--font-size-body) ">{description}</p>}
+      <div className="text-text-disabled">{icon ?? <Inbox size={28} />}</div>
+      <p className="m-0 text-size-heading font-semibold text-text-default">{title}</p>
+      {description && <p className="m-0 max-w-80 text-size-body ">{description}</p>}
     </div>
   );
 }
@@ -34,16 +34,16 @@ export function ErrorState({
 }: Readonly<ErrorStateProps>) {
   return (
     <div
-      className="flex flex-col items-center justify-center gap-(--space-3) px-(--space-4) py-(--space-8) text-center text-(--color-text-neutral)"
+      className="flex flex-col items-center justify-center gap-3 px-4 py-8 text-center text-text-neutral"
       role="alert"
     >
-      <div className="text-(--color-negative)">
+      <div className="text-negative">
         <AlertTriangle size={28} />
       </div>
-      <p className="m-0 text-(length:--font-size-heading) font-semibold text-(--color-text-default)">{title}</p>
-      <p className="m-0 max-w-80 text-(length:--font-size-body)">{description}</p>
+      <p className="m-0 text-size-heading font-semibold text-text-default">{title}</p>
+      <p className="m-0 max-w-80 text-size-body">{description}</p>
       {onRetry && (
-        <Button variant="secondary" className="mt-(--space-2)" onClick={onRetry}>
+        <Button variant="secondary" className="mt-2" onClick={onRetry}>
           Try again
         </Button>
       )}

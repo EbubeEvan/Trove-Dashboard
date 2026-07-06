@@ -10,17 +10,17 @@ interface BadgeProps {
 
 export function Badge({ tone, children }: BadgeProps) {
   const toneClasses = {
-    success: 'bg-(--color-success-bg) text-(--color-success)',
-    negative: 'bg-(--color-negative-bg) text-(--color-negative)',
+    success: 'bg-success-bg text-success',
+    negative: 'bg-negative-bg text-negative',
     pending:
-      'border-(--color-pending-border) bg-(--color-pending-bg) text-(--color-pending-text)',
-    neutral: 'bg-(--color-bg-default) text-(--color-text-neutral)',
+      'border-pending-border bg-pending-bg text-pending-text',
+    neutral: 'bg-bg-default text-text-neutral',
   };
 
   return (
     <span
       className={cx(
-        'inline-flex items-center whitespace-nowrap rounded-(--radius-pill) border border-transparent px-2.5 py-[3px] text-(length:--font-size-caption) font-semibold uppercase tracking-[0.02em]',
+        'inline-flex items-center whitespace-nowrap rounded-pill border border-transparent px-2.5 py-[3px] text-size-caption font-semibold uppercase tracking-[0.02em]',
         toneClasses[tone],
       )}
     >

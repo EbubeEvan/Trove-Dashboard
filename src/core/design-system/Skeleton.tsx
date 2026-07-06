@@ -17,7 +17,7 @@ export function Skeleton({ width = '100%', height = '16px', radius, className }:
   return (
     <span
       className={cx(
-        'block rounded-(--radius-input) bg-[linear-gradient(90deg,var(--color-bg-default)_25%,var(--color-border)_37%,var(--color-bg-default)_63%)] bg-[length:400%_100%] [animation:shimmer_1.4s_ease_infinite] motion-reduce:animate-none motion-reduce:bg-(--color-bg-default)',
+        'block rounded-input bg-[linear-gradient(90deg,var(--color-bg-default)_25%,var(--color-border)_37%,var(--color-bg-default)_63%)] bg-[length:400%_100%] [animation:shimmer_1.4s_ease_infinite] motion-reduce:animate-none motion-reduce:bg-bg-default',
         className,
       )}
       style={style}

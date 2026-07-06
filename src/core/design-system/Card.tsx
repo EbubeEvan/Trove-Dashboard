@@ -8,15 +8,15 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 
 export function Card({ children, padding = 'default', className, ...rest }: CardProps) {
   const paddingClasses = {
-    default: 'p-(--space-6)',
-    compact: 'p-(--space-4)',
+    default: 'p-6',
+    compact: 'p-4',
     none: 'p-0',
   };
 
   return (
     <div
       className={cx(
-        'rounded-(--radius-card) border border-(--color-border) bg-(--color-surface-card) shadow-(--shadow-card) transition-shadow duration-180 ease-in-out',
+        'rounded-card border border-border bg-surface-card shadow-card transition-shadow duration-180 ease-in-out',
         paddingClasses[padding],
         className,
       )}

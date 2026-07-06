@@ -21,14 +21,14 @@ export function HoldingsTab({ holdings }: HoldingsTabProps) {
 
   return (
     <div>
-      <div className="mb-(--space-4) flex flex-col gap-(--space-3)">
+      <div className="mb-4 flex flex-col gap-3">
         <div className="relative">
           <Search
             size={16}
-            className="pointer-events-none absolute left-(--space-3) top-1/2 -translate-y-1/2 text-(--color-text-disabled)"
+            className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-disabled"
           />
           <input
-            className="w-full rounded-(--radius-input) border border-(--color-border) bg-(--color-bg-default) py-2.5 pl-[38px] pr-(--space-3) text-(length:--font-size-body) text-(--color-text-default) outline-none transition-colors duration-180 ease-in-out placeholder:text-(--color-text-disabled) focus:border-(--color-primary)"
+            className="w-full rounded-input border border-border bg-bg-default py-2.5 pl-[38px] pr-3 text-size-body text-text-default outline-none transition-colors duration-180 ease-in-out placeholder:text-text-disabled focus:border-primary"
             placeholder="Search by ticker or company name"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -36,13 +36,13 @@ export function HoldingsTab({ holdings }: HoldingsTabProps) {
           />
         </div>
 
-        <div className="flex flex-wrap gap-(--space-2)" role="tablist" aria-label="Filter by sector">
+        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter by sector">
           {sectors.map((s) => (
             <button
               key={s}
               className={cx(
-                'cursor-pointer whitespace-nowrap rounded-(--radius-pill) border border-(--color-border) bg-(--color-surface-card) px-(--space-3) py-1.5 text-(length:--font-size-caption) font-medium text-(--color-text-neutral) transition-all duration-180 ease-in-out hover:border-(--color-primary) hover:text-(--color-primary)',
-                sector === s && 'border-(--color-primary) bg-(--color-primary) text-white hover:text-white',
+                'cursor-pointer whitespace-nowrap rounded-pill border border-border bg-surface-card px-3 py-1.5 text-size-caption font-medium text-text-neutral transition-all duration-180 ease-in-out hover:border-primary hover:text-primary',
+                sector === s && 'border-primary bg-primary text-white hover:text-white',
               )}
               onClick={() => setSector(s)}
               role="tab"
@@ -60,7 +60,7 @@ export function HoldingsTab({ holdings }: HoldingsTabProps) {
           description="Try a different search term or clear the sector filter."
         />
       ) : (
-        <div className="flex max-h-[460px] flex-col gap-(--space-3) overflow-y-auto">
+        <div className="flex max-h-[460px] flex-col gap-3 overflow-y-auto">
           {filtered.map((h) => (
             <HoldingCard key={h.id} holding={h} />
           ))}

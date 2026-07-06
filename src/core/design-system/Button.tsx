@@ -18,16 +18,16 @@ export function Button({
   ...rest
 }: Readonly<ButtonProps>) {
   const variantClasses = {
-    primary: 'bg-(--color-primary) text-white hover:enabled:bg-[#048069]',
+    primary: 'bg-primary text-white hover:enabled:bg-[#048069]',
     secondary:
-      'border-(--color-border) bg-(--color-surface-card) text-(--color-text-default) hover:enabled:bg-(--color-bg-default)',
-    ghost: 'bg-transparent text-(--color-text-neutral) hover:enabled:bg-(--color-bg-default)',
+      'border-border bg-surface-card text-text-default hover:enabled:bg-bg-default',
+    ghost: 'bg-transparent text-text-neutral hover:enabled:bg-bg-default',
   };
 
   return (
     <button
       className={cx(
-        'inline-flex h-11 cursor-pointer items-center justify-center gap-(--space-2) rounded-(--radius-input) border border-transparent px-(--space-5) text-(length:--font-size-body) font-semibold transition-[background,border-color,opacity] duration-180 ease-in-out disabled:cursor-not-allowed disabled:opacity-60',
+        'inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-input border border-transparent px-5 text-size-body font-semibold transition-[background,border-color,opacity] duration-180 ease-in-out disabled:cursor-not-allowed disabled:opacity-60',
         variantClasses[variant],
         fullWidth && 'w-full',
         className,
