@@ -7,7 +7,7 @@ interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   error?: string;
 }
 
-export function Input({ label, error, id, className, ...rest }: InputProps) {
+export function Input({ label, error, id, className, ...rest }: Readonly<InputProps>) {
   const generatedId = useId();
   const inputId = id ?? generatedId;
 

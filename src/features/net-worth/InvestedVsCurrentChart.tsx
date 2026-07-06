@@ -6,7 +6,7 @@ interface InvestedVsCurrentChartProps {
   totalCurrentValue: number;
 }
 
-export function InvestedVsCurrentChart({ totalInvested, totalCurrentValue }: InvestedVsCurrentChartProps) {
+export function InvestedVsCurrentChart({ totalInvested, totalCurrentValue }: Readonly<InvestedVsCurrentChartProps>) {
   const data = [
     { label: 'Invested', value: Math.round(totalInvested * 100) / 100 },
     { label: 'Current value', value: Math.round(totalCurrentValue * 100) / 100 },

@@ -8,7 +8,7 @@ interface AccountListProps {
   currency: string;
 }
 
-export function AccountList({ holdings, currency }: AccountListProps) {
+export function AccountList({ holdings, currency }: Readonly<AccountListProps>) {
   const groups = computeAccountGroups(holdings);
 
   if (groups.length === 0) {

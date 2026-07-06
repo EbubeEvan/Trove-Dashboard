@@ -5,7 +5,7 @@ interface TooltipProps {
   children: ReactNode;
 }
 
-export function Tooltip({ label, children }: TooltipProps) {
+export function Tooltip({ label, children }: Readonly<TooltipProps>) {
   return (
     <span className="group relative inline-flex w-full">
       {children}

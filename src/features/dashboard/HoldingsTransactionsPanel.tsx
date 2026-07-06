@@ -10,7 +10,7 @@ interface HoldingsTransactionsPanelProps {
   transactions: Transaction[];
 }
 
-export function HoldingsTransactionsPanel({ holdings, transactions }: HoldingsTransactionsPanelProps) {
+export function HoldingsTransactionsPanel({ holdings, transactions }: Readonly<HoldingsTransactionsPanelProps>) {
   const activeTab = useUiStore((s) => s.activeTab);
   const setActiveTab = useUiStore((s) => s.setActiveTab);
 

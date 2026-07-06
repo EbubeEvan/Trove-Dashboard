@@ -12,7 +12,7 @@ interface TransactionsTabProps {
 const FILTERS: Array<'All' | 'BUY' | 'SELL'> = ['All', 'BUY', 'SELL'];
 const FILTER_LABEL: Record<string, string> = { All: 'All', BUY: 'Buy', SELL: 'Sell' };
 
-export function TransactionsTab({ transactions }: TransactionsTabProps) {
+export function TransactionsTab({ transactions }: Readonly<TransactionsTabProps>) {
   const filter = useUiStore((s) => s.transactionFilter);
   const setFilter = useUiStore((s) => s.setTransactionFilter);
 

@@ -6,7 +6,7 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
   padding?: 'default' | 'compact' | 'none';
 }
 
-export function Card({ children, padding = 'default', className, ...rest }: CardProps) {
+export function Card({ children, padding = 'default', className, ...rest }: Readonly<CardProps>) {
   const paddingClasses = {
     default: 'p-6',
     compact: 'p-4',

@@ -16,7 +16,7 @@ interface HoldingCardProps {
   holding: Holding;
 }
 
-export function HoldingCard({ holding: h }: HoldingCardProps) {
+export function HoldingCard({ holding: h }: Readonly<HoldingCardProps>) {
   const closed = isClosedPosition(h);
   const unavailable = hasUnavailablePrice(h);
   const { amount, percent } = gainLoss(h);

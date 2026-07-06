@@ -11,7 +11,7 @@ interface NetWorthCardProps {
   currency: string;
 }
 
-export function NetWorthCard({ holdings, currency }: NetWorthCardProps) {
+export function NetWorthCard({ holdings, currency }: Readonly<NetWorthCardProps>) {
   const balanceHidden = useUiStore((s) => s.balanceHidden);
   const toggleBalance = useUiStore((s) => s.toggleBalance);
 

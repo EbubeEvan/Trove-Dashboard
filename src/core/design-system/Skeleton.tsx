@@ -8,7 +8,7 @@ interface SkeletonProps {
   className?: string;
 }
 
-export function Skeleton({ width = '100%', height = '16px', radius, className }: SkeletonProps) {
+export function Skeleton({ width = '100%', height = '16px', radius, className }: Readonly<SkeletonProps>) {
   const style: CSSProperties = {
     width,
     height,

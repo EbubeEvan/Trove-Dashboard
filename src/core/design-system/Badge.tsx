@@ -8,7 +8,7 @@ interface BadgeProps {
   children: ReactNode;
 }
 
-export function Badge({ tone, children }: BadgeProps) {
+export function Badge({ tone, children }: Readonly<BadgeProps>) {
   const toneClasses = {
     success: 'bg-success-bg text-success',
     negative: 'bg-negative-bg text-negative',

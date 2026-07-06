@@ -8,7 +8,7 @@ interface EmptyStateProps {
   description?: string;
 }
 
-export function EmptyState({ icon, title, description }: EmptyStateProps) {
+export function EmptyState({ icon, title, description }: Readonly<EmptyStateProps>) {
   return (
     <div
       className="flex flex-col items-center justify-center gap-3 px-4 py-8 text-center text-text-neutral"

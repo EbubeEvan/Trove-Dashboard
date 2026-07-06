@@ -10,7 +10,7 @@ interface HoldingsTabProps {
   holdings: Holding[];
 }
 
-export function HoldingsTab({ holdings }: HoldingsTabProps) {
+export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
   const search = useUiStore((s) => s.holdingsSearch);
   const setSearch = useUiStore((s) => s.setHoldingsSearch);
   const sector = useUiStore((s) => s.holdingsSectorFilter);

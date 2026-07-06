@@ -19,7 +19,7 @@ function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 
-export function TransactionRow({ transaction: t }: TransactionRowProps) {
+export function TransactionRow({ transaction: t }: Readonly<TransactionRowProps>) {
   const isBuy = t.type === 'BUY';
   const failed = t.status === 'FAILED';
 
