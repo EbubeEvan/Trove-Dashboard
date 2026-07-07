@@ -1,5 +1,5 @@
-import { Card } from '../../../components/design-system/Card';
-import { EmptyState } from '../../../components/design-system/StatusState';
+import { Card } from '../../../components/ui/Card';
+import { EmptyState } from '../../../components/ui/StatusState';
 import { formatCurrency } from '../../../lib/derivePortfolio';
 import { computeAccountGroups } from '../lib/computeAccountGroups';
 import type { AccountHolding } from '../types/account';

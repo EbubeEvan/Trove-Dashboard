@@ -1,4 +1,4 @@
-import { ErrorState } from '../../../components/design-system/StatusState';
+import { ErrorState } from '../../../components/ui/StatusState';
 import { usePortfolio } from '../../../hooks/usePortfolio';
 import { AccountList } from '../../accounts/components/AccountList';
 import { AllocationBar } from '../../allocation/components/AllocationBar';

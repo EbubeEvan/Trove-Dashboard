@@ -1,5 +1,5 @@
-import { Badge } from '../../../components/design-system/Badge';
-import { Card } from '../../../components/design-system/Card';
+import { Badge } from '../../../components/ui/Badge';
+import { Card } from '../../../components/ui/Card';
 import { cx } from '../../../lib/classNames';
 import {
   currentValue,

@@ -1,4 +1,4 @@
-import { EmptyState } from '../../../components/design-system/StatusState';
+import { EmptyState } from '../../../components/ui/StatusState';
 import { cx } from '../../../lib/classNames';
 import { useUiStore } from '../../../stores/ui-store';
 import { filterTransactions, sortTransactionsByDateDesc } from '../lib/transactionFilters';

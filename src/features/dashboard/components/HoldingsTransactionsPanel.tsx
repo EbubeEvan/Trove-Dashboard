@@ -1,4 +1,4 @@
-import { Card } from '../../../components/design-system/Card';
+import { Card } from '../../../components/ui/Card';
 import { cx } from '../../../lib/classNames';
 import { useUiStore } from '../../../stores/ui-store';
 import { HoldingsTab } from '../../holdings/components/HoldingsTab';

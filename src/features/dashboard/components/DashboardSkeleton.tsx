@@ -1,5 +1,5 @@
-import { Card } from '../../../components/design-system/Card';
-import { Skeleton } from '../../../components/design-system/Skeleton';
+import { Card } from '../../../components/ui/Card';
+import { Skeleton } from '../../../components/ui/Skeleton';
 
 export function DashboardSkeleton() {
   return (

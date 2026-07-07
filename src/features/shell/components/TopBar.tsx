@@ -1,7 +1,7 @@
 import { useNavigate } from '@tanstack/react-router';
 import { Bell, LogOut } from 'lucide-react';
 
-import { Tooltip } from '../../../components/design-system/Tooltip';
+import { Tooltip } from '../../../components/ui/Tooltip';
 import { useAuthStore } from '../../../stores/auth-store';
 
 export function TopBar() {

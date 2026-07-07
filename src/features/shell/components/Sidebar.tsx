@@ -8,7 +8,7 @@ import {
 } from 'lucide-react';
 import { useEffect } from 'react';
 
-import { Tooltip } from '../../../components/design-system/Tooltip';
+import { Tooltip } from '../../../components/ui/Tooltip';
 import { cx } from '../../../lib/classNames';
 import { useUiStore } from '../../../stores/ui-store';
 

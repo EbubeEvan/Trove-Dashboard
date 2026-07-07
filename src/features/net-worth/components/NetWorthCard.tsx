@@ -1,6 +1,6 @@
 import { Eye, EyeOff, TrendingDown, TrendingUp } from 'lucide-react';
 
-import { Card } from '../../../components/design-system/Card';
+import { Card } from '../../../components/ui/Card';
 import { cx } from '../../../lib/classNames';
 import { formatCurrency, formatSignedPercent } from '../../../lib/derivePortfolio';
 import { useUiStore } from '../../../stores/ui-store';
