@@ -20,14 +20,14 @@ export function TransactionsTab({ transactions }: Readonly<TransactionsTabProps>
   const filtered = sortTransactionsByDateDesc(filterTransactions(transactions, filter));
 
   return (
-    <div>
-      <div className='mb-4 flex gap-2' role='tablist' aria-label='Filter transactions'>
+    <div className='mt-4 flex flex-col gap-4'>
+      <div className='flex gap-2' role='tablist' aria-label='Filter transactions'>
         {FILTERS.map((f) => (
           <button
             key={f}
             className={cx(
-              'rounded-pill border-border bg-surface-card text-caption text-text-neutral hover:border-primary hover:text-primary cursor-pointer border px-3 py-1.5 font-medium transition-all duration-180 ease-in-out',
-              filter === f && 'border-primary bg-primary text-white hover:text-white',
+              'rounded-pill bg-bg-default text-caption text-text-neutral hover:text-primary cursor-pointer border-0 px-3.5 py-1.5 font-medium transition-all duration-180 ease-in-out',
+              filter === f && 'bg-primary text-white hover:text-white',
             )}
             onClick={() => setFilter(f)}
             role='tab'
@@ -41,7 +41,7 @@ export function TransactionsTab({ transactions }: Readonly<TransactionsTabProps>
       {filtered.length === 0 ? (
         <EmptyState title='No transactions' description='Nothing matches this filter yet.' />
       ) : (
-        <div className='flex max-h-[460px] flex-col gap-3 overflow-y-auto'>
+        <div className='flex max-h-[480px] flex-col gap-3 overflow-y-auto pr-1'>
           {filtered.map((t) => (
             <TransactionRow key={t.id} transaction={t} />
           ))}

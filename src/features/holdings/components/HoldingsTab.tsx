@@ -21,16 +21,16 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
   const filtered = filterHoldings(holdings, search, sector);
 
   return (
-    <div>
-      <div className='mb-4 flex flex-col gap-3'>
+    <div className='mt-4 flex flex-col gap-4'>
+      <div className='flex flex-col gap-3'>
         <div className='relative'>
           <Search
-            size={16}
+            size={15}
             className='text-text-disabled pointer-events-none absolute top-1/2 left-3 -translate-y-1/2'
           />
           <input
-            className='rounded-input border-border bg-bg-default text-body text-text-default placeholder:text-text-disabled focus:border-primary w-full border py-2.5 pr-3 pl-[38px] transition-colors duration-180 ease-in-out outline-none'
-            placeholder='Search by ticker or company name'
+            className='rounded-input border-border bg-bg-default text-body text-text-default placeholder:text-text-disabled focus:border-primary focus:bg-surface-card w-full border py-2.5 pr-3 pl-[36px] transition-colors duration-180 ease-in-out outline-none'
+            placeholder='Search by ticker or company'
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             aria-label='Search holdings'
@@ -42,8 +42,8 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
             <button
               key={s}
               className={cx(
-                'rounded-pill border-border bg-surface-card text-caption text-text-neutral hover:border-primary hover:text-primary cursor-pointer border px-3 py-1.5 font-medium whitespace-nowrap transition-all duration-180 ease-in-out',
-                sector === s && 'border-primary bg-primary text-white hover:text-white',
+                'rounded-pill bg-bg-default text-caption text-text-neutral hover:text-primary cursor-pointer border-0 px-3 py-1.5 font-medium whitespace-nowrap transition-all duration-180 ease-in-out',
+                sector === s && 'bg-primary text-white hover:text-white',
               )}
               onClick={() => setSector(s)}
               role='tab'
@@ -61,7 +61,7 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
           description='Try a different search term or clear the sector filter.'
         />
       ) : (
-        <div className='flex max-h-[460px] flex-col gap-3 overflow-y-auto'>
+        <div className='flex max-h-[480px] flex-col gap-3 overflow-y-auto pr-1'>
           {filtered.map((h) => (
             <HoldingCard key={h.id} holding={h} />
           ))}

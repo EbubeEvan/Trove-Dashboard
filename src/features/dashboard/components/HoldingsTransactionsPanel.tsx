@@ -1,6 +1,4 @@
 import { Card } from '../../../components/ui/Card';
-import { cx } from '../../../lib/classNames';
-import { useUiStore } from '../../../stores/ui-store';
 import { HoldingsTab } from '../../holdings/components/HoldingsTab';
 import type { Holding } from '../../holdings/types/holding';
 import { TransactionsTab } from '../../transactions/components/TransactionsTab';
@@ -15,45 +13,21 @@ export function HoldingsTransactionsPanel({
   holdings,
   transactions,
 }: Readonly<HoldingsTransactionsPanelProps>) {
-  const activeTab = useUiStore((s) => s.activeTab);
-  const setActiveTab = useUiStore((s) => s.setActiveTab);
-
   return (
-    <Card>
-      <div
-        className='border-border mb-4 flex gap-1 border-b'
-        role='tablist'
-        aria-label='Holdings and transactions'
-      >
-        <button
-          className={cx(
-            'text-body text-text-neutral hover:text-text-default relative top-px cursor-pointer border-0 border-b-2 border-solid border-b-transparent bg-transparent px-4 py-3 font-medium transition-colors duration-180 ease-in-out',
-            activeTab === 'stocks' && 'border-b-primary text-primary font-semibold',
-          )}
-          onClick={() => setActiveTab('stocks')}
-          role='tab'
-          aria-selected={activeTab === 'stocks'}
-        >
-          Stocks
-        </button>
-        <button
-          className={cx(
-            'text-body text-text-neutral hover:text-text-default relative top-px cursor-pointer border-0 border-b-2 border-solid border-b-transparent bg-transparent px-4 py-3 font-medium transition-colors duration-180 ease-in-out',
-            activeTab === 'orders' && 'border-b-primary text-primary font-semibold',
-          )}
-          onClick={() => setActiveTab('orders')}
-          role='tab'
-          aria-selected={activeTab === 'orders'}
-        >
-          Orders
-        </button>
-      </div>
+    <div className='grid grid-cols-1 items-start gap-5 xl:grid-cols-[1.1fr_0.9fr]'>
+      <Card>
+        <h3 className='text-heading text-text-default mt-0 mb-0 font-semibold'>Holdings</h3>
 
-      {activeTab === 'stocks' ? (
         <HoldingsTab holdings={holdings} />
-      ) : (
+      </Card>
+
+      <Card>
+        <h3 className='text-heading text-text-default mt-0 mb-0 font-semibold'>
+          Recent Transactions
+        </h3>
+
         <TransactionsTab transactions={transactions} />
-      )}
-    </Card>
+      </Card>
+    </div>
   );
 }

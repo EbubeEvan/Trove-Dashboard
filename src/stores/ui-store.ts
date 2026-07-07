@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-export type DashboardTab = 'stocks' | 'orders';
+export type DashboardTab = 'holdings' | 'recentTransactions';
 export type TransactionFilter = 'All' | 'BUY' | 'SELL';
 
 interface UiState {
@@ -31,7 +31,7 @@ export const useUiStore = create<UiState>((set) => ({
   balanceHidden: false,
   toggleBalance: () => set((s) => ({ balanceHidden: !s.balanceHidden })),
 
-  activeTab: 'stocks',
+  activeTab: 'holdings',
   setActiveTab: (tab) => set({ activeTab: tab }),
 
   holdingsSearch: '',
