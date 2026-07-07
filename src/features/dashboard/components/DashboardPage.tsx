@@ -1,5 +1,5 @@
-import { ErrorState } from '../../../core/design-system/StatusState';
-import { usePortfolio } from '../../../core/hooks/usePortfolio';
+import { ErrorState } from '../../../components/design-system/StatusState';
+import { usePortfolio } from '../../../hooks/usePortfolio';
 import { AccountList } from '../../accounts/components/AccountList';
 import { AllocationBar } from '../../allocation/components/AllocationBar';
 import { NetWorthCard } from '../../net-worth/components/NetWorthCard';

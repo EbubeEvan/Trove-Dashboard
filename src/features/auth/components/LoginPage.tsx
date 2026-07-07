@@ -2,9 +2,9 @@ import { useNavigate } from '@tanstack/react-router';
 import { Eye, EyeOff } from 'lucide-react';
 import { type FormEvent, useState } from 'react';
 
-import { Button } from '../../../core/design-system/Button';
-import { Card } from '../../../core/design-system/Card';
-import { Input } from '../../../core/design-system/Input';
+import { Button } from '../../../components/design-system/Button';
+import { Card } from '../../../components/design-system/Card';
+import { Input } from '../../../components/design-system/Input';
 import { useLogin } from '../hooks/useLogin';
 import { validateLoginForm } from '../lib/validation';
 import type { LoginFormErrors } from '../types/login';

@@ -1,6 +1,6 @@
-import { Card } from '../../../core/design-system/Card';
-import { useUiStore } from '../../../core/stores/ui-store';
+import { Card } from '../../../components/design-system/Card';
 import { cx } from '../../../lib/classNames';
+import { useUiStore } from '../../../stores/ui-store';
 import { HoldingsTab } from '../../holdings/components/HoldingsTab';
 import type { Holding } from '../../holdings/types/holding';
 import { TransactionsTab } from '../../transactions/components/TransactionsTab';

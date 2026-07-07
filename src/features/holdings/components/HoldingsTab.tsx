@@ -1,8 +1,8 @@
 import { Search } from 'lucide-react';
 
-import { EmptyState } from '../../../core/design-system/StatusState';
-import { useUiStore } from '../../../core/stores/ui-store';
+import { EmptyState } from '../../../components/design-system/StatusState';
 import { cx } from '../../../lib/classNames';
+import { useUiStore } from '../../../stores/ui-store';
 import { filterHoldings, getSectors } from '../lib/holdingFilters';
 import type { Holding } from '../types/holding';
 import { HoldingCard } from './HoldingCard';

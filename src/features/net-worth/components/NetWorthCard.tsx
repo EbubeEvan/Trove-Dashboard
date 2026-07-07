@@ -1,9 +1,9 @@
 import { Eye, EyeOff, TrendingDown, TrendingUp } from 'lucide-react';
 
-import { Card } from '../../../core/design-system/Card';
-import { useUiStore } from '../../../core/stores/ui-store';
+import { Card } from '../../../components/design-system/Card';
 import { cx } from '../../../lib/classNames';
 import { formatCurrency, formatSignedPercent } from '../../../lib/derivePortfolio';
+import { useUiStore } from '../../../stores/ui-store';
 import { computeTotals } from '../lib/computeTotals';
 import type { NetWorthHolding } from '../types/netWorth';
 import { InvestedVsCurrentChart } from './InvestedVsCurrentChart';

@@ -1,4 +1,4 @@
-import { Card } from '../../../core/design-system/Card';
+import { Card } from '../../../components/design-system/Card';
 import { computeAllocation } from '../lib/computeAllocation';
 import type { AllocationHolding } from '../types/allocation';
 
