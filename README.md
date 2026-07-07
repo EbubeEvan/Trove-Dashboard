@@ -51,7 +51,7 @@ the app.
 ```
 src/
   components/
-    design-system/    Badge, Button, Card, Input, Skeleton, StatusState, Tooltip
+    ui/    Badge, Button, Card, Input, Skeleton, StatusState, Tooltip
   data/
     portfolio-data.json   source fixture consumed only by the mock server
   features/
@@ -152,9 +152,7 @@ width.
 
 Since there's no historical price series in the data, the wireframe's net-worth line chart was
 replaced with an **invested vs. current value bar chart** — both real, computed numbers, rather than
-a fabricated trend line. The chart axis intentionally scales to `dataMax * 10`, which keeps the
-current bars shorter and leaves right-side room for possible future higher values without changing
-the underlying totals shown in the tooltip.
+a fabricated trend line.
 
 ## What I'd improve with more time
 
