@@ -1,6 +1,6 @@
 import './mock-server'; // registers mock routes on the shared axios instance
 
-import type { PortfolioData } from '../lib/types';
+import type { PortfolioData } from '../features/dashboard/types/portfolio';
 import { apiClient } from './client';
 
 export interface LoginPayload {

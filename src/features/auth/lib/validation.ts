@@ -1,7 +1,4 @@
-export interface LoginFormErrors {
-  email?: string;
-  password?: string;
-}
+import type { LoginFormErrors } from '../types/login';
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

@@ -1,9 +1,10 @@
-import { Card } from '../../core/design-system/Card';
-import { useUiStore } from '../../core/stores/ui-store';
-import { cx } from '../../lib/classNames';
-import type { Holding, Transaction } from '../../lib/types';
-import { HoldingsTab } from '../holdings/HoldingsTab';
-import { TransactionsTab } from '../transactions/TransactionsTab';
+import { Card } from '../../../core/design-system/Card';
+import { useUiStore } from '../../../core/stores/ui-store';
+import { cx } from '../../../lib/classNames';
+import { HoldingsTab } from '../../holdings/components/HoldingsTab';
+import type { Holding } from '../../holdings/types/holding';
+import { TransactionsTab } from '../../transactions/components/TransactionsTab';
+import type { Transaction } from '../../transactions/types/transaction';
 
 interface HoldingsTransactionsPanelProps {
   holdings: Holding[];

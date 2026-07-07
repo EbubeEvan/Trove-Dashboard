@@ -1,10 +1,10 @@
 import { Search } from 'lucide-react';
 
-import { EmptyState } from '../../core/design-system/StatusState';
-import { useUiStore } from '../../core/stores/ui-store';
-import { cx } from '../../lib/classNames';
-import { filterHoldings, getSectors } from '../../lib/derivePortfolio';
-import type { Holding } from '../../lib/types';
+import { EmptyState } from '../../../core/design-system/StatusState';
+import { useUiStore } from '../../../core/stores/ui-store';
+import { cx } from '../../../lib/classNames';
+import { filterHoldings, getSectors } from '../lib/holdingFilters';
+import type { Holding } from '../types/holding';
 import { HoldingCard } from './HoldingCard';
 
 interface HoldingsTabProps {

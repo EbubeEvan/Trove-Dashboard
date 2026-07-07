@@ -1,10 +1,11 @@
 import { ArrowDownLeft, ArrowUpRight } from 'lucide-react';
 
-import { Badge } from '../../core/design-system/Badge';
-import { Card } from '../../core/design-system/Card';
-import { cx } from '../../lib/classNames';
-import { formatCurrency } from '../../lib/derivePortfolio';
-import type { Transaction } from '../../lib/types';
+import { Badge } from '../../../core/design-system/Badge';
+import { Card } from '../../../core/design-system/Card';
+import { cx } from '../../../lib/classNames';
+import { formatCurrency } from '../../../lib/derivePortfolio';
+import { formatDate } from '../lib/formatDate';
+import type { Transaction } from '../types/transaction';
 
 interface TransactionRowProps {
   transaction: Transaction;
@@ -15,14 +16,6 @@ const STATUS_TONE = {
   PENDING: 'pending',
   FAILED: 'negative',
 } as const;
-
-function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString('en-US', {
-    month: 'short',
-    day: 'numeric',
-    year: 'numeric',
-  });
-}
 
 export function TransactionRow({ transaction: t }: Readonly<TransactionRowProps>) {
   const isBuy = t.type === 'BUY';

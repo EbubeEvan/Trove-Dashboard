@@ -1,15 +1,16 @@
-import { EmptyState } from '../../core/design-system/StatusState';
-import { useUiStore } from '../../core/stores/ui-store';
-import { cx } from '../../lib/classNames';
-import { filterTransactions, sortTransactionsByDateDesc } from '../../lib/derivePortfolio';
-import type { Transaction } from '../../lib/types';
+import { EmptyState } from '../../../core/design-system/StatusState';
+import { useUiStore } from '../../../core/stores/ui-store';
+import { cx } from '../../../lib/classNames';
+import { filterTransactions, sortTransactionsByDateDesc } from '../lib/transactionFilters';
+import type { Transaction } from '../types/transaction';
+import type { TransactionFilter } from '../types/transactionFilter';
 import { TransactionRow } from './TransactionRow';
 
 interface TransactionsTabProps {
   transactions: Transaction[];
 }
 
-const FILTERS: Array<'All' | 'BUY' | 'SELL'> = ['All', 'BUY', 'SELL'];
+const FILTERS: TransactionFilter[] = ['All', 'BUY', 'SELL'];
 const FILTER_LABEL: Record<string, string> = { All: 'All', BUY: 'Buy', SELL: 'Sell' };
 
 export function TransactionsTab({ transactions }: Readonly<TransactionsTabProps>) {

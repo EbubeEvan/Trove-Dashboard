@@ -1,10 +1,11 @@
-import { Card } from '../../core/design-system/Card';
-import { EmptyState } from '../../core/design-system/StatusState';
-import { computeAccountGroups, formatCurrency } from '../../lib/derivePortfolio';
-import type { Holding } from '../../lib/types';
+import { Card } from '../../../core/design-system/Card';
+import { EmptyState } from '../../../core/design-system/StatusState';
+import { formatCurrency } from '../../../lib/derivePortfolio';
+import { computeAccountGroups } from '../lib/computeAccountGroups';
+import type { AccountHolding } from '../types/account';
 
 interface AccountListProps {
-  holdings: Holding[];
+  holdings: AccountHolding[];
   currency: string;
 }
 

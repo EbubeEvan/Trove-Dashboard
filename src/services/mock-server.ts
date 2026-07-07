@@ -1,7 +1,7 @@
 import MockAdapter from 'axios-mock-adapter';
 
 import portfolioJson from '../data/portfolio-data.json';
-import type { PortfolioData } from '../lib/types';
+import type { PortfolioData } from '../features/dashboard/types/portfolio';
 import instance from './client';
 
 // Simulates a real backend sitting behind the axios instance: realistic

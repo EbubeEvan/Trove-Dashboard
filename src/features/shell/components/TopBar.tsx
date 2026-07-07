@@ -1,8 +1,8 @@
 import { useNavigate } from '@tanstack/react-router';
 import { Bell, LogOut } from 'lucide-react';
 
-import { Tooltip } from '../../core/design-system/Tooltip';
-import { useAuthStore } from '../../core/stores/auth-store';
+import { Tooltip } from '../../../core/design-system/Tooltip';
+import { useAuthStore } from '../../../core/stores/auth-store';
 
 export function TopBar() {
   const email = useAuthStore((s) => s.email);

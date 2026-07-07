@@ -1,14 +1,15 @@
 import { Eye, EyeOff, TrendingDown, TrendingUp } from 'lucide-react';
 
-import { Card } from '../../core/design-system/Card';
-import { useUiStore } from '../../core/stores/ui-store';
-import { cx } from '../../lib/classNames';
-import { computeTotals, formatCurrency, formatSignedPercent } from '../../lib/derivePortfolio';
-import type { Holding } from '../../lib/types';
+import { Card } from '../../../core/design-system/Card';
+import { useUiStore } from '../../../core/stores/ui-store';
+import { cx } from '../../../lib/classNames';
+import { formatCurrency, formatSignedPercent } from '../../../lib/derivePortfolio';
+import { computeTotals } from '../lib/computeTotals';
+import type { NetWorthHolding } from '../types/netWorth';
 import { InvestedVsCurrentChart } from './InvestedVsCurrentChart';
 
 interface NetWorthCardProps {
-  holdings: Holding[];
+  holdings: NetWorthHolding[];
   currency: string;
 }
 

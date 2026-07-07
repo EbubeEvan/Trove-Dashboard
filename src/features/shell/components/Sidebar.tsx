@@ -8,9 +8,9 @@ import {
 } from 'lucide-react';
 import { useEffect } from 'react';
 
-import { Tooltip } from '../../core/design-system/Tooltip';
-import { useUiStore } from '../../core/stores/ui-store';
-import { cx } from '../../lib/classNames';
+import { Tooltip } from '../../../core/design-system/Tooltip';
+import { useUiStore } from '../../../core/stores/ui-store';
+import { cx } from '../../../lib/classNames';
 
 // Only Dashboard is a real, built view (per brief: a single dashboard view).
 // The others are shown -- matching the wireframe's nav -- but disabled with

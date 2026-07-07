@@ -9,7 +9,7 @@ import {
   YAxis,
 } from 'recharts';
 
-import { formatCurrency } from '../../lib/derivePortfolio';
+import { formatCurrency } from '../../../lib/derivePortfolio';
 
 interface InvestedVsCurrentChartProps {
   totalInvested: number;

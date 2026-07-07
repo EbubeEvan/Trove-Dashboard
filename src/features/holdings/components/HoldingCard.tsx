@@ -1,16 +1,16 @@
-import { Badge } from '../../core/design-system/Badge';
-import { Card } from '../../core/design-system/Card';
-import { cx } from '../../lib/classNames';
+import { Badge } from '../../../core/design-system/Badge';
+import { Card } from '../../../core/design-system/Card';
+import { cx } from '../../../lib/classNames';
 import {
   currentValue,
   formatCurrency,
   formatSignedCurrency,
   formatSignedPercent,
-  gainLoss,
   hasUnavailablePrice,
   isClosedPosition,
-} from '../../lib/derivePortfolio';
-import type { Holding } from '../../lib/types';
+} from '../../../lib/derivePortfolio';
+import { gainLoss } from '../lib/holdingMetrics';
+import type { Holding } from '../types/holding';
 
 interface HoldingCardProps {
   holding: Holding;

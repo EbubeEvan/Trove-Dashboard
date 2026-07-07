@@ -1,8 +1,8 @@
-import { ErrorState } from '../../core/design-system/StatusState';
-import { usePortfolio } from '../../core/hooks/usePortfolio';
-import { AccountList } from '../accounts/AccountList';
-import { AllocationBar } from '../allocation/AllocationBar';
-import { NetWorthCard } from '../net-worth/NetWorthCard';
+import { ErrorState } from '../../../core/design-system/StatusState';
+import { usePortfolio } from '../../../core/hooks/usePortfolio';
+import { AccountList } from '../../accounts/components/AccountList';
+import { AllocationBar } from '../../allocation/components/AllocationBar';
+import { NetWorthCard } from '../../net-worth/components/NetWorthCard';
 import { DashboardSkeleton } from './DashboardSkeleton';
 import { HoldingsTransactionsPanel } from './HoldingsTransactionsPanel';
 

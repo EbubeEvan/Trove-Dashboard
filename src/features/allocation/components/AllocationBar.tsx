@@ -1,9 +1,9 @@
-import { Card } from '../../core/design-system/Card';
-import { computeAllocation } from '../../lib/derivePortfolio';
-import type { Holding } from '../../lib/types';
+import { Card } from '../../../core/design-system/Card';
+import { computeAllocation } from '../lib/computeAllocation';
+import type { AllocationHolding } from '../types/allocation';
 
 interface AllocationBarProps {
-  holdings: Holding[];
+  holdings: AllocationHolding[];
 }
 
 // Sector -> color, drawn from the Trove v3 palette's chart-segment tokens.
