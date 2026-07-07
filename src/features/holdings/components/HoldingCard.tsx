@@ -26,7 +26,7 @@ export function HoldingCard({ holding: h }: Readonly<HoldingCardProps>) {
   return (
     <Card
       padding='compact'
-      className='flex min-h-[64px] flex-wrap items-center gap-3 sm:flex-nowrap'
+      className='flex min-h-[64px] shrink-0 flex-wrap items-center gap-3 sm:flex-nowrap'
     >
       <div
         className={cx(
@@ -38,7 +38,7 @@ export function HoldingCard({ holding: h }: Readonly<HoldingCardProps>) {
       </div>
 
       <div className='min-w-0 flex-1'>
-        <p className='text-card-value text-text-default m-0 flex items-center gap-2 font-semibold'>
+        <p className='text-card-value text-text-default m-0 flex flex-wrap items-center gap-2 font-semibold'>
           {h.ticker}
           {closed && <Badge tone='neutral'>Closed position</Badge>}
         </p>
@@ -47,33 +47,35 @@ export function HoldingCard({ holding: h }: Readonly<HoldingCardProps>) {
         </p>
       </div>
 
-      <div className='shrink-0 text-right'>
-        <p className='text-caption text-text-disabled m-0'>Shares</p>
-        <p className='text-card-value text-text-default mt-0.5 mb-0'>{h.shares}</p>
-      </div>
+      <div className='border-border flex w-full items-center justify-between gap-4 border-t pt-3 sm:w-auto sm:justify-end sm:gap-6 sm:border-t-0 sm:pt-0'>
+        <div className='shrink-0 text-right'>
+          <p className='text-caption text-text-disabled m-0'>Shares</p>
+          <p className='text-card-value text-text-default mt-0.5 mb-0'>{h.shares}</p>
+        </div>
 
-      <div className='min-w-[90px] shrink-0 text-right'>
-        {unavailable ? (
-          <p className='text-card-value text-text-disabled m-0 font-normal italic'>
-            Price unavailable
-          </p>
-        ) : (
-          <p className='text-card-value text-text-default m-0 font-semibold'>
-            {formatCurrency(currentValue(h), h.currency)}
-          </p>
-        )}
-        {!unavailable && !closed && (
-          <p
-            className={cx(
-              'text-caption mt-0.5 mb-0 font-medium',
-              isPositive && 'text-success',
-              isNegative && 'text-negative',
-              !isPositive && !isNegative && 'text-text-disabled',
-            )}
-          >
-            {formatSignedCurrency(amount, h.currency)} ({formatSignedPercent(percent)})
-          </p>
-        )}
+        <div className='min-w-[90px] shrink-0 text-right'>
+          {unavailable ? (
+            <p className='text-card-value text-text-disabled m-0 font-normal italic'>
+              Price unavailable
+            </p>
+          ) : (
+            <p className='text-card-value text-text-default m-0 font-semibold'>
+              {formatCurrency(currentValue(h), h.currency)}
+            </p>
+          )}
+          {!unavailable && !closed && (
+            <p
+              className={cx(
+                'text-caption mt-0.5 mb-0 font-medium',
+                isPositive && 'text-success',
+                isNegative && 'text-negative',
+                !isPositive && !isNegative && 'text-text-disabled',
+              )}
+            >
+              {formatSignedCurrency(amount, h.currency)} ({formatSignedPercent(percent)})
+            </p>
+          )}
+        </div>
       </div>
     </Card>
   );

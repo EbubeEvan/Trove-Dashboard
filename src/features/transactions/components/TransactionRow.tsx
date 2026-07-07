@@ -22,10 +22,13 @@ export function TransactionRow({ transaction: t }: Readonly<TransactionRowProps>
   const failed = t.status === 'FAILED';
 
   return (
-    <Card padding='compact' className='flex min-h-[64px] items-center gap-3'>
+    <Card
+      padding='compact'
+      className='flex min-h-[64px] shrink-0 flex-wrap items-center gap-3 sm:flex-nowrap'
+    >
       <div
         className={cx(
-          'flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px]',
+          'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl',
           isBuy ? 'bg-primary-light text-primary' : 'bg-negative-bg text-negative',
         )}
       >
@@ -41,7 +44,7 @@ export function TransactionRow({ transaction: t }: Readonly<TransactionRowProps>
         </p>
       </div>
 
-      <div className='flex shrink-0 flex-col items-end gap-1 text-right'>
+      <div className='border-border flex w-full flex-row-reverse items-center justify-between gap-4 border-t pt-3 sm:w-auto sm:flex-col sm:items-end sm:justify-normal sm:gap-1 sm:border-t-0 sm:pt-0'>
         <p
           className={cx(
             'text-card-value m-0 font-semibold',
