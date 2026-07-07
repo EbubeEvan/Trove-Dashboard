@@ -19,23 +19,20 @@ npm run preview   # preview the production build
 
 ## Stack
 
-- **React + Vite + TypeScript**
-- **TanStack Router** — file-based, type-safe routing (`src/routes/`). Only two real routes exist:
-  `/login` and `/dashboard`, guarded by a simulated auth session in `beforeLoad`.
-- **TanStack Query** — wraps the service layer with loading/error/caching state, so components
-  consume `useQuery`/`useMutation` instead of hand-rolled fetch state.
-- **Zustand** — small, cross-cutting UI state only: sidebar collapsed, balance hidden, active tab,
-  active filters. Everything else stays local to its feature.
-- **Axios** — a request/response-interceptor instance in `src/services/client.ts`, mocked via
-  `axios-mock-adapter` in `src/services/mock-server.ts` to simulate real network latency and an
-  explicit auth failure path. (Note: this is adapted from a React Native/production auth-client
-  pattern — token refresh and secure storage were intentionally stripped out, since there's no real
-  backend or token here.)
-- **Recharts** — the sector allocation bar and the invested-vs-current-value chart.
-- **Lucide React** — icons throughout.
-- **CSS Modules + design tokens** — no UI library. All colors, type sizes, radii, spacing, and
-  transitions are CSS custom properties in `src/core/design-system/tokens.css`, consumed by every
-  component.
+- **React 19 + Vite + TypeScript**
+- **TanStack Router** — file-based, type-safe routing in `src/routes/`. The app has `/login` and
+  `/dashboard`, with `/` redirecting based on the simulated auth session.
+- **TanStack Query** — wraps service calls with loading, error, retry, and caching state via
+  `src/hooks/usePortfolio.ts` and the auth mutation in `src/features/auth/hooks/useLogin.ts`.
+- **Zustand** — lightweight client state for simulated auth and dashboard UI preferences: sidebar
+  collapsed, balance hidden, active tab, holdings search/sector filter, and transaction filter.
+- **Axios + axios-mock-adapter** — a shared client in `src/services/client.ts`, mocked in
+  `src/services/mock-server.ts` with realistic latency and typed service functions in
+  `src/services/portfolio-service.ts`.
+- **Recharts** — renders the sector allocation bar and the invested-vs-current-value chart.
+- **Lucide React** — icons for navigation, controls, auth fields, and status affordances.
+- **Tailwind CSS v4 + design tokens** — no UI library. Tokens live in `src/index.css` through
+  Tailwind `@theme` and CSS custom properties, then components consume them through utility classes.
 - **Inter, self-hosted via `@fontsource/inter`** — local font files rather than a Google Fonts
   `<link>`. Google Fonts served via CDN sends the visitor's IP to a third party on every page load;
   self-hosting avoids that request entirely, which matters for a fintech product handling EU/UK
@@ -44,39 +41,67 @@ npm run preview   # preview the production build
 
 ## Architecture
 
-The app is a **modular monolith**: each domain lives in its own folder under `src/features/`, and a
-feature only talks to the outside world through `src/services/` (data) and `src/core/stores/`
-(shared UI state) — never by importing another feature's internals directly. Removing any one
-feature folder (e.g. `features/allocation`) only breaks the one page section that renders it, not
-the app's compilation or the other features.
+The app is a **modular monolith**: each domain lives in its own folder under `src/features/`, while
+shared UI primitives, stores, hooks, services, and utilities sit in top-level `src/` folders. A
+feature talks to app-wide state through `src/stores/` and to data through `src/services/` — never by
+importing the raw JSON fixture or another feature's internals directly. Removing any one feature
+folder (e.g. `features/allocation`) only breaks the page section that renders it, not the rest of
+the app.
 
 ```
 src/
-  core/
-    design-system/    Card, Button, Input, Badge, Tooltip, Skeleton, EmptyState, ErrorState — all token-driven
-    stores/           auth-store (simulated session), ui-store (sidebar/tabs/filters)
-    hooks/            usePortfolio (TanStack Query wrapper)
+  components/
+    design-system/    Badge, Button, Card, Input, Skeleton, StatusState, Tooltip
+  data/
+    portfolio-data.json   source fixture consumed only by the mock server
+  features/
+    accounts/         account grouping and account cards
+    allocation/       sector allocation computation and chart
+    auth/             login page, login mutation, form validation
+    dashboard/        dashboard composition, skeleton, holdings/orders panel
+    holdings/         stock cards, metrics, search, sector filters
+    net-worth/        totals, net worth card, invested/current chart
+    shell/            DashboardShell, Sidebar, TopBar
+    transactions/     order rows, date formatting, Buy/Sell filters
+  hooks/
+    usePortfolio.ts   TanStack Query wrapper around portfolioService
+  lib/
+    classNames.ts     class name helper
+    derivePortfolio.ts   shared portfolio math and formatting rules
+  routes/             TanStack Router file-based routes (/, /login, /dashboard)
   services/           (moved here per brief: "service layer in a folder called services")
     client.ts         axios instance + interceptors
     mock-server.ts    axios-mock-adapter: the only file that touches the raw JSON
     portfolio-service.ts   typed functions every component actually calls
-  lib/
-    types.ts          shared domain types
-    derivePortfolio.ts   all portfolio math — pure functions, no React/store dependency (quirk rules documented inline)
-  features/
-    auth/             login form, validation, mutation
-    net-worth/         net worth card + invested-vs-current chart
-    allocation/        sector allocation bar + legend
-    accounts/          sector-grouped account cards
-    holdings/           Stocks tab: search, sector pills, holding cards
-    transactions/       Orders tab: Buy/Sell filter, transaction rows
-    dashboard/          composes the above + tab switcher + skeleton
-    shell/              Sidebar, TopBar, DashboardShell
-  routes/               TanStack Router file-based routes (/, /login, /dashboard)
+  stores/
+    auth-store.ts     simulated auth session
+    ui-store.ts       sidebar, balance visibility, tabs, filters
 ```
 
 No component ever imports the JSON file directly — everything passes through
 `portfolioService.getPortfolio()`, which the mock adapter answers with a simulated ~700ms delay.
+`App.tsx` creates the TanStack Query client and TanStack Router provider. The generated route tree
+lives in `src/routeTree.gen.ts` and is regenerated by the TanStack Router Vite plugin during builds.
+
+## Current app state
+
+The implemented product is a single portfolio dashboard behind a simulated login. Any valid email
+and a password of at least 6 characters signs the user in. Auth state is stored in Zustand for the
+current browser session.
+
+The dashboard currently includes:
+
+- Net worth summary computed from holdings, not from the stale `summary.totalPortfolioValue` field.
+- Invested vs. current value chart.
+- Sector allocation chart.
+- Account grouping by active holdings.
+- Stocks tab with ticker/company search and sector filters.
+- Orders tab with All/Buy/Sell filters and descending date sorting.
+- Pending and failed transaction badge states.
+- Closed-position and unavailable-price handling in holding cards.
+- Loading skeleton, empty states, and retryable error state.
+- Collapsible sidebar that auto-collapses below 900px.
+- Disabled sidebar items for Transactions, Markets, and Settings with "Coming soon" tooltips.
 
 ### Navigation
 
