@@ -1,4 +1,5 @@
 import type { HTMLAttributes, ReactNode } from 'react';
+
 import { cx } from '../../lib/classNames';
 
 interface CardProps extends HTMLAttributes<HTMLDivElement> {
@@ -16,7 +17,7 @@ export function Card({ children, padding = 'default', className, ...rest }: Read
   return (
     <div
       className={cx(
-        'rounded-card border border-border bg-surface-card shadow-card transition-shadow duration-180 ease-in-out',
+        'rounded-card border-border bg-surface-card shadow-card border transition-shadow duration-180 ease-in-out',
         paddingClasses[padding],
         className,
       )}

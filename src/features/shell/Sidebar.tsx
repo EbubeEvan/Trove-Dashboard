@@ -1,7 +1,15 @@
+import {
+  LayoutGrid,
+  LineChart,
+  PanelLeftClose,
+  PanelLeftOpen,
+  Receipt,
+  Settings,
+} from 'lucide-react';
 import { useEffect } from 'react';
-import { LayoutGrid, Receipt, LineChart, Settings, PanelLeftClose, PanelLeftOpen } from 'lucide-react';
-import { useUiStore } from '../../core/stores/ui-store';
+
 import { Tooltip } from '../../core/design-system/Tooltip';
+import { useUiStore } from '../../core/stores/ui-store';
 import { cx } from '../../lib/classNames';
 
 // Only Dashboard is a real, built view (per brief: a single dashboard view).
@@ -35,16 +43,20 @@ export function Sidebar() {
   return (
     <aside
       className={cx(
-        'sticky top-0 flex h-screen flex-col border-r border-border bg-surface-card px-3 py-5 transition-[width,min-width] duration-180 ease-in-out',
+        'border-border bg-surface-card sticky top-0 flex h-screen flex-col border-r px-3 py-5 transition-[width,min-width] duration-180 ease-in-out',
         collapsed
           ? 'w-sidebar-width-collapsed min-w-sidebar-width-collapsed'
           : 'w-sidebar-width-expanded min-w-sidebar-width-expanded',
       )}
     >
-      <div className="mb-6 flex items-center justify-between px-2">
-        {!collapsed && <span className="overflow-hidden whitespace-nowrap text-lg font-semibold text-primary">Trove</span>}
+      <div className='mb-6 flex items-center justify-between px-2'>
+        {!collapsed && (
+          <span className='text-primary overflow-hidden text-lg font-semibold whitespace-nowrap'>
+            Trove
+          </span>
+        )}
         <button
-          className="flex shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent p-1.5 text-text-neutral transition-colors duration-180 ease-in-out hover:bg-bg-default"
+          className='text-text-neutral hover:bg-bg-default flex shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent p-1.5 transition-colors duration-180 ease-in-out'
           onClick={toggleSidebar}
           aria-label={collapsed ? 'Expand sidebar' : 'Collapse sidebar'}
         >
@@ -52,45 +64,45 @@ export function Sidebar() {
         </button>
       </div>
 
-      <nav className="flex flex-1 flex-col gap-1">
+      <nav className='flex flex-1 flex-col gap-1'>
         {NAV_ITEMS.map(({ label, icon: Icon, active }) => {
           const item = (
             <button
               key={label}
               className={cx(
-                'flex w-full cursor-pointer items-center gap-3 overflow-hidden whitespace-nowrap rounded-input border-0 bg-transparent px-3 py-2.5 text-left text-size-body font-medium text-text-neutral transition-[background,color] duration-180 ease-in-out',
+                'rounded-input text-size-body text-text-neutral flex w-full cursor-pointer items-center gap-3 overflow-hidden border-0 bg-transparent px-3 py-2.5 text-left font-medium whitespace-nowrap transition-[background,color] duration-180 ease-in-out',
                 collapsed && 'justify-center p-2.5',
                 active && 'bg-primary-light text-primary',
-                !active && 'cursor-not-allowed text-text-disabled',
+                !active && 'text-text-disabled cursor-not-allowed',
               )}
               disabled={!active}
               aria-current={active ? 'page' : undefined}
             >
               <Icon size={18} />
-              {!collapsed && <span className="overflow-hidden text-ellipsis">{label}</span>}
+              {!collapsed && <span className='overflow-hidden text-ellipsis'>{label}</span>}
             </button>
           );
 
           if (active) return item;
 
           return (
-            <Tooltip key={label} label="Coming soon">
+            <Tooltip key={label} label='Coming soon'>
               {item}
             </Tooltip>
           );
         })}
       </nav>
 
-      <div className="flex items-center gap-2 border-t border-border p-2 pt-4">
-        <div className="flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full bg-primary text-[13px] font-semibold text-white">
+      <div className='border-border flex items-center gap-2 border-t p-2 pt-4'>
+        <div className='bg-primary flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full text-[13px] font-semibold text-white'>
           A
         </div>
         {!collapsed && (
-          <div className="overflow-hidden">
-            <p className="m-0 overflow-hidden text-ellipsis whitespace-nowrap text-size-card-value text-text-default">
+          <div className='overflow-hidden'>
+            <p className='text-size-card-value text-text-default m-0 overflow-hidden text-ellipsis whitespace-nowrap'>
               Adaeze Okonkwo
             </p>
-            <p className="m-0 whitespace-nowrap text-size-caption text-text-neutral">
+            <p className='text-size-caption text-text-neutral m-0 whitespace-nowrap'>
               Premium Member
             </p>
           </div>

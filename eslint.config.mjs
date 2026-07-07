@@ -1,5 +1,4 @@
 import js from '@eslint/js';
-import nextPlugin from '@next/eslint-plugin-next';
 import erasableSyntaxOnly from 'eslint-plugin-erasable-syntax-only';
 import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 import reactPlugin from 'eslint-plugin-react';
@@ -13,7 +12,7 @@ import tseslint from 'typescript-eslint';
 export default tseslint.config(
   // Ignore patterns
   {
-    ignores: ['node_modules/**', '.next/**', 'out/**', 'dist/**', 'build/**'],
+    ignores: ['node_modules/**', 'dist/**', 'build/**'],
   },
 
   // Base ESLint recommended
@@ -29,7 +28,6 @@ export default tseslint.config(
   {
     files: ['**/*.{js,mjs,cjs,jsx,ts,tsx}'],
     plugins: {
-      '@next/next': nextPlugin,
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
       'jsx-a11y': jsxA11yPlugin,
@@ -56,13 +54,8 @@ export default tseslint.config(
       react: {
         version: 'detect',
       },
-      'import/ignore': ['class-variance-authority'],
     },
     rules: {
-      // Next.js rules
-      ...nextPlugin.configs.recommended.rules,
-      ...nextPlugin.configs['core-web-vitals'].rules,
-
       // React rules
       ...reactPlugin.configs.recommended.rules,
       ...reactPlugin.configs['jsx-runtime'].rules,
@@ -73,7 +66,6 @@ export default tseslint.config(
 
       // React Hooks rules
       ...reactHooksPlugin.configs.recommended.rules,
-      'react-hooks/set-state-in-effect': 'off',
 
       // JSX a11y rules
       ...jsxA11yPlugin.configs.recommended.rules,
@@ -99,11 +91,11 @@ export default tseslint.config(
       // React Refresh rules
       'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
 
-      // Import sorting rules - THESE ARE CRITICAL FOR YOUR ISSUE
+      // Import sorting rules
       'simple-import-sort/exports': 'error',
       'simple-import-sort/imports': 'error',
 
-      // Unused imports rules - THESE ARE CRITICAL FOR YOUR ISSUE
+      // Unused imports rules
       'unused-imports/no-unused-imports': 'error',
       'unused-imports/no-unused-vars': [
         'warn',

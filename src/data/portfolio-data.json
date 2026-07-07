@@ -16,8 +16,8 @@
       "name": "Apple Inc.",
       "sector": "Technology",
       "shares": 15,
-      "avgCost": 178.50,
-      "currentPrice": 215.30,
+      "avgCost": 178.5,
+      "currentPrice": 215.3,
       "currency": "USD"
     },
     {
@@ -27,7 +27,7 @@
       "sector": "Technology",
       "shares": 8,
       "avgCost": 140.25,
-      "currentPrice": 176.80,
+      "currentPrice": 176.8,
       "currency": "USD"
     },
     {
@@ -36,8 +36,8 @@
       "name": "Tesla Inc.",
       "sector": "Automotive",
       "shares": 10,
-      "avgCost": 265.00,
-      "currentPrice": 248.90,
+      "avgCost": 265.0,
+      "currentPrice": 248.9,
       "currency": "USD"
     },
     {
@@ -46,7 +46,7 @@
       "name": "Johnson & Johnson",
       "sector": "Healthcare",
       "shares": 20,
-      "avgCost": 155.00,
+      "avgCost": 155.0,
       "currentPrice": 162.45,
       "currency": "USD"
     },
@@ -57,7 +57,7 @@
       "sector": "Finance",
       "shares": 12,
       "avgCost": 190.75,
-      "currentPrice": 205.60,
+      "currentPrice": 205.6,
       "currency": "USD"
     },
     {
@@ -66,7 +66,7 @@
       "name": "Amazon.com Inc.",
       "sector": "Technology",
       "shares": 18,
-      "avgCost": 178.30,
+      "avgCost": 178.3,
       "currentPrice": 193.15,
       "currency": "USD"
     },
@@ -76,7 +76,7 @@
       "name": "NVIDIA Corporation",
       "sector": "Technology",
       "shares": 5,
-      "avgCost": 820.00,
+      "avgCost": 820.0,
       "currentPrice": 0,
       "currency": "USD"
     },
@@ -86,8 +86,8 @@
       "name": "Pfizer Inc.",
       "sector": "Healthcare",
       "shares": 30,
-      "avgCost": 28.50,
-      "currentPrice": 26.10,
+      "avgCost": 28.5,
+      "currentPrice": 26.1,
       "currency": "USD"
     },
     {
@@ -97,7 +97,7 @@
       "sector": "Entertainment",
       "shares": 0,
       "avgCost": 98.75,
-      "currentPrice": 112.40,
+      "currentPrice": 112.4,
       "currency": "USD"
     },
     {
@@ -106,7 +106,7 @@
       "name": "Visa Inc.",
       "sector": "Finance",
       "shares": 7,
-      "avgCost": 275.00,
+      "avgCost": 275.0,
       "currentPrice": 289.35,
       "currency": "USD"
     }
@@ -118,8 +118,8 @@
       "ticker": "AAPL",
       "name": "Apple Inc.",
       "shares": 5,
-      "pricePerShare": 210.50,
-      "totalAmount": 1052.50,
+      "pricePerShare": 210.5,
+      "totalAmount": 1052.5,
       "date": "2025-07-01T10:15:00Z",
       "status": "COMPLETED"
     },
@@ -129,8 +129,8 @@
       "ticker": "TSLA",
       "name": "Tesla Inc.",
       "shares": 3,
-      "pricePerShare": 252.30,
-      "totalAmount": 756.90,
+      "pricePerShare": 252.3,
+      "totalAmount": 756.9,
       "date": "2025-06-28T14:22:00Z",
       "status": "COMPLETED"
     },
@@ -140,8 +140,8 @@
       "ticker": "NVDA",
       "name": "NVIDIA Corporation",
       "shares": 2,
-      "pricePerShare": 815.00,
-      "totalAmount": 1630.00,
+      "pricePerShare": 815.0,
+      "totalAmount": 1630.0,
       "date": "2025-06-25T09:45:00Z",
       "status": "COMPLETED"
     },
@@ -151,8 +151,8 @@
       "ticker": "JNJ",
       "name": "Johnson & Johnson",
       "shares": 10,
-      "pricePerShare": 158.20,
-      "totalAmount": 1582.00,
+      "pricePerShare": 158.2,
+      "totalAmount": 1582.0,
       "date": "2025-06-20T11:30:00Z",
       "status": "COMPLETED"
     },
@@ -162,8 +162,8 @@
       "ticker": "PFE",
       "name": "Pfizer Inc.",
       "shares": 15,
-      "pricePerShare": 27.80,
-      "totalAmount": 417.00,
+      "pricePerShare": 27.8,
+      "totalAmount": 417.0,
       "date": "2025-06-18T16:05:00Z",
       "status": "COMPLETED"
     },
@@ -173,8 +173,8 @@
       "ticker": "AMZN",
       "name": "Amazon.com Inc.",
       "shares": 8,
-      "pricePerShare": 185.40,
-      "totalAmount": 1483.20,
+      "pricePerShare": 185.4,
+      "totalAmount": 1483.2,
       "date": "2025-06-15T08:50:00Z",
       "status": "PENDING"
     },
@@ -184,8 +184,8 @@
       "ticker": "V",
       "name": "Visa Inc.",
       "shares": 3,
-      "pricePerShare": 278.90,
-      "totalAmount": 836.70,
+      "pricePerShare": 278.9,
+      "totalAmount": 836.7,
       "date": "2025-06-10T13:20:00Z",
       "status": "FAILED"
     }

@@ -31,7 +31,9 @@ instance.interceptors.response.use(
   (response) => response,
   (error) => {
     if (!error.response && error.message !== 'canceled') {
-      return Promise.reject(new Error('Network error. Please check your connection and try again.'));
+      return Promise.reject(
+        new Error('Network error. Please check your connection and try again.'),
+      );
     }
     return Promise.reject(error);
   },

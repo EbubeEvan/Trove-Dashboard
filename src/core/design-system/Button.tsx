@@ -1,4 +1,5 @@
 import type { ButtonHTMLAttributes, ReactNode } from 'react';
+
 import { cx } from '../../lib/classNames';
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -19,15 +20,14 @@ export function Button({
 }: Readonly<ButtonProps>) {
   const variantClasses = {
     primary: 'bg-primary text-white hover:enabled:bg-[#048069]',
-    secondary:
-      'border-border bg-surface-card text-text-default hover:enabled:bg-bg-default',
+    secondary: 'border-border bg-surface-card text-text-default hover:enabled:bg-bg-default',
     ghost: 'bg-transparent text-text-neutral hover:enabled:bg-bg-default',
   };
 
   return (
     <button
       className={cx(
-        'inline-flex h-11 cursor-pointer items-center justify-center gap-2 rounded-input border border-transparent px-5 text-size-body font-semibold transition-[background,border-color,opacity] duration-180 ease-in-out disabled:cursor-not-allowed disabled:opacity-60',
+        'rounded-input text-size-body inline-flex h-11 cursor-pointer items-center justify-center gap-2 border border-transparent px-5 font-semibold transition-[background,border-color,opacity] duration-180 ease-in-out disabled:cursor-not-allowed disabled:opacity-60',
         variantClasses[variant],
         fullWidth && 'w-full',
         className,
@@ -37,8 +37,8 @@ export function Button({
     >
       {loading ? (
         <span
-          className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white"
-          aria-label="Loading"
+          className='h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white'
+          aria-label='Loading'
         />
       ) : (
         children

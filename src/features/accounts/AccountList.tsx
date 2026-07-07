@@ -1,7 +1,7 @@
 import { Card } from '../../core/design-system/Card';
 import { EmptyState } from '../../core/design-system/StatusState';
-import type { Holding } from '../../lib/types';
 import { computeAccountGroups, formatCurrency } from '../../lib/derivePortfolio';
+import type { Holding } from '../../lib/types';
 
 interface AccountListProps {
   holdings: Holding[];
@@ -14,23 +14,23 @@ export function AccountList({ holdings, currency }: Readonly<AccountListProps>) 
   if (groups.length === 0) {
     return (
       <EmptyState
-        title="No accounts yet"
+        title='No accounts yet'
         description="Once you hold an active position, it'll be grouped here by sector."
       />
     );
   }
 
   return (
-    <div className="grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4">
+    <div className='grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4'>
       {groups.map((g) => (
-        <Card key={g.category} padding="compact">
-          <p className="mb-1 mt-0 text-size-card-value font-semibold text-text-default">
+        <Card key={g.category} padding='compact'>
+          <p className='text-size-card-value text-text-default mt-0 mb-1 font-semibold'>
             {g.category}
           </p>
-          <p className="mb-3 mt-0 text-size-caption text-text-neutral">
+          <p className='text-size-caption text-text-neutral mt-0 mb-3'>
             {g.positions} {g.positions === 1 ? 'position' : 'positions'}
           </p>
-          <p className="m-0 text-xl font-semibold text-text-default">
+          <p className='text-text-default m-0 text-xl font-semibold'>
             {formatCurrency(g.totalValue, currency)}
           </p>
         </Card>

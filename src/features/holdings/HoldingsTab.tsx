@@ -1,10 +1,11 @@
 import { Search } from 'lucide-react';
-import { useUiStore } from '../../core/stores/ui-store';
+
 import { EmptyState } from '../../core/design-system/StatusState';
-import type { Holding } from '../../lib/types';
-import { filterHoldings, getSectors } from '../../lib/derivePortfolio';
-import { HoldingCard } from './HoldingCard';
+import { useUiStore } from '../../core/stores/ui-store';
 import { cx } from '../../lib/classNames';
+import { filterHoldings, getSectors } from '../../lib/derivePortfolio';
+import type { Holding } from '../../lib/types';
+import { HoldingCard } from './HoldingCard';
 
 interface HoldingsTabProps {
   holdings: Holding[];
@@ -21,31 +22,31 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
 
   return (
     <div>
-      <div className="mb-4 flex flex-col gap-3">
-        <div className="relative">
+      <div className='mb-4 flex flex-col gap-3'>
+        <div className='relative'>
           <Search
             size={16}
-            className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-text-disabled"
+            className='text-text-disabled pointer-events-none absolute top-1/2 left-3 -translate-y-1/2'
           />
           <input
-            className="w-full rounded-input border border-border bg-bg-default py-2.5 pl-[38px] pr-3 text-size-body text-text-default outline-none transition-colors duration-180 ease-in-out placeholder:text-text-disabled focus:border-primary"
-            placeholder="Search by ticker or company name"
+            className='rounded-input border-border bg-bg-default text-size-body text-text-default placeholder:text-text-disabled focus:border-primary w-full border py-2.5 pr-3 pl-[38px] transition-colors duration-180 ease-in-out outline-none'
+            placeholder='Search by ticker or company name'
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            aria-label="Search holdings"
+            aria-label='Search holdings'
           />
         </div>
 
-        <div className="flex flex-wrap gap-2" role="tablist" aria-label="Filter by sector">
+        <div className='flex flex-wrap gap-2' role='tablist' aria-label='Filter by sector'>
           {sectors.map((s) => (
             <button
               key={s}
               className={cx(
-                'cursor-pointer whitespace-nowrap rounded-pill border border-border bg-surface-card px-3 py-1.5 text-size-caption font-medium text-text-neutral transition-all duration-180 ease-in-out hover:border-primary hover:text-primary',
+                'rounded-pill border-border bg-surface-card text-size-caption text-text-neutral hover:border-primary hover:text-primary cursor-pointer border px-3 py-1.5 font-medium whitespace-nowrap transition-all duration-180 ease-in-out',
                 sector === s && 'border-primary bg-primary text-white hover:text-white',
               )}
               onClick={() => setSector(s)}
-              role="tab"
+              role='tab'
               aria-selected={sector === s}
             >
               {s}
@@ -56,11 +57,11 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
 
       {filtered.length === 0 ? (
         <EmptyState
-          title="No holdings match"
-          description="Try a different search term or clear the sector filter."
+          title='No holdings match'
+          description='Try a different search term or clear the sector filter.'
         />
       ) : (
-        <div className="flex max-h-[460px] flex-col gap-3 overflow-y-auto">
+        <div className='flex max-h-[460px] flex-col gap-3 overflow-y-auto'>
           {filtered.map((h) => (
             <HoldingCard key={h.id} holding={h} />
           ))}

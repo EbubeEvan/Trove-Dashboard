@@ -1,5 +1,6 @@
 import type { InputHTMLAttributes } from 'react';
 import { useId } from 'react';
+
 import { cx } from '../../lib/classNames';
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -12,16 +13,16 @@ export function Input({ label, error, id, className, ...rest }: Readonly<InputPr
   const inputId = id ?? generatedId;
 
   return (
-    <div className="flex w-full flex-col gap-1.5">
+    <div className='flex w-full flex-col gap-1.5'>
       {label && (
-        <label htmlFor={inputId} className="text-size-caption font-medium text-text-neutral">
+        <label htmlFor={inputId} className='text-size-caption text-text-neutral font-medium'>
           {label}
         </label>
       )}
       <input
         id={inputId}
         className={cx(
-          'h-11.5 rounded-input border border-border bg-bg-default px-4 text-size-body text-text-default transition-[border-color,background] duration-180 ease-in-out placeholder:text-text-disabled focus:border-primary focus:bg-surface-card focus:outline-none',
+          'rounded-input border-border bg-bg-default text-size-body text-text-default placeholder:text-text-disabled focus:border-primary focus:bg-surface-card h-11.5 border px-4 transition-[border-color,background] duration-180 ease-in-out focus:outline-none',
           error && 'border-negative',
           className,
         )}
@@ -30,7 +31,7 @@ export function Input({ label, error, id, className, ...rest }: Readonly<InputPr
         {...rest}
       />
       {error && (
-        <span id={`${inputId}-error`} className="text-size-caption text-negative">
+        <span id={`${inputId}-error`} className='text-size-caption text-negative'>
           {error}
         </span>
       )}

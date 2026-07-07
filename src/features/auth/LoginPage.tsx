@@ -1,11 +1,12 @@
-import { useState, type FormEvent } from 'react';
 import { useNavigate } from '@tanstack/react-router';
 import { Eye, EyeOff } from 'lucide-react';
+import { type FormEvent, useState } from 'react';
+
+import { Button } from '../../core/design-system/Button';
 import { Card } from '../../core/design-system/Card';
 import { Input } from '../../core/design-system/Input';
-import { Button } from '../../core/design-system/Button';
-import { validateLoginForm, type LoginFormErrors } from './validation';
 import { useLogin } from './useLogin';
+import { type LoginFormErrors, validateLoginForm } from './validation';
 
 export function LoginPage() {
   const [email, setEmail] = useState('');
@@ -21,47 +22,42 @@ export function LoginPage() {
     setErrors(validationErrors);
     if (Object.keys(validationErrors).length > 0) return;
 
-    login.mutate(
-      { email, password },
-      { onSuccess: () => navigate({ to: '/dashboard' }) },
-    );
+    login.mutate({ email, password }, { onSuccess: () => navigate({ to: '/dashboard' }) });
   }
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-bg-page bg-[radial-gradient(circle_at_15%_20%,rgba(5,154,131,0.06),transparent_40%),radial-gradient(circle_at_85%_85%,rgba(5,154,131,0.07),transparent_45%)] p-6">
-      <Card padding="none" className="flex w-full max-w-[420px] flex-col items-center px-6 py-8">
-        <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-xl bg-primary text-base font-semibold text-white">
+    <div className='bg-bg-page flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_15%_20%,rgba(5,154,131,0.06),transparent_40%),radial-gradient(circle_at_85%_85%,rgba(5,154,131,0.07),transparent_45%)] p-6'>
+      <Card padding='none' className='flex w-full max-w-[420px] flex-col items-center px-6 py-8'>
+        <div className='bg-primary mb-4 flex h-10 w-10 items-center justify-center rounded-xl text-base font-semibold text-white'>
           T
         </div>
-        <h1 className="m-0 text-[19px] font-semibold">Welcome back</h1>
-        <p className="mb-6 mt-1 text-size-body text-text-neutral">
-          Sign in to your account
-        </p>
+        <h1 className='m-0 text-[19px] font-semibold'>Welcome back</h1>
+        <p className='text-size-body text-text-neutral mt-1 mb-6'>Sign in to your account</p>
 
-        <form onSubmit={handleSubmit} noValidate className="flex w-full flex-col gap-4">
+        <form onSubmit={handleSubmit} noValidate className='flex w-full flex-col gap-4'>
           <Input
-            label="Email address"
-            type="email"
-            placeholder="name@example.com"
+            label='Email address'
+            type='email'
+            placeholder='name@example.com'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             error={errors.email}
-            autoComplete="email"
+            autoComplete='email'
           />
 
-          <div className="relative">
+          <div className='relative'>
             <Input
-              label="Password"
+              label='Password'
               type={showPassword ? 'text' : 'password'}
-              placeholder="Enter your password"
+              placeholder='Enter your password'
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               error={errors.password}
-              autoComplete="current-password"
+              autoComplete='current-password'
             />
             <button
-              type="button"
-              className="absolute right-3 top-[30px] flex cursor-pointer border-0 bg-transparent p-1 text-text-neutral"
+              type='button'
+              className='text-text-neutral absolute top-[30px] right-3 flex cursor-pointer border-0 bg-transparent p-1'
               onClick={() => setShowPassword((s) => !s)}
               aria-label={showPassword ? 'Hide password' : 'Show password'}
               tabIndex={-1}
@@ -72,31 +68,31 @@ export function LoginPage() {
 
           {login.isError && (
             <p
-              className="m-0 rounded-lg bg-negative-bg px-3 py-2 text-size-caption text-negative"
-              role="alert"
+              className='bg-negative-bg text-size-caption text-negative m-0 rounded-lg px-3 py-2'
+              role='alert'
             >
               {login.error instanceof Error ? login.error.message : 'Unable to sign in. Try again.'}
             </p>
           )}
 
-          <Button type="submit" fullWidth loading={login.isPending}>
+          <Button type='submit' fullWidth loading={login.isPending}>
             Sign in
           </Button>
         </form>
 
         <a
-          href="#"
-          className="mt-5 block text-center text-size-caption text-primary no-underline hover:underline"
+          href='/forgot-password'
+          className='text-size-caption text-primary mt-5 block text-center no-underline hover:underline'
         >
           Forgot password?
         </a>
 
-        <div className="my-5 h-px w-full bg-border" />
+        <div className='bg-border my-5 h-px w-full' />
 
-        <p className="mb-3 mt-0 w-full text-center text-size-caption text-text-disabled">
-          Don't have an account?
+        <p className='text-size-caption text-text-disabled mt-0 mb-3 w-full text-center'>
+          Don{"'"}t have an account?
         </p>
-        <Button type="button" variant="secondary" fullWidth>
+        <Button type='button' variant='secondary' fullWidth>
           Create a Trove account
         </Button>
       </Card>

@@ -1,7 +1,8 @@
 import MockAdapter from 'axios-mock-adapter';
-import instance from './client';
+
 import portfolioJson from '../data/portfolio-data.json';
 import type { PortfolioData } from '../lib/types';
+import instance from './client';
 
 // Simulates a real backend sitting behind the axios instance: realistic
 // latency, a proper request/response cycle, and an explicit (rare) failure

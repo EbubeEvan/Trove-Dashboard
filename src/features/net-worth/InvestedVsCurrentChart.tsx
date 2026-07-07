@@ -1,4 +1,14 @@
-import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxis, Cell } from 'recharts';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+
 import { formatCurrency } from '../../lib/derivePortfolio';
 
 interface InvestedVsCurrentChartProps {
@@ -6,7 +16,10 @@ interface InvestedVsCurrentChartProps {
   totalCurrentValue: number;
 }
 
-export function InvestedVsCurrentChart({ totalInvested, totalCurrentValue }: Readonly<InvestedVsCurrentChartProps>) {
+export function InvestedVsCurrentChart({
+  totalInvested,
+  totalCurrentValue,
+}: Readonly<InvestedVsCurrentChartProps>) {
   const data = [
     { label: 'Invested', value: Math.round(totalInvested * 100) / 100 },
     { label: 'Current value', value: Math.round(totalCurrentValue * 100) / 100 },
@@ -15,14 +28,14 @@ export function InvestedVsCurrentChart({ totalInvested, totalCurrentValue }: Rea
   const barColors = ['#92A29F', '#059A83'];
 
   return (
-    <div className="mt-5">
-      <ResponsiveContainer width="100%" height={140}>
-        <BarChart data={data} layout="vertical" margin={{ top: 4, right: 24, bottom: 4, left: 4 }}>
-          <CartesianGrid strokeDasharray="3 3" horizontal={false} stroke="#DBDFDF" />
-          <XAxis type="number" hide />
+    <div className='mt-5'>
+      <ResponsiveContainer width='100%' height={140}>
+        <BarChart data={data} layout='vertical' margin={{ top: 4, right: 24, bottom: 4, left: 4 }}>
+          <CartesianGrid strokeDasharray='3 3' horizontal={false} stroke='#DBDFDF' />
+          <XAxis type='number' hide />
           <YAxis
-            type="category"
-            dataKey="label"
+            type='category'
+            dataKey='label'
             width={92}
             tickLine={false}
             axisLine={false}
@@ -36,7 +49,7 @@ export function InvestedVsCurrentChart({ totalInvested, totalCurrentValue }: Rea
               fontSize: 12,
             }}
           />
-          <Bar dataKey="value" radius={[0, 8, 8, 0]} barSize={26}>
+          <Bar dataKey='value' radius={[0, 8, 8, 0]} barSize={26}>
             {data.map((_, index) => (
               <Cell key={index} fill={barColors[index]} />
             ))}

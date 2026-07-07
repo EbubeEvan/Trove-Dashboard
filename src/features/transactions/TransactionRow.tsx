@@ -1,9 +1,10 @@
 import { ArrowDownLeft, ArrowUpRight } from 'lucide-react';
-import { Card } from '../../core/design-system/Card';
+
 import { Badge } from '../../core/design-system/Badge';
-import type { Transaction } from '../../lib/types';
-import { formatCurrency } from '../../lib/derivePortfolio';
+import { Card } from '../../core/design-system/Card';
 import { cx } from '../../lib/classNames';
+import { formatCurrency } from '../../lib/derivePortfolio';
+import type { Transaction } from '../../lib/types';
 
 interface TransactionRowProps {
   transaction: Transaction;
@@ -16,7 +17,11 @@ const STATUS_TONE = {
 } as const;
 
 function formatDate(iso: string): string {
-  return new Date(iso).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  return new Date(iso).toLocaleDateString('en-US', {
+    month: 'short',
+    day: 'numeric',
+    year: 'numeric',
+  });
 }
 
 export function TransactionRow({ transaction: t }: Readonly<TransactionRowProps>) {
@@ -24,31 +29,29 @@ export function TransactionRow({ transaction: t }: Readonly<TransactionRowProps>
   const failed = t.status === 'FAILED';
 
   return (
-    <Card padding="compact" className="flex items-center gap-3">
+    <Card padding='compact' className='flex items-center gap-3'>
       <div
         className={cx(
           'flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px]',
-          isBuy
-            ? 'bg-primary-light text-primary'
-            : 'bg-negative-bg text-negative',
+          isBuy ? 'bg-primary-light text-primary' : 'bg-negative-bg text-negative',
         )}
       >
         {isBuy ? <ArrowDownLeft size={17} /> : <ArrowUpRight size={17} />}
       </div>
 
-      <div className="min-w-0 flex-1">
-        <p className="m-0 overflow-hidden text-ellipsis whitespace-nowrap text-size-card-value font-medium text-text-default">
+      <div className='min-w-0 flex-1'>
+        <p className='text-size-card-value text-text-default m-0 overflow-hidden font-medium text-ellipsis whitespace-nowrap'>
           {isBuy ? 'Buy' : 'Sell'} {t.name}
         </p>
-        <p className="mb-0 mt-0.5 text-size-caption text-text-neutral">
+        <p className='text-size-caption text-text-neutral mt-0.5 mb-0'>
           {formatDate(t.date)} &middot; {t.shares} shares
         </p>
       </div>
 
-      <div className="flex shrink-0 flex-col items-end gap-1 text-right">
+      <div className='flex shrink-0 flex-col items-end gap-1 text-right'>
         <p
           className={cx(
-            'm-0 text-size-card-value font-semibold',
+            'text-size-card-value m-0 font-semibold',
             failed && 'text-text-disabled line-through',
             !failed && isBuy && 'text-text-default',
             !failed && !isBuy && 'text-success',

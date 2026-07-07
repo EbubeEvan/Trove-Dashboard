@@ -1,10 +1,11 @@
-import { Eye, EyeOff, TrendingUp, TrendingDown } from 'lucide-react';
+import { Eye, EyeOff, TrendingDown, TrendingUp } from 'lucide-react';
+
 import { Card } from '../../core/design-system/Card';
 import { useUiStore } from '../../core/stores/ui-store';
-import type { Holding } from '../../lib/types';
-import { computeTotals, formatCurrency, formatSignedPercent } from '../../lib/derivePortfolio';
-import { InvestedVsCurrentChart } from './InvestedVsCurrentChart';
 import { cx } from '../../lib/classNames';
+import { computeTotals, formatCurrency, formatSignedPercent } from '../../lib/derivePortfolio';
+import type { Holding } from '../../lib/types';
+import { InvestedVsCurrentChart } from './InvestedVsCurrentChart';
 
 interface NetWorthCardProps {
   holdings: Holding[];
@@ -19,13 +20,11 @@ export function NetWorthCard({ holdings, currency }: Readonly<NetWorthCardProps>
   const isPositive = totals.netGainLossAmount >= 0;
 
   return (
-    <Card className="flex flex-col">
-      <div className="flex items-center justify-between">
-        <span className="text-size-caption font-medium text-text-neutral">
-          Total Net Worth
-        </span>
+    <Card className='flex flex-col'>
+      <div className='flex items-center justify-between'>
+        <span className='text-size-caption text-text-neutral font-medium'>Total Net Worth</span>
         <button
-          className="flex cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-1 text-text-neutral transition-colors duration-180 ease-in-out hover:bg-bg-default"
+          className='text-text-neutral hover:bg-bg-default flex cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-1 transition-colors duration-180 ease-in-out'
           onClick={toggleBalance}
           aria-label={balanceHidden ? 'Show balance' : 'Hide balance'}
         >
@@ -33,17 +32,15 @@ export function NetWorthCard({ holdings, currency }: Readonly<NetWorthCardProps>
         </button>
       </div>
 
-      <div className="mt-2 flex flex-wrap items-center gap-3">
-        <span className="text-size-net-worth font-semibold tracking-[-0.5px] text-text-default">
+      <div className='mt-2 flex flex-wrap items-center gap-3'>
+        <span className='text-size-net-worth text-text-default font-semibold tracking-[-0.5px]'>
           {balanceHidden ? '••••••' : formatCurrency(totals.totalCurrentValue, currency)}
         </span>
         {!balanceHidden && (
           <span
             className={cx(
-              'inline-flex items-center gap-1 rounded-pill px-2.5 py-[3px] text-size-body font-semibold',
-              isPositive
-                ? 'bg-success-bg text-success'
-                : 'bg-negative-bg text-negative',
+              'rounded-pill text-size-body inline-flex items-center gap-1 px-2.5 py-[3px] font-semibold',
+              isPositive ? 'bg-success-bg text-success' : 'bg-negative-bg text-negative',
             )}
           >
             {isPositive ? <TrendingUp size={14} /> : <TrendingDown size={14} />}
@@ -53,7 +50,10 @@ export function NetWorthCard({ holdings, currency }: Readonly<NetWorthCardProps>
       </div>
 
       {!balanceHidden && (
-        <InvestedVsCurrentChart totalInvested={totals.totalInvested} totalCurrentValue={totals.totalCurrentValue} />
+        <InvestedVsCurrentChart
+          totalInvested={totals.totalInvested}
+          totalCurrentValue={totals.totalCurrentValue}
+        />
       )}
     </Card>
   );
