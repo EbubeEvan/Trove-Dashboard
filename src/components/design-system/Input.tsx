@@ -15,14 +15,14 @@ export function Input({ label, error, id, className, ...rest }: Readonly<InputPr
   return (
     <div className='flex w-full flex-col gap-1.5'>
       {label && (
-        <label htmlFor={inputId} className='text-size-caption text-text-neutral font-medium'>
+        <label htmlFor={inputId} className='text-caption text-text-neutral font-medium'>
           {label}
         </label>
       )}
       <input
         id={inputId}
         className={cx(
-          'rounded-input border-border bg-bg-default text-size-body text-text-default placeholder:text-text-disabled focus:border-primary focus:bg-surface-card h-11.5 border px-4 transition-[border-color,background] duration-180 ease-in-out focus:outline-none',
+          'rounded-input border-border bg-bg-default text-body text-text-default placeholder:text-text-disabled focus:border-primary focus:bg-surface-card h-11.5 border px-4 transition-[border-color,background] duration-180 ease-in-out focus:outline-none',
           error && 'border-negative',
           className,
         )}
@@ -31,7 +31,7 @@ export function Input({ label, error, id, className, ...rest }: Readonly<InputPr
         {...rest}
       />
       {error && (
-        <span id={`${inputId}-error`} className='text-size-caption text-negative'>
+        <span id={`${inputId}-error`} className='text-caption text-negative'>
           {error}
         </span>
       )}

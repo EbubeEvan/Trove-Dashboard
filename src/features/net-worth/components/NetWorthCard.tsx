@@ -23,7 +23,7 @@ export function NetWorthCard({ holdings, currency }: Readonly<NetWorthCardProps>
   return (
     <Card className='flex flex-col'>
       <div className='flex items-center justify-between'>
-        <span className='text-size-caption text-text-neutral font-medium'>Total Net Worth</span>
+        <span className='text-caption text-text-neutral font-medium'>Total Net Worth</span>
         <button
           className='text-text-neutral hover:bg-bg-default flex cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-1 transition-colors duration-180 ease-in-out'
           onClick={toggleBalance}
@@ -34,13 +34,13 @@ export function NetWorthCard({ holdings, currency }: Readonly<NetWorthCardProps>
       </div>
 
       <div className='mt-2 flex flex-wrap items-center gap-3'>
-        <span className='text-size-net-worth text-text-default font-semibold tracking-[-0.5px]'>
+        <span className='text-net-worth text-text-default font-semibold tracking-[-0.5px]'>
           {balanceHidden ? '••••••' : formatCurrency(totals.totalCurrentValue, currency)}
         </span>
         {!balanceHidden && (
           <span
             className={cx(
-              'rounded-pill text-size-body inline-flex items-center gap-1 px-2.5 py-[3px] font-semibold',
+              'rounded-pill text-body inline-flex items-center gap-1 px-2.5 py-[3px] font-semibold',
               isPositive ? 'bg-success-bg text-success' : 'bg-negative-bg text-negative',
             )}
           >

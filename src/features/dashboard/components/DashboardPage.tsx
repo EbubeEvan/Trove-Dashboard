@@ -33,13 +33,13 @@ export function DashboardPage() {
       </div>
 
       <div>
-        <h2 className='text-size-heading text-text-default mt-0 mb-3 font-semibold'>Accounts</h2>
+        <h2 className='text-heading text-text-default mt-0 mb-3 font-semibold'>Accounts</h2>
         <AccountList holdings={holdings} currency='USD' />
       </div>
 
       <HoldingsTransactionsPanel holdings={holdings} transactions={transactions} />
 
-      <p className='text-size-caption text-text-disabled text-center'>
+      <p className='text-caption text-text-disabled text-center'>
         Last updated {new Date(user.lastUpdated).toLocaleString()}
       </p>
     </div>

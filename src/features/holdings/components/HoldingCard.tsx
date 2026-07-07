@@ -35,34 +35,34 @@ export function HoldingCard({ holding: h }: Readonly<HoldingCardProps>) {
       </div>
 
       <div className='min-w-0 flex-1'>
-        <p className='text-size-card-value text-text-default m-0 flex items-center gap-2 font-semibold'>
+        <p className='text-card-value text-text-default m-0 flex items-center gap-2 font-semibold'>
           {h.ticker}
           {closed && <Badge tone='neutral'>Closed position</Badge>}
         </p>
-        <p className='text-size-caption text-text-neutral mt-0.5 mb-0 overflow-hidden text-ellipsis whitespace-nowrap'>
+        <p className='text-caption text-text-neutral mt-0.5 mb-0 overflow-hidden text-ellipsis whitespace-nowrap'>
           {h.name}
         </p>
       </div>
 
       <div className='shrink-0 text-right'>
-        <p className='text-size-caption text-text-disabled m-0'>Shares</p>
-        <p className='text-size-card-value text-text-default mt-0.5 mb-0'>{h.shares}</p>
+        <p className='text-caption text-text-disabled m-0'>Shares</p>
+        <p className='text-card-value text-text-default mt-0.5 mb-0'>{h.shares}</p>
       </div>
 
       <div className='min-w-[90px] shrink-0 text-right'>
         {unavailable ? (
-          <p className='text-size-card-value text-text-disabled m-0 font-normal italic'>
+          <p className='text-card-value text-text-disabled m-0 font-normal italic'>
             Price unavailable
           </p>
         ) : (
-          <p className='text-size-card-value text-text-default m-0 font-semibold'>
+          <p className='text-card-value text-text-default m-0 font-semibold'>
             {formatCurrency(currentValue(h), h.currency)}
           </p>
         )}
         {!unavailable && !closed && (
           <p
             className={cx(
-              'text-size-caption mt-0.5 mb-0 font-medium',
+              'text-caption mt-0.5 mb-0 font-medium',
               isPositive && 'text-success',
               isNegative && 'text-negative',
               !isPositive && !isNegative && 'text-text-disabled',

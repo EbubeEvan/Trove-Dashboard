@@ -33,7 +33,7 @@ export function LoginPage() {
           T
         </div>
         <h1 className='m-0 text-[19px] font-semibold'>Welcome back</h1>
-        <p className='text-size-body text-text-neutral mt-1 mb-6'>Sign in to your account</p>
+        <p className='text-body text-text-neutral mt-1 mb-6'>Sign in to your account</p>
 
         <form onSubmit={handleSubmit} noValidate className='flex w-full flex-col gap-4'>
           <Input
@@ -69,7 +69,7 @@ export function LoginPage() {
 
           {login.isError && (
             <p
-              className='bg-negative-bg text-size-caption text-negative m-0 rounded-lg px-3 py-2'
+              className='bg-negative-bg text-caption text-negative m-0 rounded-lg px-3 py-2'
               role='alert'
             >
               {login.error instanceof Error ? login.error.message : 'Unable to sign in. Try again.'}
@@ -83,14 +83,14 @@ export function LoginPage() {
 
         <a
           href='/forgot-password'
-          className='text-size-caption text-primary mt-5 block text-center no-underline hover:underline'
+          className='text-caption text-primary mt-5 block text-center no-underline hover:underline'
         >
           Forgot password?
         </a>
 
         <div className='bg-border my-5 h-px w-full' />
 
-        <p className='text-size-caption text-text-disabled mt-0 mb-3 w-full text-center'>
+        <p className='text-caption text-text-disabled mt-0 mb-3 w-full text-center'>
           Don{"'"}t have an account?
         </p>
         <Button type='button' variant='secondary' fullWidth>

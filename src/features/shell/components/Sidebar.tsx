@@ -70,7 +70,7 @@ export function Sidebar() {
             <button
               key={label}
               className={cx(
-                'rounded-input text-size-body text-text-neutral flex w-full cursor-pointer items-center gap-3 overflow-hidden border-0 bg-transparent px-3 py-2.5 text-left font-medium whitespace-nowrap transition-[background,color] duration-180 ease-in-out',
+                'rounded-input text-body text-text-neutral flex w-full cursor-pointer items-center gap-3 overflow-hidden border-0 bg-transparent px-3 py-2.5 text-left font-medium whitespace-nowrap transition-[background,color] duration-180 ease-in-out',
                 collapsed && 'justify-center p-2.5',
                 active && 'bg-primary-light text-primary',
                 !active && 'text-text-disabled cursor-not-allowed',
@@ -99,12 +99,10 @@ export function Sidebar() {
         </div>
         {!collapsed && (
           <div className='overflow-hidden'>
-            <p className='text-size-card-value text-text-default m-0 overflow-hidden text-ellipsis whitespace-nowrap'>
+            <p className='text-card-value text-text-default m-0 overflow-hidden text-ellipsis whitespace-nowrap'>
               Adaeze Okonkwo
             </p>
-            <p className='text-size-caption text-text-neutral m-0 whitespace-nowrap'>
-              Premium Member
-            </p>
+            <p className='text-caption text-text-neutral m-0 whitespace-nowrap'>Premium Member</p>
           </div>
         )}
       </div>

@@ -33,10 +33,10 @@ export function TransactionRow({ transaction: t }: Readonly<TransactionRowProps>
       </div>
 
       <div className='min-w-0 flex-1'>
-        <p className='text-size-card-value text-text-default m-0 overflow-hidden font-medium text-ellipsis whitespace-nowrap'>
+        <p className='text-card-value text-text-default m-0 overflow-hidden font-medium text-ellipsis whitespace-nowrap'>
           {isBuy ? 'Buy' : 'Sell'} {t.name}
         </p>
-        <p className='text-size-caption text-text-neutral mt-0.5 mb-0'>
+        <p className='text-caption text-text-neutral mt-0.5 mb-0'>
           {formatDate(t.date)} &middot; {t.shares} shares
         </p>
       </div>
@@ -44,7 +44,7 @@ export function TransactionRow({ transaction: t }: Readonly<TransactionRowProps>
       <div className='flex shrink-0 flex-col items-end gap-1 text-right'>
         <p
           className={cx(
-            'text-size-card-value m-0 font-semibold',
+            'text-card-value m-0 font-semibold',
             failed && 'text-text-disabled line-through',
             !failed && isBuy && 'text-text-default',
             !failed && !isBuy && 'text-success',

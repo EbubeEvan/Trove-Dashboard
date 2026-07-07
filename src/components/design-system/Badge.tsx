@@ -20,7 +20,7 @@ export function Badge({ tone, children }: Readonly<BadgeProps>) {
   return (
     <span
       className={cx(
-        'rounded-pill text-size-caption inline-flex items-center border border-transparent px-2.5 py-[3px] font-semibold tracking-[0.02em] whitespace-nowrap uppercase',
+        'rounded-pill text-caption inline-flex items-center border border-transparent px-2.5 py-[3px] font-semibold tracking-[0.02em] whitespace-nowrap uppercase',
         toneClasses[tone],
       )}
     >

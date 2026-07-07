@@ -26,7 +26,7 @@ export function TransactionsTab({ transactions }: Readonly<TransactionsTabProps>
           <button
             key={f}
             className={cx(
-              'rounded-pill border-border bg-surface-card text-size-caption text-text-neutral hover:border-primary hover:text-primary cursor-pointer border px-3 py-1.5 font-medium transition-all duration-180 ease-in-out',
+              'rounded-pill border-border bg-surface-card text-caption text-text-neutral hover:border-primary hover:text-primary cursor-pointer border px-3 py-1.5 font-medium transition-all duration-180 ease-in-out',
               filter === f && 'border-primary bg-primary text-white hover:text-white',
             )}
             onClick={() => setFilter(f)}

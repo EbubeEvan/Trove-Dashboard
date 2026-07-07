@@ -19,10 +19,10 @@ export function TopBar() {
   return (
     <header className='border-border bg-bg-canvas sticky top-0 z-5 flex items-center justify-between border-b px-6 py-4'>
       <div>
-        <p className='text-size-heading text-text-default m-0 font-semibold'>
+        <p className='text-heading text-text-default m-0 font-semibold'>
           Welcome back, {firstName}
         </p>
-        <p className='text-size-caption text-text-neutral mt-0.5 mb-0'>
+        <p className='text-caption text-text-neutral mt-0.5 mb-0'>
           Here{"'"}s how your portfolio is doing today
         </p>
       </div>

@@ -16,8 +16,8 @@ export function EmptyState({ icon, title, description }: Readonly<EmptyStateProp
       role='status'
     >
       <div className='text-text-disabled'>{icon ?? <Inbox size={28} />}</div>
-      <p className='text-size-heading text-text-default m-0 font-semibold'>{title}</p>
-      {description && <p className='text-size-body m-0 max-w-80'>{description}</p>}
+      <p className='text-heading text-text-default m-0 font-semibold'>{title}</p>
+      {description && <p className='text-body m-0 max-w-80'>{description}</p>}
     </div>
   );
 }
@@ -41,8 +41,8 @@ export function ErrorState({
       <div className='text-negative'>
         <AlertTriangle size={28} />
       </div>
-      <p className='text-size-heading text-text-default m-0 font-semibold'>{title}</p>
-      <p className='text-size-body m-0 max-w-80'>{description}</p>
+      <p className='text-heading text-text-default m-0 font-semibold'>{title}</p>
+      <p className='text-body m-0 max-w-80'>{description}</p>
       {onRetry && (
         <Button variant='secondary' className='mt-2' onClick={onRetry}>
           Try again

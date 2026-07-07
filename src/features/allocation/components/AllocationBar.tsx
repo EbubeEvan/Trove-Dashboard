@@ -30,15 +30,15 @@ export function AllocationBar({ holdings }: Readonly<AllocationBarProps>) {
   if (allocation.length === 0) {
     return (
       <Card className='flex flex-col gap-4'>
-        <h2 className='text-size-heading text-text-default m-0 font-semibold'>Asset Allocation</h2>
-        <p className='text-size-body text-text-neutral m-0'>No active holdings to allocate yet.</p>
+        <h2 className='text-heading text-text-default m-0 font-semibold'>Asset Allocation</h2>
+        <p className='text-body text-text-neutral m-0'>No active holdings to allocate yet.</p>
       </Card>
     );
   }
 
   return (
     <Card className='flex flex-col gap-4'>
-      <h2 className='text-size-heading text-text-default m-0 font-semibold'>Asset Allocation</h2>
+      <h2 className='text-heading text-text-default m-0 font-semibold'>Asset Allocation</h2>
 
       <div
         className='rounded-pill bg-bg-default flex h-3 w-full overflow-hidden'
@@ -63,8 +63,8 @@ export function AllocationBar({ holdings }: Readonly<AllocationBarProps>) {
               style={{ background: colorForSector(a.sector, i) }}
             />
             <div className='flex flex-col gap-px'>
-              <span className='text-size-caption text-text-neutral'>{a.sector}</span>
-              <span className='text-size-card-value text-text-default font-semibold'>
+              <span className='text-caption text-text-neutral'>{a.sector}</span>
+              <span className='text-card-value text-text-default font-semibold'>
                 {a.percent.toFixed(0)}%
               </span>
             </div>

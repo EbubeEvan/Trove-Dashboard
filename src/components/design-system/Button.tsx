@@ -27,7 +27,7 @@ export function Button({
   return (
     <button
       className={cx(
-        'rounded-input text-size-body inline-flex h-11 cursor-pointer items-center justify-center gap-2 border border-transparent px-5 font-semibold transition-[background,border-color,opacity] duration-180 ease-in-out disabled:cursor-not-allowed disabled:opacity-60',
+        'rounded-input text-body inline-flex h-11 cursor-pointer items-center justify-center gap-2 border border-transparent px-5 font-semibold transition-[background,border-color,opacity] duration-180 ease-in-out disabled:cursor-not-allowed disabled:opacity-60',
         variantClasses[variant],
         fullWidth && 'w-full',
         className,

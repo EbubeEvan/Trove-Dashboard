@@ -27,7 +27,7 @@ export function HoldingsTransactionsPanel({
       >
         <button
           className={cx(
-            'text-size-body text-text-neutral hover:text-text-default relative top-px cursor-pointer border-0 border-b-2 border-solid border-b-transparent bg-transparent px-4 py-3 font-medium transition-colors duration-180 ease-in-out',
+            'text-body text-text-neutral hover:text-text-default relative top-px cursor-pointer border-0 border-b-2 border-solid border-b-transparent bg-transparent px-4 py-3 font-medium transition-colors duration-180 ease-in-out',
             activeTab === 'stocks' && 'border-b-primary text-primary font-semibold',
           )}
           onClick={() => setActiveTab('stocks')}
@@ -38,7 +38,7 @@ export function HoldingsTransactionsPanel({
         </button>
         <button
           className={cx(
-            'text-size-body text-text-neutral hover:text-text-default relative top-px cursor-pointer border-0 border-b-2 border-solid border-b-transparent bg-transparent px-4 py-3 font-medium transition-colors duration-180 ease-in-out',
+            'text-body text-text-neutral hover:text-text-default relative top-px cursor-pointer border-0 border-b-2 border-solid border-b-transparent bg-transparent px-4 py-3 font-medium transition-colors duration-180 ease-in-out',
             activeTab === 'orders' && 'border-b-primary text-primary font-semibold',
           )}
           onClick={() => setActiveTab('orders')}
