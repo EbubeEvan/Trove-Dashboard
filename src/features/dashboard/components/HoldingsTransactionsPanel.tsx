@@ -14,7 +14,7 @@ export function HoldingsTransactionsPanel({
   transactions,
 }: Readonly<HoldingsTransactionsPanelProps>) {
   return (
-    <div className='grid grid-cols-1 items-start gap-5 xl:grid-cols-[1.1fr_0.9fr]'>
+    <div className='grid grid-cols-1 items-stretch gap-5 xl:grid-cols-[1.1fr_0.9fr]'>
       <Card>
         <h3 className='text-heading text-text-default mt-0 mb-0 font-semibold'>Holdings</h3>
 

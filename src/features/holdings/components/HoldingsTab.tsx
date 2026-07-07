@@ -61,7 +61,7 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
           description='Try a different search term or clear the sector filter.'
         />
       ) : (
-        <div className='flex max-h-[480px] flex-col gap-3 overflow-y-auto pr-1'>
+        <div className='custom-scrollbar flex h-[400px] flex-col gap-3 overflow-y-auto px-1 py-1 sm:h-[480px] sm:pr-1 sm:pl-0'>
           {filtered.map((h) => (
             <HoldingCard key={h.id} holding={h} />
           ))}

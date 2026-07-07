@@ -24,7 +24,10 @@ export function HoldingCard({ holding: h }: Readonly<HoldingCardProps>) {
   const isNegative = amount < 0;
 
   return (
-    <Card padding='compact' className='flex items-center gap-3'>
+    <Card
+      padding='compact'
+      className='flex min-h-[64px] flex-wrap items-center gap-3 sm:flex-nowrap'
+    >
       <div
         className={cx(
           'bg-primary-light text-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[13px] font-semibold',

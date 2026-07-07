@@ -41,7 +41,7 @@ export function TransactionsTab({ transactions }: Readonly<TransactionsTabProps>
       {filtered.length === 0 ? (
         <EmptyState title='No transactions' description='Nothing matches this filter yet.' />
       ) : (
-        <div className='flex max-h-[480px] flex-col gap-3 overflow-y-auto pr-1'>
+        <div className='custom-scrollbar flex h-[400px] flex-col gap-3 overflow-y-auto px-1 py-1 sm:h-[480px] sm:pr-1 sm:pl-0'>
           {filtered.map((t) => (
             <TransactionRow key={t.id} transaction={t} />
           ))}

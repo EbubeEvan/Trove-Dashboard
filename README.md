@@ -95,13 +95,26 @@ The dashboard currently includes:
 - Invested vs. current value chart.
 - Sector allocation chart.
 - Account grouping by active holdings.
-- Stocks tab with ticker/company search and sector filters.
-- Orders tab with All/Buy/Sell filters and descending date sorting.
+- Holdings panel with ticker/company search and sector filters.
+- Recent Transactions panel with All/Buy/Sell filters and descending date sorting.
 - Pending and failed transaction badge states.
 - Closed-position and unavailable-price handling in holding cards.
 - Loading skeleton, empty states, and retryable error state.
 - Collapsible sidebar that auto-collapses below 900px.
 - Disabled sidebar items for Transactions, Markets, and Settings with "Coming soon" tooltips.
+
+### Layout decisions
+
+**Filters live inside their respective cards** — the search/sector filters for holdings and the
+All/Buy/Sell filters for transactions are placed inside their card headers rather than above or
+alongside them. This keeps each panel self-contained: the user's eye stays within the card they're
+scanning, and the two columns don't compete for shared filter space above the fold. It also avoids a
+disjointed layout where filters float at the top but only affect one half of the screen.
+
+**No "View All" links** — the wireframe shows a "View All" affordance on each card, but since the
+brief scopes a single dashboard view and the dedicated Holdings / Transactions pages don't exist,
+including the link would be a dead end. Omitting it avoids misleading the user into thinking
+navigation is available when it isn't.
 
 ### Navigation
 

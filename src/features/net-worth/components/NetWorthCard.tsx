@@ -21,7 +21,7 @@ export function NetWorthCard({ holdings, currency }: Readonly<NetWorthCardProps>
   const isPositive = totals.netGainLossAmount >= 0;
 
   return (
-    <Card className='flex flex-col'>
+    <Card className='flex min-h-[280px] flex-col'>
       <div className='flex items-center justify-between'>
         <span className='text-caption text-text-neutral font-medium'>Total Net Worth</span>
         <button

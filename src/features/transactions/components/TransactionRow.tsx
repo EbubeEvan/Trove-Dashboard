@@ -22,7 +22,7 @@ export function TransactionRow({ transaction: t }: Readonly<TransactionRowProps>
   const failed = t.status === 'FAILED';
 
   return (
-    <Card padding='compact' className='flex items-center gap-3'>
+    <Card padding='compact' className='flex min-h-[64px] items-center gap-3'>
       <div
         className={cx(
           'flex h-9 w-9 shrink-0 items-center justify-center rounded-[10px]',

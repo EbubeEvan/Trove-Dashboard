@@ -8,6 +8,10 @@ interface UiState {
   toggleSidebar: () => void;
   setSidebarCollapsed: (collapsed: boolean) => void;
 
+  mobileSheetOpen: boolean;
+  toggleMobileSheet: () => void;
+  setMobileSheetOpen: (open: boolean) => void;
+
   balanceHidden: boolean;
   toggleBalance: () => void;
 
@@ -27,6 +31,10 @@ export const useUiStore = create<UiState>((set) => ({
   sidebarCollapsed: false,
   toggleSidebar: () => set((s) => ({ sidebarCollapsed: !s.sidebarCollapsed })),
   setSidebarCollapsed: (collapsed) => set({ sidebarCollapsed: collapsed }),
+
+  mobileSheetOpen: false,
+  toggleMobileSheet: () => set((s) => ({ mobileSheetOpen: !s.mobileSheetOpen })),
+  setMobileSheetOpen: (open) => set({ mobileSheetOpen: open }),
 
   balanceHidden: false,
   toggleBalance: () => set((s) => ({ balanceHidden: !s.balanceHidden })),
