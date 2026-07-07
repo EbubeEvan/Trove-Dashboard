@@ -1,3 +1,4 @@
+import { useRouterState } from '@tanstack/react-router';
 import {
   LayoutGrid,
   LineChart,
@@ -10,13 +11,15 @@ import { useEffect } from 'react';
 
 import { Tooltip } from '../../../components/ui/Tooltip';
 import { cx } from '../../../lib/classNames';
+import { deriveUsername } from '../../../lib/deriveUsername';
+import { useAuthStore } from '../../../stores/auth-store';
 import { useUiStore } from '../../../stores/ui-store';
 
 const NAV_ITEMS = [
-  { label: 'Dashboard', icon: LayoutGrid, active: true },
-  { label: 'Transactions', icon: Receipt, active: false },
-  { label: 'Markets', icon: LineChart, active: false },
-  { label: 'Settings', icon: Settings, active: false },
+  { label: 'Dashboard', icon: LayoutGrid, to: '/dashboard' },
+  { label: 'Transactions', icon: Receipt },
+  { label: 'Markets', icon: LineChart },
+  { label: 'Settings', icon: Settings },
 ];
 
 interface SidebarProps {
@@ -25,11 +28,20 @@ interface SidebarProps {
 }
 
 export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
+  const email = useAuthStore((s) => s.email);
   const collapsed = useUiStore((s) => s.sidebarCollapsed);
   const toggleSidebar = useUiStore((s) => s.toggleSidebar);
   const setSidebarCollapsed = useUiStore((s) => s.setSidebarCollapsed);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   const isExpanded = forceExpanded || !collapsed;
+  const sidebarWidth = forceExpanded
+    ? '100%'
+    : isExpanded
+      ? 'var(--sidebar-width-expanded)'
+      : 'var(--sidebar-width-collapsed)';
+  const navIconSize = forceExpanded ? 22 : isExpanded ? 20 : 24;
+  const username = deriveUsername(email);
 
   useEffect(() => {
     if (forceExpanded) return;
@@ -44,16 +56,21 @@ export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
   return (
     <aside
       className={cx(
-        'border-border bg-surface-card flex flex-col border-r px-3 py-5 transition-[width,min-width] duration-180 ease-in-out',
-        isExpanded
-          ? 'w-sidebar-width-expanded min-w-sidebar-width-expanded'
-          : 'w-sidebar-width-collapsed min-w-sidebar-width-collapsed',
+        'border-border bg-surface-card flex flex-col border-r px-4 py-5 transition-[width,min-width] duration-300 ease-out',
+        forceExpanded && 'px-6 py-7',
+        forceExpanded ? 'relative h-full' : 'fixed top-0 left-0 z-40 h-screen',
         className,
       )}
+      style={{ width: sidebarWidth, minWidth: sidebarWidth }}
     >
-      <div className='mb-6 flex items-center justify-between px-2'>
+      <div className={cx('mb-7 flex items-center justify-between px-1', forceExpanded && 'mb-8')}>
         {isExpanded && (
-          <span className='text-primary overflow-hidden text-lg font-semibold whitespace-nowrap'>
+          <span
+            className={cx(
+              'text-primary overflow-hidden text-xl font-semibold whitespace-nowrap',
+              forceExpanded && 'text-2xl',
+            )}
+          >
             Trove
           </span>
         )}
@@ -68,26 +85,31 @@ export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
         )}
       </div>
 
-      <nav className='flex flex-1 flex-col gap-1'>
-        {NAV_ITEMS.map(({ label, icon: Icon, active }) => {
+      <nav className={cx('flex flex-1 flex-col gap-1', forceExpanded && 'gap-2')}>
+        {NAV_ITEMS.map(({ label, icon: Icon, to }) => {
+          const active = to === pathname;
+          const disabled = !to;
           const item = (
             <button
               key={label}
               className={cx(
-                'rounded-input text-body text-text-neutral flex w-full cursor-pointer items-center gap-3 overflow-hidden border-0 bg-transparent px-3 py-2.5 text-left font-medium whitespace-nowrap transition-[background,color] duration-180 ease-in-out',
+                'rounded-input text-heading flex w-full cursor-pointer items-center gap-3.5 overflow-hidden border-0 px-3.5 py-3 text-left font-medium whitespace-nowrap transition-[background,color,padding] duration-200 ease-out',
+                forceExpanded && 'gap-4 px-4 py-3.5',
                 !isExpanded && 'justify-center p-2.5',
                 active && 'bg-primary-light text-primary',
-                !active && 'text-text-disabled cursor-not-allowed',
+                !active && 'bg-transparent',
+                !active && !disabled && 'text-text-neutral',
+                !active && disabled && 'text-text-disabled cursor-not-allowed',
               )}
-              disabled={!active}
+              disabled={disabled}
               aria-current={active ? 'page' : undefined}
             >
-              <Icon size={18} />
+              <Icon size={navIconSize} className='shrink-0' />
               {isExpanded && <span className='overflow-hidden text-ellipsis'>{label}</span>}
             </button>
           );
 
-          if (active) return item;
+          if (!disabled) return item;
 
           return (
             <Tooltip key={label} label='Coming soon'>
@@ -97,16 +119,38 @@ export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
         })}
       </nav>
 
-      <div className='border-border flex items-center gap-2 border-t p-2 pt-4'>
-        <div className='bg-primary flex h-[34px] w-[34px] shrink-0 items-center justify-center rounded-full text-[13px] font-semibold text-white'>
-          A
+      <div
+        className={cx(
+          'border-border flex items-center justify-center gap-3 border-t p-2 pt-5',
+          forceExpanded && 'gap-3 pt-5',
+        )}
+      >
+        <div
+          className={cx(
+            'bg-primary text-heading flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-semibold text-white',
+            forceExpanded && 'h-12 w-12 text-base',
+          )}
+        >
+          {username.charAt(0)}
         </div>
         {isExpanded && (
           <div className='overflow-hidden'>
-            <p className='text-card-value text-text-default m-0 overflow-hidden text-ellipsis whitespace-nowrap'>
-              Adaeze Okonkwo
+            <p
+              className={cx(
+                'text-heading text-text-default m-0 overflow-hidden text-ellipsis whitespace-nowrap',
+                forceExpanded && 'text-heading',
+              )}
+            >
+              {username}
             </p>
-            <p className='text-caption text-text-neutral m-0 whitespace-nowrap'>Premium Member</p>
+            <p
+              className={cx(
+                'text-body text-text-neutral m-0 whitespace-nowrap',
+                forceExpanded && 'text-body',
+              )}
+            >
+              Premium Member
+            </p>
           </div>
         )}
       </div>

@@ -2,6 +2,7 @@ import { useNavigate } from '@tanstack/react-router';
 import { Bell, LogOut, Menu } from 'lucide-react';
 
 import { Tooltip } from '../../../components/ui/Tooltip';
+import { deriveUsername } from '../../../lib/deriveUsername';
 import { useAuthStore } from '../../../stores/auth-store';
 import { useUiStore } from '../../../stores/ui-store';
 
@@ -16,13 +17,13 @@ export function TopBar() {
     navigate({ to: '/login' });
   }
 
-  const firstName = email ? email.split('@')[0] : 'there';
+  const firstName = deriveUsername(email);
 
   return (
-    <header className='border-border bg-bg-canvas sticky top-0 z-10 flex items-center justify-between border-b px-4 py-3 sm:px-6 sm:py-4'>
-      <div className='flex items-center gap-3'>
+    <header className='border-border bg-bg-canvas sticky top-0 z-10 flex items-center justify-between border-b py-3 pr-4 pl-0 sm:py-4 sm:pr-6'>
+      <div className='flex items-center gap-3 pl-4 min-[901px]:pl-0 sm:pl-6'>
         <button
-          className='border-border bg-surface-card text-text-neutral hover:bg-bg-default flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-[10px] border transition-colors duration-180 ease-in-out max-[900px]:flex min-[901px]:hidden'
+          className='border-border bg-surface-card text-text-neutral hover:bg-bg-default rounded-input flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center border transition-colors duration-180 ease-in-out max-[900px]:flex min-[901px]:hidden'
           aria-label='Open navigation menu'
           onClick={toggleMobileSheet}
         >
@@ -41,7 +42,7 @@ export function TopBar() {
       <div className='flex items-center gap-2 sm:gap-3'>
         <Tooltip label='Coming soon'>
           <button
-            className='border-border bg-surface-card text-text-neutral hover:bg-bg-default flex h-9 w-9 cursor-pointer items-center justify-center rounded-[10px] border transition-colors duration-180 ease-in-out'
+            className='border-border bg-surface-card text-text-neutral hover:bg-bg-default rounded-input flex h-9 w-9 cursor-pointer items-center justify-center border transition-colors duration-180 ease-in-out'
             aria-label='Notifications'
             disabled
           >
@@ -49,7 +50,7 @@ export function TopBar() {
           </button>
         </Tooltip>
         <button
-          className='border-border bg-surface-card text-text-neutral hover:bg-bg-default flex h-9 w-9 cursor-pointer items-center justify-center rounded-[10px] border transition-colors duration-180 ease-in-out'
+          className='border-border bg-surface-card text-text-neutral hover:bg-bg-default rounded-input flex h-9 w-9 cursor-pointer items-center justify-center border transition-colors duration-180 ease-in-out'
           aria-label='Log out'
           onClick={handleLogout}
         >

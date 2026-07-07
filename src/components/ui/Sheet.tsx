@@ -44,7 +44,7 @@ export function Sheet({ open, onClose, children, side = 'left' }: Readonly<Sheet
     >
       <div
         className={cx(
-          'absolute inset-0 bg-black/50 transition-opacity duration-200 ease-in-out',
+          'absolute inset-0 bg-black/50 transition-opacity duration-300 ease-out',
           open ? 'opacity-100' : 'opacity-0',
         )}
         onClick={onClose}
@@ -57,7 +57,7 @@ export function Sheet({ open, onClose, children, side = 'left' }: Readonly<Sheet
         aria-modal='true'
         aria-label='Navigation menu'
         className={cx(
-          'bg-surface-card absolute top-0 h-full w-[280px] max-w-[85vw] shadow-lg transition-transform duration-200 ease-in-out',
+          'bg-surface-card absolute top-0 h-full w-[336px] max-w-[92vw] shadow-lg transition-transform duration-300 ease-out',
           side === 'left' ? 'left-0' : 'right-0',
           open ? 'translate-x-0' : side === 'left' ? '-translate-x-full' : 'translate-x-full',
         )}

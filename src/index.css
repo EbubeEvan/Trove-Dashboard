@@ -56,9 +56,9 @@
   --shadow-card: 0 1px 2px rgba(19, 52, 47, 0.04), 0 4px 16px rgba(19, 52, 47, 0.04);
   --shadow-card-hover: 0 2px 4px rgba(19, 52, 47, 0.06), 0 8px 24px rgba(19, 52, 47, 0.07);
 
-  --transition-base: 180ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 260ms cubic-bezier(0.22, 1, 0.36, 1);
 
-  --sidebar-width-expanded: 232px;
+  --sidebar-width-expanded: 280px;
   --sidebar-width-collapsed: 76px;
 }
 
@@ -109,7 +109,7 @@
   --font-weight-semibold: 600;
   --font-weight-medium: 500;
 
-  --sidebar-width-expanded: 232px;
+  --sidebar-width-expanded: 280px;
   --sidebar-width-collapsed: 76px;
 }
 
