@@ -27,7 +27,7 @@ export function DashboardShell({ children }: Readonly<DashboardShellProps>) {
 
   return (
     <div className='bg-bg-page flex min-h-screen overflow-x-hidden'>
-      <div className='hidden min-[901px]:flex min-[901px]:w-0 min-[901px]:flex-shrink-0'>
+      <div className='hidden min-[901px]:flex min-[901px]:w-0 min-[901px]:shrink-0'>
         <Sidebar />
       </div>
 

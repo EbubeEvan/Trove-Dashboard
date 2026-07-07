@@ -152,18 +152,12 @@ width.
 
 Since there's no historical price series in the data, the wireframe's net-worth line chart was
 replaced with an **invested vs. current value bar chart** — both real, computed numbers, rather than
-a fabricated trend line.
+a fabricated trend line. The chart axis intentionally scales to `dataMax * 10`, which keeps the
+current bars shorter and leaves right-side room for possible future higher values without changing
+the underlying totals shown in the tooltip.
 
 ## What I'd improve with more time
 
 - Unit tests for `derivePortfolio.ts` (the quirk-handling logic is the highest-value thing to lock
   down with tests) and a couple of component tests for the holdings/transactions filters.
-- Persist `sidebarCollapsed` / `balanceHidden` preferences (e.g. to localStorage) so they survive a
-  refresh.
-- Pagination or virtualization for the holdings/transactions lists if the dataset were larger —
-  currently a simple scrollable list.
-- A real currency-aware layer if multi-currency accounts were introduced (the source data is
-  USD-only throughout).
-- Skeleton/error/empty states are simulated via the mock adapter's fixed delay; with more time I'd
-  add a way to trigger the failure path from the UI (e.g. a hidden query param) purely for reviewer
-  convenience.
+- A local translations toggle for the three major Nigerian languages: Hausa, Yoruba, and Igbo.

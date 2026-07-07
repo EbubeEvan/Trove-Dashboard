@@ -30,7 +30,7 @@ export function HoldingCard({ holding: h }: Readonly<HoldingCardProps>) {
     >
       <div
         className={cx(
-          'bg-primary-light text-primary flex h-10 w-10 shrink-0 items-center justify-center rounded-xl text-[13px] font-semibold',
+          'bg-primary-light text-primary text-body flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-semibold',
           closed && 'bg-bg-default text-text-disabled',
         )}
       >
@@ -50,7 +50,7 @@ export function HoldingCard({ holding: h }: Readonly<HoldingCardProps>) {
       <div className='border-border flex w-full items-center justify-between gap-4 border-t pt-3 sm:w-auto sm:justify-end sm:gap-6 sm:border-t-0 sm:pt-0'>
         <div className='shrink-0 text-right'>
           <p className='text-caption text-text-disabled m-0'>Shares</p>
-          <p className='text-card-value text-text-default mt-0.5 mb-0'>{h.shares}</p>
+          <p className='text-card-value text-text-default mt-0.5 mb-0 text-center'>{h.shares}</p>
         </div>
 
         <div className='min-w-[90px] shrink-0 text-right'>

@@ -32,7 +32,7 @@ export function InvestedVsCurrentChart({
       <ResponsiveContainer width='100%' height={140}>
         <BarChart data={data} layout='vertical' margin={{ top: 4, right: 24, bottom: 4, left: 4 }}>
           <CartesianGrid strokeDasharray='3 3' horizontal={false} stroke='#DBDFDF' />
-          <XAxis type='number' hide />
+          <XAxis type='number' domain={[0, (dataMax: number) => dataMax * 1.5]} hide />
           <YAxis
             type='category'
             dataKey='label'

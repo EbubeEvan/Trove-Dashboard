@@ -9,6 +9,7 @@ import {
 } from 'lucide-react';
 import { useEffect } from 'react';
 
+import troveLogo from '../../../assets/logos/trove-logo.png';
 import { Tooltip } from '../../../components/ui/Tooltip';
 import { cx } from '../../../lib/classNames';
 import { deriveUsername } from '../../../lib/deriveUsername';
@@ -27,6 +28,35 @@ interface SidebarProps {
   forceExpanded?: boolean;
 }
 
+function getSidebarWidth(forceExpanded: boolean | undefined, isExpanded: boolean) {
+  if (forceExpanded) return '100%';
+  if (isExpanded) return 'var(--sidebar-width-expanded)';
+  return 'var(--sidebar-width-collapsed)';
+}
+
+function getNavIconSize(forceExpanded: boolean | undefined, isExpanded: boolean) {
+  if (forceExpanded) return 22;
+  if (isExpanded) return 20;
+  return 24;
+}
+
+function SidebarLogo({
+  forceExpanded,
+  isExpanded,
+}: Readonly<{ forceExpanded?: boolean; isExpanded: boolean }>) {
+  if (!isExpanded) return null;
+
+  return (
+    <div className={cx('flex h-12 shrink-0 items-center overflow-hidden', forceExpanded && 'h-14')}>
+      <img
+        src={troveLogo}
+        alt='Trove'
+        className={cx('h-auto w-40 max-w-none object-contain', forceExpanded && 'w-48')}
+      />
+    </div>
+  );
+}
+
 export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
   const email = useAuthStore((s) => s.email);
   const collapsed = useUiStore((s) => s.sidebarCollapsed);
@@ -35,12 +65,8 @@ export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   const isExpanded = forceExpanded || !collapsed;
-  const sidebarWidth = forceExpanded
-    ? '100%'
-    : isExpanded
-      ? 'var(--sidebar-width-expanded)'
-      : 'var(--sidebar-width-collapsed)';
-  const navIconSize = forceExpanded ? 22 : isExpanded ? 20 : 24;
+  const sidebarWidth = getSidebarWidth(forceExpanded, isExpanded);
+  const navIconSize = getNavIconSize(forceExpanded, isExpanded);
   const username = deriveUsername(email);
 
   useEffect(() => {
@@ -63,17 +89,14 @@ export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
       )}
       style={{ width: sidebarWidth, minWidth: sidebarWidth }}
     >
-      <div className={cx('mb-7 flex items-center justify-between px-1', forceExpanded && 'mb-8')}>
-        {isExpanded && (
-          <span
-            className={cx(
-              'text-primary overflow-hidden text-xl font-semibold whitespace-nowrap',
-              forceExpanded && 'text-2xl',
-            )}
-          >
-            Trove
-          </span>
+      <div
+        className={cx(
+          'mb-7 flex items-center gap-3 px-1',
+          isExpanded ? 'justify-between' : 'justify-center',
+          forceExpanded && 'mb-8',
         )}
+      >
+        <SidebarLogo forceExpanded={forceExpanded} isExpanded={isExpanded} />
         {!forceExpanded && (
           <button
             className='text-text-neutral hover:bg-bg-default flex shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent p-1.5 transition-colors duration-180 ease-in-out'
