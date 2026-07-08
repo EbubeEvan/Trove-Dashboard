@@ -11,7 +11,7 @@ interface SheetProps {
 }
 
 export function Sheet({ open, onClose, children, side = 'left' }: Readonly<SheetProps>) {
-  const panelRef = useRef<HTMLDivElement>(null);
+  const panelRef = useRef<HTMLDialogElement>(null);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -51,19 +51,18 @@ export function Sheet({ open, onClose, children, side = 'left' }: Readonly<Sheet
         aria-hidden='true'
       />
 
-      <div
+      <dialog
         ref={panelRef}
-        role='dialog'
-        aria-modal='true'
+        open={open}
         aria-label='Navigation menu'
         className={cx(
-          'bg-surface-card absolute top-0 h-full w-[336px] max-w-[92vw] shadow-lg transition-transform duration-300 ease-out',
-          side === 'left' ? 'left-0' : 'right-0',
+          'bg-surface-card top-0 right-auto left-0 h-full w-84 max-w-[92vw] border-0 p-0 shadow-lg transition-transform duration-300 ease-out',
+          side === 'left' ? 'left-0' : 'right-0 left-auto',
           open ? 'translate-x-0' : side === 'left' ? '-translate-x-full' : 'translate-x-full',
         )}
       >
         {children}
-      </div>
+      </dialog>
     </div>
   );
 }

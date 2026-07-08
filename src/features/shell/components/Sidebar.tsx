@@ -72,7 +72,7 @@ export function Sidebar({ className, forceExpanded, onClose }: Readonly<SidebarP
 
   const [showLogoutPopup, setShowLogoutPopup] = useState(false);
   const popupRef = useRef<HTMLDivElement>(null);
-  const userBarRef = useRef<HTMLDivElement>(null);
+  const userBarRef = useRef<HTMLButtonElement>(null);
 
   const isExpanded = forceExpanded || !collapsed;
   const sidebarWidth = getSidebarWidth(forceExpanded, isExpanded);
@@ -199,21 +199,13 @@ export function Sidebar({ className, forceExpanded, onClose }: Readonly<SidebarP
             </button>
           </div>
         )}
-        <div
+        <button
           ref={userBarRef}
-          role='button'
-          tabIndex={0}
           className={cx(
-            'border-border hover:bg-bg-default flex cursor-pointer items-center justify-center gap-3 border-t p-2 pt-5 transition-colors duration-180 ease-in-out',
+            'border-border hover:bg-bg-default flex w-full cursor-pointer items-center justify-center gap-3 border-t bg-transparent p-2 pt-5 text-left transition-colors duration-180 ease-in-out',
             forceExpanded && 'gap-3 pt-5',
           )}
           onClick={() => setShowLogoutPopup(!showLogoutPopup)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              setShowLogoutPopup(!showLogoutPopup);
-            }
-          }}
         >
           <div
             className={cx(
@@ -243,7 +235,7 @@ export function Sidebar({ className, forceExpanded, onClose }: Readonly<SidebarP
               </p>
             </div>
           )}
-        </div>
+        </button>
       </div>
     </aside>
   );

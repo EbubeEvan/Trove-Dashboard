@@ -21,7 +21,8 @@ export function TransactionsTab({ transactions }: Readonly<TransactionsTabProps>
 
   return (
     <div className='mt-4 flex flex-col gap-4'>
-      <div className='flex gap-2' role='tablist' aria-label='Filter transactions'>
+      <fieldset className='m-0 flex gap-2 border-0 p-0'>
+        <legend className='sr-only'>Filter transactions</legend>
         {FILTERS.map((f) => (
           <button
             key={f}
@@ -30,13 +31,12 @@ export function TransactionsTab({ transactions }: Readonly<TransactionsTabProps>
               filter === f && 'bg-primary text-white hover:text-white',
             )}
             onClick={() => setFilter(f)}
-            role='tab'
-            aria-selected={filter === f}
+            aria-pressed={filter === f}
           >
             {FILTER_LABEL[f]}
           </button>
         ))}
-      </div>
+      </fieldset>
 
       {filtered.length === 0 ? (
         <EmptyState title='No transactions' description='Nothing matches this filter yet.' />

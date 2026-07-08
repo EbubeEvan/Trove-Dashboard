@@ -37,7 +37,8 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
           />
         </div>
 
-        <div className='flex flex-wrap gap-2' role='tablist' aria-label='Filter by sector'>
+        <fieldset className='m-0 flex flex-wrap gap-2 border-0 p-0'>
+          <legend className='sr-only'>Filter by sector</legend>
           {sectors.map((s) => (
             <button
               key={s}
@@ -46,13 +47,12 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
                 sector === s && 'bg-primary text-white hover:text-white',
               )}
               onClick={() => setSector(s)}
-              role='tab'
-              aria-selected={sector === s}
+              aria-pressed={sector === s}
             >
               {s}
             </button>
           ))}
-        </div>
+        </fieldset>
       </div>
 
       {filtered.length === 0 ? (
