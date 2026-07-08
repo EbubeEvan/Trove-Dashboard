@@ -1,0 +1,13 @@
+# Normalize line endings to LF on checkout across all platforms/CI.
+# Prevents CRLF-related Prettier failures on Linux build environments (e.g. Vercel).
+* text=auto eol=lf
+
+# Explicitly treat binary assets as binary so they are never normalized.
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.webp binary
+*.woff binary
+*.woff2 binary
