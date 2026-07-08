@@ -7,17 +7,21 @@ import { DashboardSkeleton } from './DashboardSkeleton';
 import { HoldingsTransactionsPanel } from './HoldingsTransactionsPanel';
 
 export function DashboardPage() {
-  const { data, isLoading, isError, refetch, isFetching } = usePortfolio();
+  const { data, isLoading, isError, error, refetch, isFetching } = usePortfolio();
 
   if (isLoading) {
     return <DashboardSkeleton />;
   }
 
   if (isError || !data) {
+    const message = error instanceof Error ? error.message : undefined;
     return (
       <ErrorState
         title="Couldn't load your portfolio"
-        description='Something went wrong pulling your holdings and transactions. Please try again.'
+        description={
+          message ??
+          'Something went wrong pulling your holdings and transactions. Please try again.'
+        }
         onRetry={() => refetch()}
       />
     );
