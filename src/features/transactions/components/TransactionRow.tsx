@@ -1,6 +1,7 @@
 import { ArrowDownLeft, ArrowUpRight } from 'lucide-react';
 
 import { Badge } from '../../../components/ui/Badge';
+import { BADGE_TONE_CLASSES } from '../../../components/ui/badgeTones.ts';
 import { Card } from '../../../components/ui/Card';
 import { cx } from '../../../lib/classNames';
 import { formatCurrency } from '../../../lib/derivePortfolio';
@@ -19,17 +20,31 @@ const STATUS_TONE = {
 
 export function TransactionRow({ transaction: t }: Readonly<TransactionRowProps>) {
   const isBuy = t.type === 'BUY';
+  const pending = t.status === 'PENDING';
   const failed = t.status === 'FAILED';
+  let iconTone: string = BADGE_TONE_CLASSES.neutral;
+
+  if (isBuy) {
+    iconTone = 'border-transparent bg-primary-light text-primary';
+  }
+
+  if (pending) {
+    iconTone = BADGE_TONE_CLASSES.pending;
+  }
+
+  if (failed) {
+    iconTone = BADGE_TONE_CLASSES.negative;
+  }
 
   return (
     <Card
       padding='compact'
-      className='flex min-h-[64px] shrink-0 flex-wrap items-center gap-3 sm:flex-nowrap'
+      className='flex min-h-16 shrink-0 flex-wrap items-center gap-3 sm:flex-nowrap'
     >
       <div
         className={cx(
-          'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl',
-          isBuy ? 'bg-primary-light text-primary' : 'bg-negative-bg text-negative',
+          'flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border',
+          iconTone,
         )}
       >
         {isBuy ? <ArrowDownLeft size={17} /> : <ArrowUpRight size={17} />}

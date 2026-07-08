@@ -29,7 +29,7 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
             className='text-text-disabled pointer-events-none absolute top-1/2 left-3 -translate-y-1/2'
           />
           <input
-            className='rounded-input border-border bg-bg-default text-body text-text-default placeholder:text-text-disabled focus:border-primary focus:bg-surface-card w-full border py-2.5 pr-3 pl-[36px] transition-colors duration-180 ease-in-out outline-none'
+            className='rounded-input border-border bg-bg-default text-body text-text-default placeholder:text-text-disabled focus:border-primary focus:bg-surface-card w-full border py-2.5 pr-3 pl-9 transition-colors duration-180 ease-in-out outline-none'
             placeholder='Search by ticker or company'
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -61,7 +61,7 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
           description='Try a different search term or clear the sector filter.'
         />
       ) : (
-        <div className='custom-scrollbar flex h-[400px] flex-col gap-3 overflow-y-auto py-1 pr-3 pl-1 sm:h-[480px] sm:pr-1 sm:pl-0'>
+        <div className='custom-scrollbar flex h-100 flex-col gap-3 overflow-y-auto py-1 pr-3 pl-1 sm:h-120'>
           {filtered.map((h) => (
             <HoldingCard key={h.id} holding={h} />
           ))}

@@ -1,4 +1,5 @@
 import { Badge } from '../../../components/ui/Badge';
+import { BADGE_TONE_CLASSES } from '../../../components/ui/badgeTones.ts';
 import { Card } from '../../../components/ui/Card';
 import { cx } from '../../../lib/classNames';
 import {
@@ -22,16 +23,25 @@ export function HoldingCard({ holding: h }: Readonly<HoldingCardProps>) {
   const { amount, percent } = gainLoss(h);
   const isPositive = amount > 0;
   const isNegative = amount < 0;
+  let squareTone = 'border-transparent bg-primary-light text-primary';
+
+  if (isNegative) {
+    squareTone = BADGE_TONE_CLASSES.negative;
+  }
+
+  if (closed || unavailable) {
+    squareTone = BADGE_TONE_CLASSES.neutral;
+  }
 
   return (
     <Card
       padding='compact'
-      className='flex min-h-[64px] shrink-0 flex-wrap items-center gap-3 sm:flex-nowrap'
+      className='flex min-h-16 shrink-0 flex-wrap items-center gap-3 sm:flex-nowrap'
     >
       <div
         className={cx(
-          'bg-primary-light text-primary text-body flex h-10 w-10 shrink-0 items-center justify-center rounded-xl font-semibold',
-          closed && 'bg-bg-default text-text-disabled',
+          'text-body flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border font-semibold',
+          squareTone,
         )}
       >
         {h.ticker.slice(0, 2)}
@@ -53,7 +63,7 @@ export function HoldingCard({ holding: h }: Readonly<HoldingCardProps>) {
           <p className='text-card-value text-text-default mt-0.5 mb-0 text-center'>{h.shares}</p>
         </div>
 
-        <div className='min-w-[90px] shrink-0 text-right'>
+        <div className='min-w-22.5 shrink-0 text-right'>
           {unavailable ? (
             <p className='text-card-value text-text-disabled m-0 font-normal italic'>
               Price unavailable
