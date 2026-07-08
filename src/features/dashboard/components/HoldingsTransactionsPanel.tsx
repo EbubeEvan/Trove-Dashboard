@@ -24,7 +24,7 @@ export function HoldingsTransactionsPanel({
   const setActiveTab = useUiStore((s) => s.setActiveTab);
 
   return (
-    <Card className='flex h-140 flex-col overflow-hidden min-[901px]:h-auto min-[901px]:overflow-visible sm:h-160'>
+    <Card className='flex flex-col overflow-hidden max-[640px]:h-140 min-[641px]:max-[900px]:h-160 min-[901px]:overflow-visible'>
       <div className='flex items-center gap-2'>
         {TABS.map((tab) => (
           <button
