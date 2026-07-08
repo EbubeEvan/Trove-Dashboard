@@ -36,7 +36,7 @@ export function TopBar() {
       <div className='flex items-center gap-2 sm:gap-3'>
         <Tooltip label='Coming soon'>
           <button
-            className='border-border bg-surface-card text-text-neutral hover:bg-bg-default rounded-input flex h-9 w-9 cursor-pointer items-center justify-center border transition-colors duration-180 ease-in-out'
+            className='border-border bg-surface-card text-text-disabled hover:bg-bg-default rounded-input flex h-9 w-9 cursor-pointer items-center justify-center border transition-colors duration-180 ease-in-out'
             aria-label='Notifications'
             disabled
           >

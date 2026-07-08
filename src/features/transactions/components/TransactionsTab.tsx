@@ -20,7 +20,7 @@ export function TransactionsTab({ transactions }: Readonly<TransactionsTabProps>
   const filtered = sortTransactionsByDateDesc(filterTransactions(transactions, filter));
 
   return (
-    <div className='mt-4 flex flex-col gap-4'>
+    <div className='mt-4 flex min-h-0 flex-1 flex-col gap-4'>
       <fieldset className='m-0 flex gap-2 border-0 p-0'>
         <legend className='sr-only'>Filter transactions</legend>
         {FILTERS.map((f) => (
@@ -41,7 +41,7 @@ export function TransactionsTab({ transactions }: Readonly<TransactionsTabProps>
       {filtered.length === 0 ? (
         <EmptyState title='No transactions' description='Nothing matches this filter yet.' />
       ) : (
-        <div className='custom-scrollbar flex h-[400px] flex-col gap-3 overflow-y-auto py-1 pr-3 pl-1 sm:h-[480px] xl:h-[534px]'>
+        <div className='custom-scrollbar flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto py-1 pr-3 pl-1 min-[901px]:h-120 min-[901px]:flex-none xl:h-133.5'>
           {filtered.map((t) => (
             <TransactionRow key={t.id} transaction={t} />
           ))}

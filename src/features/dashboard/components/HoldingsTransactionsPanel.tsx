@@ -1,4 +1,6 @@
 import { Card } from '../../../components/ui/Card';
+import { cx } from '../../../lib/classNames';
+import { useUiStore } from '../../../stores/ui-store';
 import { HoldingsTab } from '../../holdings/components/HoldingsTab';
 import type { Holding } from '../../holdings/types/holding';
 import { TransactionsTab } from '../../transactions/components/TransactionsTab';
@@ -9,25 +11,43 @@ interface HoldingsTransactionsPanelProps {
   transactions: Transaction[];
 }
 
+const TABS = [
+  { key: 'holdings' as const, label: 'Stocks' },
+  { key: 'recentTransactions' as const, label: 'Orders' },
+];
+
 export function HoldingsTransactionsPanel({
   holdings,
   transactions,
 }: Readonly<HoldingsTransactionsPanelProps>) {
+  const activeTab = useUiStore((s) => s.activeTab);
+  const setActiveTab = useUiStore((s) => s.setActiveTab);
+
   return (
-    <div className='grid grid-cols-1 items-stretch gap-5 xl:grid-cols-[1.1fr_0.9fr]'>
-      <Card>
-        <h3 className='text-heading text-text-default mt-0 mb-0 font-semibold'>Holdings</h3>
+    <Card className='flex h-140 flex-col overflow-hidden min-[901px]:h-auto min-[901px]:overflow-visible sm:h-160'>
+      <div className='flex items-center gap-2'>
+        {TABS.map((tab) => (
+          <button
+            key={tab.key}
+            className={cx(
+              'rounded-pill text-caption sm:text-body cursor-pointer border-0 px-4 py-1.5 font-medium transition-all duration-180 ease-in-out sm:px-6 sm:py-2.5',
+              activeTab === tab.key
+                ? 'bg-primary text-white hover:text-white'
+                : 'bg-bg-default text-text-neutral hover:text-primary',
+            )}
+            onClick={() => setActiveTab(tab.key)}
+            aria-pressed={activeTab === tab.key}
+          >
+            {tab.label}
+          </button>
+        ))}
+      </div>
 
+      {activeTab === 'holdings' ? (
         <HoldingsTab holdings={holdings} />
-      </Card>
-
-      <Card>
-        <h3 className='text-heading text-text-default mt-0 mb-0 font-semibold'>
-          Recent Transactions
-        </h3>
-
+      ) : (
         <TransactionsTab transactions={transactions} />
-      </Card>
-    </div>
+      )}
+    </Card>
   );
 }

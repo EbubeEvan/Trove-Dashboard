@@ -4,8 +4,7 @@ import axios, { type AxiosRequestConfig } from 'axios';
 // AXIOS INSTANCE
 // ------------------------------
 // Adapted from the standard project pattern: instance + interceptors +
-// a thin typed wrapper. Token refresh is intentionally omitted since
-// the brief requires no real authentication — login is simulated client-side.
+// a thin typed wrapper.
 // withCredentials is enabled so cookies would be sent in a real backend scenario.
 const instance = axios.create({
   baseURL: '/api',

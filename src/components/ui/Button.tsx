@@ -21,7 +21,8 @@ export function Button({
   const variantClasses = {
     primary: 'bg-primary text-white hover:enabled:bg-[#048069]',
     secondary: 'border-border bg-surface-card text-text-default hover:enabled:bg-bg-default',
-    ghost: 'bg-transparent text-text-neutral hover:enabled:bg-bg-default',
+    ghost:
+      'bg-transparent text-text-neutral hover:enabled:bg-bg-default disabled:text-text-disabled',
   };
 
   return (

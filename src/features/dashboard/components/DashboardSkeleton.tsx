@@ -44,39 +44,25 @@ export function DashboardSkeleton() {
         </div>
       </div>
 
-      <div className='grid grid-cols-1 items-stretch gap-5 xl:grid-cols-[1.1fr_0.9fr]'>
-        <Card>
-          <Skeleton width={90} height={16} />
-          <div className='mt-4 flex flex-col gap-3'>
-            <Skeleton width={200} height={36} radius='10px' />
-            <div className='flex gap-2'>
-              <Skeleton width={48} height={28} radius='999px' />
-              <Skeleton width={64} height={28} radius='999px' />
-              <Skeleton width={52} height={28} radius='999px' />
-            </div>
-            <div className='flex flex-col gap-3'>
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Skeleton key={i} height={64} radius='14px' />
-              ))}
-            </div>
+      <Card>
+        <div className='flex gap-2'>
+          <Skeleton width={60} height={28} radius='999px' />
+          <Skeleton width={55} height={28} radius='999px' />
+        </div>
+        <div className='mt-4 flex flex-col gap-3'>
+          <Skeleton width={200} height={36} radius='10px' />
+          <div className='flex gap-2'>
+            <Skeleton width={48} height={28} radius='999px' />
+            <Skeleton width={64} height={28} radius='999px' />
+            <Skeleton width={52} height={28} radius='999px' />
           </div>
-        </Card>
-        <Card>
-          <Skeleton width={170} height={16} />
-          <div className='mt-4 flex flex-col gap-3'>
-            <div className='flex gap-2'>
-              <Skeleton width={40} height={28} radius='999px' />
-              <Skeleton width={40} height={28} radius='999px' />
-              <Skeleton width={40} height={28} radius='999px' />
-            </div>
-            <div className='flex flex-col gap-3'>
-              {[0, 1, 2, 3, 4].map((i) => (
-                <Skeleton key={i} height={64} radius='14px' />
-              ))}
-            </div>
+          <div className='flex flex-col gap-3'>
+            {[0, 1, 2, 3, 4].map((i) => (
+              <Skeleton key={i} height={64} radius='14px' />
+            ))}
           </div>
-        </Card>
-      </div>
+        </div>
+      </Card>
     </div>
   );
 }

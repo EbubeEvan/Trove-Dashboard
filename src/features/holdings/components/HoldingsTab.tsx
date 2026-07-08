@@ -21,7 +21,7 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
   const filtered = filterHoldings(holdings, search, sector);
 
   return (
-    <div className='mt-4 flex flex-col gap-4'>
+    <div className='mt-4 flex min-h-0 flex-1 flex-col gap-4'>
       <div className='flex flex-col gap-3'>
         <div className='relative'>
           <Search
@@ -61,7 +61,7 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
           description='Try a different search term or clear the sector filter.'
         />
       ) : (
-        <div className='custom-scrollbar flex h-100 flex-col gap-3 overflow-y-auto py-1 pr-3 pl-1 sm:h-120'>
+        <div className='custom-scrollbar flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto py-1 pr-3 pl-1 min-[901px]:h-120 min-[901px]:flex-none'>
           {filtered.map((h) => (
             <HoldingCard key={h.id} holding={h} />
           ))}
