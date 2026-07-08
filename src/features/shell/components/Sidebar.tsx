@@ -9,8 +9,8 @@ import {
 } from 'lucide-react';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-import troveLogoDark from '../../../assets/logos/trove-logo-dark.png';
 import troveLogo from '../../../assets/logos/trove-logo.png';
+import troveLogoDark from '../../../assets/logos/trove-logo-dark.png';
 import { Tooltip } from '../../../components/ui/Tooltip';
 import { cx } from '../../../lib/classNames';
 import { deriveUsername } from '../../../lib/deriveUsername';
@@ -167,7 +167,7 @@ export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
           if (!disabled) return item;
 
           return (
-            <Tooltip key={label} label='Coming soon'>
+            <Tooltip key={label} label='Coming soon' fullWidth>
               {item}
             </Tooltip>
           );
