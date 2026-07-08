@@ -25,7 +25,8 @@ npm run preview   # preview the production build
 - **TanStack Query** — wraps service calls with loading, error, retry, and caching state via
   `src/hooks/usePortfolio.ts` and the auth mutation in `src/features/auth/hooks/useLogin.ts`.
 - **Zustand** — lightweight client state for simulated auth and dashboard UI preferences: sidebar
-  collapsed, balance hidden, active tab, holdings search/sector filter, and transaction filter.
+  collapsed, balance hidden, active tab, holdings search/sector filter, transaction filter, and dark
+  mode. UI state persists to `localStorage` via Zustand's `persist` middleware.
 - **Axios + axios-mock-adapter** — a shared client in `src/services/client.ts`, mocked in
   `src/services/mock-server.ts` with realistic latency and typed service functions in
   `src/services/portfolio-service.ts`.
@@ -102,6 +103,8 @@ The dashboard currently includes:
 - Loading skeleton, empty states, and retryable error state.
 - Collapsible sidebar that auto-collapses below 900px.
 - Disabled sidebar items for Transactions, Markets, and Settings with "Coming soon" tooltips.
+- Dark mode toggle in the top bar with persisted preference (localStorage). Click the user avatar in
+  the sidebar to access the logout option.
 
 ### Layout decisions
 

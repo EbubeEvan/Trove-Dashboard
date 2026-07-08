@@ -1,5 +1,4 @@
-import { useNavigate } from '@tanstack/react-router';
-import { Bell, LogOut, Menu } from 'lucide-react';
+import { Bell, Menu, Moon, Sun } from 'lucide-react';
 
 import { Tooltip } from '../../../components/ui/Tooltip';
 import { deriveUsername } from '../../../lib/deriveUsername';
@@ -8,14 +7,9 @@ import { useUiStore } from '../../../stores/ui-store';
 
 export function TopBar() {
   const email = useAuthStore((s) => s.email);
-  const clearSession = useAuthStore((s) => s.clearSession);
-  const navigate = useNavigate();
   const toggleMobileSheet = useUiStore((s) => s.toggleMobileSheet);
-
-  function handleLogout() {
-    clearSession();
-    navigate({ to: '/login' });
-  }
+  const darkMode = useUiStore((s) => s.darkMode);
+  const toggleDarkMode = useUiStore((s) => s.toggleDarkMode);
 
   const firstName = deriveUsername(email);
 
@@ -51,10 +45,10 @@ export function TopBar() {
         </Tooltip>
         <button
           className='border-border bg-surface-card text-text-neutral hover:bg-bg-default rounded-input flex h-9 w-9 cursor-pointer items-center justify-center border transition-colors duration-180 ease-in-out'
-          aria-label='Log out'
-          onClick={handleLogout}
+          aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
+          onClick={toggleDarkMode}
         >
-          <LogOut size={17} />
+          {darkMode ? <Sun size={17} /> : <Moon size={17} />}
         </button>
       </div>
     </header>

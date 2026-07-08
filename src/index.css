@@ -113,6 +113,33 @@
   --sidebar-width-collapsed: 76px;
 }
 
+.dark {
+  --color-primary: #0cc4a8;
+  --color-primary-light: #0a3d35;
+  --color-success: #3ddc84;
+  --color-negative: #ff6b6b;
+
+  --color-bg-canvas: #0f1419;
+  --color-surface-card: #1a2332;
+  --color-bg-page: #0a0e13;
+  --color-bg-default: #253040;
+
+  --color-text-default: #e8edf2;
+  --color-text-neutral: #8899a6;
+  --color-text-disabled: #556677;
+
+  --color-border: #2d3a4a;
+
+  --color-success-bg: #0d2818;
+  --color-negative-bg: #3d1518;
+  --color-pending-bg: #2d2518;
+  --color-pending-text: #f0b840;
+  --color-pending-border: #4a3d20;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.2), 0 4px 16px rgba(0, 0, 0, 0.25);
+  --shadow-card-hover: 0 2px 4px rgba(0, 0, 0, 0.3), 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
 html,
 body {
   margin: 0;

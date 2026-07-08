@@ -1,4 +1,4 @@
-import { useRouterState } from '@tanstack/react-router';
+import { useNavigate, useRouterState } from '@tanstack/react-router';
 import {
   LayoutGrid,
   LineChart,
@@ -7,8 +7,9 @@ import {
   Receipt,
   Settings,
 } from 'lucide-react';
-import { useEffect } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
+import troveLogoDark from '../../../assets/logos/trove-logo-dark.png';
 import troveLogo from '../../../assets/logos/trove-logo.png';
 import { Tooltip } from '../../../components/ui/Tooltip';
 import { cx } from '../../../lib/classNames';
@@ -43,13 +44,14 @@ function getNavIconSize(forceExpanded: boolean | undefined, isExpanded: boolean)
 function SidebarLogo({
   forceExpanded,
   isExpanded,
-}: Readonly<{ forceExpanded?: boolean; isExpanded: boolean }>) {
+  darkMode,
+}: Readonly<{ forceExpanded?: boolean; isExpanded: boolean; darkMode: boolean }>) {
   if (!isExpanded) return null;
 
   return (
     <div className={cx('flex h-12 shrink-0 items-center overflow-hidden', forceExpanded && 'h-14')}>
       <img
-        src={troveLogo}
+        src={darkMode ? troveLogoDark : troveLogo}
         alt='Trove'
         className={cx('h-auto w-40 max-w-none object-contain', forceExpanded && 'w-48')}
       />
@@ -59,15 +61,45 @@ function SidebarLogo({
 
 export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
   const email = useAuthStore((s) => s.email);
+  const clearSession = useAuthStore((s) => s.clearSession);
+  const navigate = useNavigate();
   const collapsed = useUiStore((s) => s.sidebarCollapsed);
   const toggleSidebar = useUiStore((s) => s.toggleSidebar);
   const setSidebarCollapsed = useUiStore((s) => s.setSidebarCollapsed);
+  const darkMode = useUiStore((s) => s.darkMode);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+
+  const [showLogoutPopup, setShowLogoutPopup] = useState(false);
+  const popupRef = useRef<HTMLDivElement>(null);
+  const userBarRef = useRef<HTMLDivElement>(null);
 
   const isExpanded = forceExpanded || !collapsed;
   const sidebarWidth = getSidebarWidth(forceExpanded, isExpanded);
   const navIconSize = getNavIconSize(forceExpanded, isExpanded);
   const username = deriveUsername(email);
+
+  const handleLogout = useCallback(() => {
+    clearSession();
+    navigate({ to: '/login' });
+  }, [clearSession, navigate]);
+
+  useEffect(() => {
+    if (!showLogoutPopup) return;
+
+    function handleClickOutside(e: MouseEvent) {
+      if (
+        popupRef.current &&
+        !popupRef.current.contains(e.target as Node) &&
+        userBarRef.current &&
+        !userBarRef.current.contains(e.target as Node)
+      ) {
+        setShowLogoutPopup(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, [showLogoutPopup]);
 
   useEffect(() => {
     if (forceExpanded) return;
@@ -96,7 +128,7 @@ export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
           forceExpanded && 'mb-8',
         )}
       >
-        <SidebarLogo forceExpanded={forceExpanded} isExpanded={isExpanded} />
+        <SidebarLogo forceExpanded={forceExpanded} isExpanded={isExpanded} darkMode={darkMode} />
         {!forceExpanded && (
           <button
             className='text-text-neutral hover:bg-bg-default flex shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent p-1.5 transition-colors duration-180 ease-in-out'
@@ -142,40 +174,66 @@ export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
         })}
       </nav>
 
-      <div
-        className={cx(
-          'border-border flex items-center justify-center gap-3 border-t p-2 pt-5',
-          forceExpanded && 'gap-3 pt-5',
-        )}
-      >
-        <div
-          className={cx(
-            'bg-primary text-heading flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-semibold text-white',
-            forceExpanded && 'h-12 w-12 text-base',
-          )}
-        >
-          {username.charAt(0)}
-        </div>
-        {isExpanded && (
-          <div className='overflow-hidden'>
-            <p
-              className={cx(
-                'text-heading text-text-default m-0 overflow-hidden text-ellipsis whitespace-nowrap',
-                forceExpanded && 'text-heading',
-              )}
+      <div className='relative'>
+        {showLogoutPopup && (
+          <div
+            ref={popupRef}
+            className='bg-surface-card border-border rounded-card shadow-card absolute right-2 bottom-full left-2 z-50 mb-2 p-4'
+          >
+            <p className='text-heading text-text-default m-0 mb-3'>Ready to leave?</p>
+            <button
+              className='bg-negative rounded-input text-body w-full cursor-pointer border-0 py-2.5 font-semibold text-white transition-opacity duration-180 ease-in-out hover:opacity-90'
+              onClick={handleLogout}
             >
-              {username}
-            </p>
-            <p
-              className={cx(
-                'text-body text-text-neutral m-0 whitespace-nowrap',
-                forceExpanded && 'text-body',
-              )}
-            >
-              Premium Member
-            </p>
+              Log out
+            </button>
           </div>
         )}
+        <div
+          ref={userBarRef}
+          role='button'
+          tabIndex={0}
+          className={cx(
+            'border-border hover:bg-bg-default flex cursor-pointer items-center justify-center gap-3 border-t p-2 pt-5 transition-colors duration-180 ease-in-out',
+            forceExpanded && 'gap-3 pt-5',
+          )}
+          onClick={() => setShowLogoutPopup(!showLogoutPopup)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              setShowLogoutPopup(!showLogoutPopup);
+            }
+          }}
+        >
+          <div
+            className={cx(
+              'bg-primary text-heading flex h-10 w-10 shrink-0 items-center justify-center rounded-full font-semibold text-white',
+              forceExpanded && 'h-12 w-12 text-base',
+            )}
+          >
+            {username.charAt(0)}
+          </div>
+          {isExpanded && (
+            <div className='overflow-hidden'>
+              <p
+                className={cx(
+                  'text-heading text-text-default m-0 overflow-hidden text-ellipsis whitespace-nowrap',
+                  forceExpanded && 'text-heading',
+                )}
+              >
+                {username}
+              </p>
+              <p
+                className={cx(
+                  'text-body text-text-neutral m-0 whitespace-nowrap',
+                  forceExpanded && 'text-body',
+                )}
+              >
+                Premium Member
+              </p>
+            </div>
+          )}
+        </div>
       </div>
     </aside>
   );

@@ -1,9 +1,13 @@
 import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 export type DashboardTab = 'holdings' | 'recentTransactions';
 export type TransactionFilter = 'All' | 'BUY' | 'SELL';
 
 interface UiState {
+  darkMode: boolean;
+  toggleDarkMode: () => void;
+
   sidebarCollapsed: boolean;
   toggleSidebar: () => void;
   setSidebarCollapsed: (collapsed: boolean) => void;
@@ -27,26 +31,39 @@ interface UiState {
   setTransactionFilter: (filter: TransactionFilter) => void;
 }
 
-export const useUiStore = create<UiState>((set) => ({
-  sidebarCollapsed: false,
-  toggleSidebar: () => set((s) => ({ sidebarCollapsed: !s.sidebarCollapsed })),
-  setSidebarCollapsed: (collapsed) => set({ sidebarCollapsed: collapsed }),
+export const useUiStore = create<UiState>()(
+  persist(
+    (set) => ({
+      darkMode: false,
+      toggleDarkMode: () =>
+        set((s) => {
+          const next = !s.darkMode;
+          document.documentElement.classList.toggle('dark', next);
+          return { darkMode: next };
+        }),
 
-  mobileSheetOpen: false,
-  toggleMobileSheet: () => set((s) => ({ mobileSheetOpen: !s.mobileSheetOpen })),
-  setMobileSheetOpen: (open) => set({ mobileSheetOpen: open }),
+      sidebarCollapsed: false,
+      toggleSidebar: () => set((s) => ({ sidebarCollapsed: !s.sidebarCollapsed })),
+      setSidebarCollapsed: (collapsed) => set({ sidebarCollapsed: collapsed }),
 
-  balanceHidden: false,
-  toggleBalance: () => set((s) => ({ balanceHidden: !s.balanceHidden })),
+      mobileSheetOpen: false,
+      toggleMobileSheet: () => set((s) => ({ mobileSheetOpen: !s.mobileSheetOpen })),
+      setMobileSheetOpen: (open) => set({ mobileSheetOpen: open }),
 
-  activeTab: 'holdings',
-  setActiveTab: (tab) => set({ activeTab: tab }),
+      balanceHidden: false,
+      toggleBalance: () => set((s) => ({ balanceHidden: !s.balanceHidden })),
 
-  holdingsSearch: '',
-  setHoldingsSearch: (q) => set({ holdingsSearch: q }),
-  holdingsSectorFilter: 'All',
-  setHoldingsSectorFilter: (sector) => set({ holdingsSectorFilter: sector }),
+      activeTab: 'holdings',
+      setActiveTab: (tab) => set({ activeTab: tab }),
 
-  transactionFilter: 'All',
-  setTransactionFilter: (filter) => set({ transactionFilter: filter }),
-}));
+      holdingsSearch: '',
+      setHoldingsSearch: (q) => set({ holdingsSearch: q }),
+      holdingsSectorFilter: 'All',
+      setHoldingsSectorFilter: (sector) => set({ holdingsSectorFilter: sector }),
+
+      transactionFilter: 'All',
+      setTransactionFilter: (filter) => set({ transactionFilter: filter }),
+    }),
+    { name: 'trove-ui' },
+  ),
+);
