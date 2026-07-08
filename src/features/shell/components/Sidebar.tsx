@@ -27,6 +27,7 @@ const NAV_ITEMS = [
 interface SidebarProps {
   className?: string;
   forceExpanded?: boolean;
+  onClose?: () => void;
 }
 
 function getSidebarWidth(forceExpanded: boolean | undefined, isExpanded: boolean) {
@@ -59,7 +60,7 @@ function SidebarLogo({
   );
 }
 
-export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
+export function Sidebar({ className, forceExpanded, onClose }: Readonly<SidebarProps>) {
   const email = useAuthStore((s) => s.email);
   const clearSession = useAuthStore((s) => s.clearSession);
   const navigate = useNavigate();
@@ -136,6 +137,15 @@ export function Sidebar({ className, forceExpanded }: Readonly<SidebarProps>) {
             aria-label={isExpanded ? 'Collapse sidebar' : 'Expand sidebar'}
           >
             {isExpanded ? <PanelLeftClose size={18} /> : <PanelLeftOpen size={18} />}
+          </button>
+        )}
+        {forceExpanded && onClose && (
+          <button
+            className='text-text-neutral hover:bg-bg-default flex shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent p-1.5 transition-colors duration-180 ease-in-out'
+            onClick={onClose}
+            aria-label='Close navigation menu'
+          >
+            <PanelLeftClose size={20} />
           </button>
         )}
       </div>

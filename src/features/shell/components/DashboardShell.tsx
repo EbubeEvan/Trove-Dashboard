@@ -32,7 +32,11 @@ export function DashboardShell({ children }: Readonly<DashboardShellProps>) {
       </div>
 
       <Sheet open={mobileSheetOpen} onClose={() => setMobileSheetOpen(false)}>
-        <Sidebar className='w-full min-w-0' forceExpanded />
+        <Sidebar
+          className='w-full min-w-0'
+          forceExpanded
+          onClose={() => setMobileSheetOpen(false)}
+        />
       </Sheet>
 
       <div
