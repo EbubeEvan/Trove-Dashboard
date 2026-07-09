@@ -132,16 +132,21 @@ export function Sidebar({ className, forceExpanded, onClose }: Readonly<SidebarP
         <SidebarLogo forceExpanded={forceExpanded} isExpanded={isExpanded} darkMode={darkMode} />
         {!forceExpanded && (
           <button
-            className='text-text-neutral hover:bg-bg-default flex shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent p-1.5 transition-colors duration-180 ease-in-out'
+            className='text-text-neutral hover:bg-bg-default flex shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent p-1.5 transition-colors duration-180 ease-in-out active:scale-90'
             onClick={toggleSidebar}
             aria-label={isExpanded ? 'Collapse sidebar' : 'Expand sidebar'}
           >
-            {isExpanded ? <PanelLeftClose size={18} /> : <PanelLeftOpen size={18} />}
+            <span
+              key={isExpanded ? 'close' : 'open'}
+              className='inline-flex animate-[fadeIn_150ms_ease-out]'
+            >
+              {isExpanded ? <PanelLeftClose size={18} /> : <PanelLeftOpen size={18} />}
+            </span>
           </button>
         )}
         {forceExpanded && onClose && (
           <button
-            className='text-text-neutral hover:bg-bg-default flex shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent p-1.5 transition-colors duration-180 ease-in-out'
+            className='text-text-neutral hover:bg-bg-default flex shrink-0 cursor-pointer items-center justify-center rounded-lg border-0 bg-transparent p-1.5 transition-colors duration-180 ease-in-out active:scale-90'
             onClick={onClose}
             aria-label='Close navigation menu'
           >
@@ -158,7 +163,7 @@ export function Sidebar({ className, forceExpanded, onClose }: Readonly<SidebarP
             <button
               key={label}
               className={cx(
-                'rounded-input text-heading flex w-full cursor-pointer items-center gap-3.5 overflow-hidden border-0 px-3.5 py-3 text-left font-medium whitespace-nowrap transition-[background,color,padding] duration-200 ease-out',
+                'rounded-input text-heading flex w-full cursor-pointer items-center gap-3.5 overflow-hidden border-0 px-3.5 py-3 text-left font-medium whitespace-nowrap transition-[background,color,padding] duration-200 ease-out active:scale-[0.98]',
                 forceExpanded && 'gap-4 px-4 py-3.5',
                 !isExpanded && 'justify-center p-2.5',
                 active && 'bg-primary-light text-primary',
@@ -188,11 +193,11 @@ export function Sidebar({ className, forceExpanded, onClose }: Readonly<SidebarP
         {showLogoutPopup && (
           <div
             ref={popupRef}
-            className='bg-surface-card border-border rounded-card shadow-card absolute right-2 bottom-full left-2 z-50 mb-2 p-4'
+            className='bg-surface-card border-border rounded-card shadow-card absolute right-2 bottom-full left-2 z-50 mb-2 animate-[fadeIn_200ms_ease-out] p-4'
           >
             <p className='text-heading text-text-default m-0 mb-3'>Ready to leave?</p>
             <button
-              className='bg-negative rounded-input text-body w-full cursor-pointer border-0 py-2.5 font-semibold text-white transition-opacity duration-180 ease-in-out hover:opacity-90'
+              className='bg-negative rounded-input text-body w-full cursor-pointer border-0 py-2.5 font-semibold text-white transition-[opacity,transform] duration-180 ease-in-out hover:opacity-90 active:scale-[0.97]'
               onClick={handleLogout}
             >
               Log out
@@ -202,7 +207,7 @@ export function Sidebar({ className, forceExpanded, onClose }: Readonly<SidebarP
         <button
           ref={userBarRef}
           className={cx(
-            'border-border hover:bg-bg-default flex w-full cursor-pointer items-center justify-center gap-3 border-t bg-transparent p-2 pt-5 text-left transition-colors duration-180 ease-in-out',
+            'border-border hover:bg-bg-default flex w-full cursor-pointer items-center justify-center gap-3 border-t bg-transparent p-2 pt-5 text-left transition-colors duration-180 ease-in-out active:opacity-80',
             forceExpanded && 'gap-3 pt-5',
           )}
           onClick={() => setShowLogoutPopup(!showLogoutPopup)}

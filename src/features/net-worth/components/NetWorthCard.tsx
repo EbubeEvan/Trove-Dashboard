@@ -25,11 +25,16 @@ export function NetWorthCard({ holdings, currency }: Readonly<NetWorthCardProps>
       <div className='flex items-center justify-between'>
         <span className='text-caption text-text-neutral font-medium'>Total Net Worth</span>
         <button
-          className='text-text-neutral hover:bg-bg-default flex cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-1 transition-colors duration-180 ease-in-out'
+          className='text-text-neutral hover:bg-bg-default flex cursor-pointer items-center justify-center rounded-md border-0 bg-transparent p-1 transition-colors duration-180 ease-in-out hover:scale-110 active:scale-90'
           onClick={toggleBalance}
           aria-label={balanceHidden ? 'Show balance' : 'Hide balance'}
         >
-          {balanceHidden ? <EyeOff size={16} /> : <Eye size={16} />}
+          <span
+            key={balanceHidden ? 'hidden' : 'visible'}
+            className='inline-flex animate-[fadeIn_150ms_ease-out]'
+          >
+            {balanceHidden ? <EyeOff size={16} /> : <Eye size={16} />}
+          </span>
         </button>
       </div>
 
@@ -40,7 +45,7 @@ export function NetWorthCard({ holdings, currency }: Readonly<NetWorthCardProps>
         {!balanceHidden && (
           <span
             className={cx(
-              'rounded-pill text-body inline-flex items-center gap-1 px-2.5 py-[3px] font-semibold',
+              'rounded-pill text-body inline-flex animate-[fadeIn_200ms_ease-out] items-center gap-1 px-2.5 py-[3px] font-semibold',
               isPositive ? 'bg-success-bg text-success' : 'bg-negative-bg text-negative',
             )}
           >

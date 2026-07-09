@@ -23,8 +23,13 @@ export function AccountList({ holdings, currency }: Readonly<AccountListProps>) 
 
   return (
     <div className='grid grid-cols-[repeat(auto-fit,minmax(180px,1fr))] gap-4'>
-      {groups.map((g) => (
-        <Card key={g.category} padding='compact'>
+      {groups.map((g, i) => (
+        <Card
+          key={g.category}
+          padding='compact'
+          className='animate-[slideUp_300ms_ease-out_both] transition-transform duration-180 ease-in-out hover:-translate-y-0.5 active:scale-[0.98]'
+          style={{ animationDelay: `${i * 60}ms` }}
+        >
           <p className='text-card-value text-text-default mt-0 mb-1 font-semibold'>{g.category}</p>
           <p className='text-caption text-text-neutral mt-0 mb-3'>
             {g.positions} {g.positions === 1 ? 'position' : 'positions'}

@@ -145,6 +145,8 @@ The dashboard currently includes:
   built with contrast ratios in mind — backgrounds use deep desaturated tones rather than pure
   black, and text/border colors were chosen to maintain legibility against those surfaces.
 - Click the user avatar in the sidebar to access the logout option.
+- Micro-interactions and subtle animations for a polished, premium feel. All respect
+  `prefers-reduced-motion`.
 
 ### Layout decisions
 

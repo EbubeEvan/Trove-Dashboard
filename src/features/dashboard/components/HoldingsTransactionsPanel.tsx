@@ -30,7 +30,7 @@ export function HoldingsTransactionsPanel({
           <button
             key={tab.key}
             className={cx(
-              'rounded-pill text-caption sm:text-body cursor-pointer border-0 px-4 py-1.5 font-medium transition-all duration-180 ease-in-out sm:px-6 sm:py-2.5',
+              'rounded-pill text-caption sm:text-body cursor-pointer border-0 px-4 py-1.5 font-medium transition-all duration-180 ease-in-out active:scale-95 sm:px-6 sm:py-2.5',
               activeTab === tab.key
                 ? 'bg-primary text-white hover:text-white'
                 : 'bg-bg-default text-text-neutral hover:text-primary',
@@ -44,9 +44,13 @@ export function HoldingsTransactionsPanel({
       </div>
 
       {activeTab === 'holdings' ? (
-        <HoldingsTab holdings={holdings} />
+        <div key={activeTab} className='animate-[fadeIn_300ms_ease-out]'>
+          <HoldingsTab holdings={holdings} />
+        </div>
       ) : (
-        <TransactionsTab transactions={transactions} />
+        <div key={activeTab} className='animate-[fadeIn_300ms_ease-out]'>
+          <TransactionsTab transactions={transactions} />
+        </div>
       )}
     </Card>
   );

@@ -26,10 +26,10 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
         <div className='relative'>
           <Search
             size={15}
-            className='text-text-disabled pointer-events-none absolute top-1/2 left-3 -translate-y-1/2'
+            className='text-text-disabled peer-focus:text-primary pointer-events-none absolute top-1/2 left-3 -translate-y-1/2 transition-colors duration-180 ease-in-out'
           />
           <input
-            className='rounded-input border-border bg-bg-default text-body text-text-default placeholder:text-text-disabled focus:border-primary focus:bg-surface-card w-full border py-2.5 pr-3 pl-9 transition-colors duration-180 ease-in-out outline-none'
+            className='peer rounded-input border-border bg-bg-default text-body text-text-default placeholder:text-text-disabled focus:border-primary focus:bg-surface-card w-full border py-2.5 pr-3 pl-9 transition-colors duration-180 ease-in-out outline-none'
             placeholder='Search by ticker or company'
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -43,7 +43,7 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
             <button
               key={s}
               className={cx(
-                'rounded-pill bg-bg-default text-caption text-text-neutral hover:text-primary cursor-pointer border-0 px-3 py-1.5 font-medium whitespace-nowrap transition-all duration-180 ease-in-out',
+                'rounded-pill bg-bg-default text-caption text-text-neutral hover:text-primary cursor-pointer border-0 px-3 py-1.5 font-medium whitespace-nowrap transition-all duration-180 ease-in-out active:scale-95',
                 sector === s && 'bg-primary text-white hover:text-white',
               )}
               onClick={() => setSector(s)}
@@ -61,9 +61,18 @@ export function HoldingsTab({ holdings }: Readonly<HoldingsTabProps>) {
           description='Try a different search term or clear the sector filter.'
         />
       ) : (
-        <div className='custom-scrollbar flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto py-1 pr-3 pl-1 min-[901px]:h-120 min-[901px]:flex-none'>
-          {filtered.map((h) => (
-            <HoldingCard key={h.id} holding={h} />
+        <div
+          key={`${search}-${sector}`}
+          className='custom-scrollbar flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto py-1 pr-3 pl-1 min-[901px]:h-120 min-[901px]:flex-none'
+        >
+          {filtered.map((h, i) => (
+            <div
+              key={h.id}
+              className='animate-[slideUp_300ms_ease-out_both]'
+              style={{ animationDelay: `${i * 50}ms` }}
+            >
+              <HoldingCard holding={h} />
+            </div>
           ))}
         </div>
       )}

@@ -12,7 +12,7 @@ interface EmptyStateProps {
 export function EmptyState({ icon, title, description }: Readonly<EmptyStateProps>) {
   return (
     <div
-      className='text-text-neutral flex flex-col items-center justify-center gap-3 px-4 py-8 text-center'
+      className='text-text-neutral flex animate-[fadeIn_300ms_ease-out] flex-col items-center justify-center gap-3 px-4 py-8 text-center'
       role='status'
     >
       <div className='text-text-disabled'>{icon ?? <Inbox size={28} />}</div>
@@ -35,7 +35,7 @@ export function ErrorState({
 }: Readonly<ErrorStateProps>) {
   return (
     <div
-      className='text-text-neutral flex flex-col items-center justify-center gap-3 px-4 py-8 text-center'
+      className='text-text-neutral flex animate-[fadeIn_300ms_ease-out] flex-col items-center justify-center gap-3 px-4 py-8 text-center'
       role='alert'
     >
       <div className='text-negative'>

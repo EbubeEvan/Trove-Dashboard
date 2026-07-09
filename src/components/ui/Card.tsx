@@ -17,7 +17,7 @@ export function Card({ children, padding = 'default', className, ...rest }: Read
   return (
     <div
       className={cx(
-        'rounded-card border-border bg-surface-card shadow-card border transition-shadow duration-180 ease-in-out',
+        'rounded-card border-border bg-surface-card shadow-card border transition-shadow duration-180 ease-in-out hover:shadow-[var(--shadow-card-hover)]',
         paddingClasses[padding],
         className,
       )}

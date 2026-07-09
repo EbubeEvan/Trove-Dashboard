@@ -27,7 +27,7 @@ export function TransactionsTab({ transactions }: Readonly<TransactionsTabProps>
           <button
             key={f}
             className={cx(
-              'rounded-pill bg-bg-default text-caption text-text-neutral hover:text-primary cursor-pointer border-0 px-3.5 py-1.5 font-medium transition-all duration-180 ease-in-out',
+              'rounded-pill bg-bg-default text-caption text-text-neutral hover:text-primary cursor-pointer border-0 px-3.5 py-1.5 font-medium transition-all duration-180 ease-in-out active:scale-95',
               filter === f && 'bg-primary text-white hover:text-white',
             )}
             onClick={() => setFilter(f)}
@@ -41,9 +41,18 @@ export function TransactionsTab({ transactions }: Readonly<TransactionsTabProps>
       {filtered.length === 0 ? (
         <EmptyState title='No transactions' description='Nothing matches this filter yet.' />
       ) : (
-        <div className='custom-scrollbar flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto py-1 pr-3 pl-1 min-[901px]:h-120 min-[901px]:flex-none xl:h-133.5'>
-          {filtered.map((t) => (
-            <TransactionRow key={t.id} transaction={t} />
+        <div
+          key={filter}
+          className='custom-scrollbar flex min-h-0 flex-1 flex-col gap-3 overflow-y-auto py-1 pr-3 pl-1 min-[901px]:h-120 min-[901px]:flex-none xl:h-133.5'
+        >
+          {filtered.map((t, i) => (
+            <div
+              key={t.id}
+              className='animate-[slideUp_300ms_ease-out_both]'
+              style={{ animationDelay: `${i * 50}ms` }}
+            >
+              <TransactionRow transaction={t} />
+            </div>
           ))}
         </div>
       )}

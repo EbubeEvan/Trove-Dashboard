@@ -57,7 +57,11 @@ export function AllocationBar({ holdings }: Readonly<AllocationBarProps>) {
 
       <div className='flex flex-wrap gap-x-6 gap-y-4'>
         {allocation.map((a, i) => (
-          <div key={a.sector} className='flex items-center gap-2'>
+          <div
+            key={a.sector}
+            className='flex animate-[slideUp_300ms_ease-out_both] items-center gap-2'
+            style={{ animationDelay: `${i * 80}ms` }}
+          >
             <span
               className='h-2.25 w-2.25 shrink-0 rounded-full'
               style={{ background: colorForSector(a.sector, i) }}

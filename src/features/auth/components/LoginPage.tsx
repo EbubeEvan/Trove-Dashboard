@@ -29,13 +29,30 @@ export function LoginPage() {
   return (
     <div className='bg-bg-page flex min-h-screen items-center justify-center bg-[radial-gradient(circle_at_15%_20%,rgba(5,154,131,0.06),transparent_40%),radial-gradient(circle_at_85%_85%,rgba(5,154,131,0.07),transparent_45%)] p-6'>
       <Card padding='none' className='flex w-full max-w-[420px] flex-col items-center px-6 py-8'>
-        <div className='bg-primary mb-4 flex h-10 w-10 items-center justify-center rounded-xl text-base font-semibold text-white'>
-          T
+        <div className='animate-[slideUp_300ms_ease-out_both]'>
+          <div className='bg-primary mb-4 flex h-10 w-10 items-center justify-center rounded-xl text-base font-semibold text-white'>
+            T
+          </div>
         </div>
-        <h1 className='m-0 text-[19px] font-semibold'>Welcome back</h1>
-        <p className='text-body text-text-neutral mt-1 mb-6'>Sign in to your account</p>
+        <h1
+          className='m-0 animate-[slideUp_300ms_ease-out_both] text-[19px] font-semibold'
+          style={{ animationDelay: '50ms' }}
+        >
+          Welcome back
+        </h1>
+        <p
+          className='text-body text-text-neutral mt-1 mb-6 animate-[slideUp_300ms_ease-out_both]'
+          style={{ animationDelay: '100ms' }}
+        >
+          Sign in to your account
+        </p>
 
-        <form onSubmit={handleSubmit} noValidate className='flex w-full flex-col gap-4'>
+        <form
+          onSubmit={handleSubmit}
+          noValidate
+          className='flex w-full animate-[slideUp_300ms_ease-out_both] flex-col gap-4'
+          style={{ animationDelay: '150ms' }}
+        >
           <Input
             label='Email address'
             type='email'
@@ -58,18 +75,23 @@ export function LoginPage() {
             />
             <button
               type='button'
-              className='text-text-neutral absolute top-[30px] right-3 flex cursor-pointer border-0 bg-transparent p-1'
+              className='text-text-neutral hover:text-text-default absolute top-[30px] right-3 flex cursor-pointer border-0 bg-transparent p-1 transition-colors duration-180 ease-in-out active:scale-90'
               onClick={() => setShowPassword((s) => !s)}
               aria-label={showPassword ? 'Hide password' : 'Show password'}
               tabIndex={-1}
             >
-              {showPassword ? <EyeOff size={17} /> : <Eye size={17} />}
+              <span
+                key={showPassword ? 'show' : 'hide'}
+                className='inline-flex animate-[fadeIn_150ms_ease-out]'
+              >
+                {showPassword ? <EyeOff size={17} /> : <Eye size={17} />}
+              </span>
             </button>
           </div>
 
           {login.isError && (
             <p
-              className='bg-negative-bg text-caption text-negative m-0 rounded-lg px-3 py-2'
+              className='bg-negative-bg text-caption text-negative m-0 animate-[shake_400ms_ease-out] rounded-lg px-3 py-2'
               role='alert'
             >
               {login.error instanceof Error ? login.error.message : 'Unable to sign in. Try again.'}
@@ -81,21 +103,28 @@ export function LoginPage() {
           </Button>
         </form>
 
-        <a
-          href='/forgot-password'
-          className='text-caption text-primary mt-5 block text-center no-underline hover:underline'
+        <div className='animate-[slideUp_300ms_ease-out_both]' style={{ animationDelay: '250ms' }}>
+          <a
+            href='/forgot-password'
+            className='text-caption text-primary mt-5 block text-center no-underline transition-all duration-180 ease-in-out hover:underline active:opacity-70'
+          >
+            Forgot password?
+          </a>
+        </div>
+
+        <div
+          className='flex w-full animate-[slideUp_300ms_ease-out_both] flex-col items-center'
+          style={{ animationDelay: '300ms' }}
         >
-          Forgot password?
-        </a>
+          <div className='bg-border my-5 h-px w-full' />
 
-        <div className='bg-border my-5 h-px w-full' />
-
-        <p className='text-caption text-text-disabled mt-0 mb-3 w-full text-center'>
-          Don{"'"}t have an account?
-        </p>
-        <Button type='button' variant='secondary' fullWidth>
-          Create a Trove account
-        </Button>
+          <p className='text-caption text-text-disabled mt-0 mb-3 w-full text-center'>
+            Don{"'"}t have an account?
+          </p>
+          <Button type='button' variant='secondary' fullWidth>
+            Create a Trove account
+          </Button>
+        </div>
       </Card>
     </div>
   );

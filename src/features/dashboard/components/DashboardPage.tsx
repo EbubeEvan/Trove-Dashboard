@@ -30,7 +30,10 @@ export function DashboardPage() {
   const { holdings, transactions, user } = data;
 
   return (
-    <div className='flex flex-col gap-5' style={{ opacity: isFetching ? 0.7 : 1 }}>
+    <div
+      className='flex flex-col gap-5 transition-opacity duration-200'
+      style={{ opacity: isFetching ? 0.7 : 1 }}
+    >
       <div className='grid grid-cols-[1.2fr_1fr] items-stretch gap-5 max-[900px]:grid-cols-1'>
         <NetWorthCard holdings={holdings} currency='USD' />
         <AllocationBar holdings={holdings} />

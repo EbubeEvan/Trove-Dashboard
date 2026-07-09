@@ -17,7 +17,7 @@ export function TopBar() {
     <header className='border-border bg-bg-canvas sticky top-0 z-10 flex items-center justify-between border-b py-3 pr-4 pl-0 sm:py-4 sm:pr-6'>
       <div className='flex items-center gap-3 pl-4 min-[901px]:pl-0 sm:pl-6'>
         <button
-          className='border-border bg-surface-card text-text-neutral hover:bg-bg-default rounded-input flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center border transition-colors duration-180 ease-in-out max-[900px]:flex min-[901px]:hidden'
+          className='border-border bg-surface-card text-text-neutral hover:bg-bg-default rounded-input flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center border transition-colors duration-180 ease-in-out active:scale-90 max-[900px]:flex min-[901px]:hidden'
           aria-label='Open navigation menu'
           onClick={toggleMobileSheet}
         >
@@ -36,7 +36,7 @@ export function TopBar() {
       <div className='flex items-center gap-2 sm:gap-3'>
         <Tooltip label='Coming soon'>
           <button
-            className='border-border bg-surface-card text-text-disabled hover:bg-bg-default rounded-input flex h-9 w-9 cursor-pointer items-center justify-center border transition-colors duration-180 ease-in-out'
+            className='border-border bg-surface-card text-text-disabled hover:bg-bg-default rounded-input flex h-9 w-9 cursor-pointer items-center justify-center border transition-colors duration-180 ease-in-out active:scale-90'
             aria-label='Notifications'
             disabled
           >
@@ -44,11 +44,16 @@ export function TopBar() {
           </button>
         </Tooltip>
         <button
-          className='border-border bg-surface-card text-text-neutral hover:bg-bg-default rounded-input flex h-9 w-9 cursor-pointer items-center justify-center border transition-colors duration-180 ease-in-out'
+          className='border-border bg-surface-card text-text-neutral hover:bg-bg-default rounded-input flex h-9 w-9 cursor-pointer items-center justify-center border transition-colors duration-180 ease-in-out active:scale-90'
           aria-label={darkMode ? 'Switch to light mode' : 'Switch to dark mode'}
           onClick={toggleDarkMode}
         >
-          {darkMode ? <Sun size={17} /> : <Moon size={17} />}
+          <span
+            key={darkMode ? 'dark' : 'light'}
+            className='inline-flex animate-[fadeIn_150ms_ease-out]'
+          >
+            {darkMode ? <Sun size={17} /> : <Moon size={17} />}
+          </span>
         </button>
       </div>
     </header>

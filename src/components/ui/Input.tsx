@@ -22,7 +22,7 @@ export function Input({ label, error, id, className, ...rest }: Readonly<InputPr
       <input
         id={inputId}
         className={cx(
-          'rounded-input border-border bg-bg-default text-body text-text-default placeholder:text-text-disabled focus:border-primary focus:bg-surface-card h-11.5 border px-4 transition-[border-color,background] duration-180 ease-in-out focus:outline-none',
+          'rounded-input border-border bg-bg-default text-body text-text-default placeholder:text-text-disabled focus:border-primary focus:bg-surface-card h-11.5 border px-4 transition-[border-color,background,box-shadow] duration-180 ease-in-out focus:shadow-[0_0_0_3px_rgba(5,154,131,0.1)] focus:outline-none',
           error && 'border-negative',
           className,
         )}

@@ -36,7 +36,7 @@ export function HoldingCard({ holding: h }: Readonly<HoldingCardProps>) {
   return (
     <Card
       padding='compact'
-      className='flex min-h-16 shrink-0 flex-wrap items-center gap-3 sm:flex-nowrap'
+      className='flex min-h-16 shrink-0 flex-wrap items-center gap-3 transition-transform duration-180 ease-in-out hover:-translate-y-0.5 active:scale-[0.98] sm:flex-nowrap'
     >
       <div
         className={cx(
