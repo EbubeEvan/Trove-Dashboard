@@ -23,7 +23,7 @@ export function Skeleton({
   return (
     <span
       className={cx(
-        'rounded-input motion-reduce:bg-bg-default block [animation:shimmer_1.4s_ease_infinite] bg-[linear-gradient(90deg,var(--color-bg-default)_25%,var(--color-border)_37%,var(--color-bg-default)_63%)] bg-[length:400%_100%] motion-reduce:animate-none',
+        'rounded-input motion-reduce:bg-bg-default block animate-[shimmer_1.4s_ease_infinite] bg-[linear-gradient(90deg,var(--color-bg-default)_25%,var(--color-border)_37%,var(--color-bg-default)_63%)] bg-size-[400%_100%] motion-reduce:animate-none',
         className,
       )}
       style={style}

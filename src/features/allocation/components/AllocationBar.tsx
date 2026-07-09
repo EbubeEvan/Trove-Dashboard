@@ -48,7 +48,7 @@ export function AllocationBar({ holdings }: Readonly<AllocationBarProps>) {
         {allocation.map((a, i) => (
           <div
             key={a.sector}
-            className='h-full min-w-[3px] transition-[flex-basis] duration-180 ease-in-out'
+            className='h-full min-w-0.75 transition-[flex-basis] duration-180 ease-in-out'
             style={{ flexBasis: `${a.percent}%`, background: colorForSector(a.sector, i) }}
             title={`${a.sector}: ${a.percent.toFixed(1)}%`}
           />
@@ -59,7 +59,7 @@ export function AllocationBar({ holdings }: Readonly<AllocationBarProps>) {
         {allocation.map((a, i) => (
           <div key={a.sector} className='flex items-center gap-2'>
             <span
-              className='h-[9px] w-[9px] shrink-0 rounded-full'
+              className='h-2.25 w-2.25 shrink-0 rounded-full'
               style={{ background: colorForSector(a.sector, i) }}
             />
             <div className='flex flex-col gap-px'>

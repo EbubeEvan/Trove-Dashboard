@@ -31,7 +31,7 @@ npm run preview   # preview the production build
 - **Axios + axios-mock-adapter** — a shared client in `src/services/client.ts`, mocked in
   `src/services/mock-server.ts` with realistic latency and typed service functions in
   `src/services/portfolio-service.ts`.
-- **Recharts** — renders the sector allocation bar and the invested-vs-current-value chart.
+- **Recharts** — renders the invested-vs-current-value chart.
 - **Lucide React** — icons for navigation, controls, auth fields, and status affordances.
 - **Tailwind CSS v4 + design tokens** — no UI library. Tokens live in `src/index.css` through
   Tailwind `@theme` and CSS custom properties, then components consume them through utility classes.
@@ -117,15 +117,6 @@ auth store read from on app load.
 | `Secure`   | `true` (auto on Vercel) | Conditionally set — active when `location.protocol === 'https:'`, omitted on localhost |
 | `SameSite` | `Strict`                | Blocks ALL cross-site requests — strongest CSRF protection                             |
 | `Max-Age`  | `86400`                 | 24-hour session lifetime                                                               |
-
-**Why `SameSite=Strict`:** Trove is a fintech product where security outweighs link-sharing
-convenience. `Strict` blocks the cookie on all cross-site requests, including top-level navigations
-from external sites — no cross-origin request can carry the session.
-
-**Tradeoff — deep linking:** If a user clicks a shared link to the dashboard from another site
-(Slack, email, etc.), the cookie is not sent on the initial navigation, so they briefly see the
-login page. This is the accepted cost of the stronger CSRF posture. `SameSite=Lax` would allow the
-cookie on top-level navigations but is weaker against CSRF.
 
 **Production note:** In a real backend, `HttpOnly` would be set via the `Set-Cookie` header (not
 `document.cookie`), and CSRF tokens or `Origin` header validation should be layered on top for
