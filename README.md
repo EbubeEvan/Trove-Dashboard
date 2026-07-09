@@ -134,8 +134,8 @@ The dashboard currently includes:
 - Invested vs. current value chart.
 - Sector allocation chart.
 - Account grouping by active holdings.
-- Holdings panel with ticker/company search and sector filters.
-- Recent Transactions panel with All/Buy/Sell filters and descending date sorting.
+- Stocks tab with ticker/company search and sector filters.
+- Orders tab with All/Buy/Sell filters and descending date sorting.
 - Pending and failed transaction badge states.
 - Closed-position and unavailable-price handling in holding cards.
 - Loading skeleton, empty states, and retryable error state.

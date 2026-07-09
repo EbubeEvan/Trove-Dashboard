@@ -23,8 +23,8 @@ export function TopBar() {
         >
           <Menu size={18} />
         </button>
-        <div className='min-w-0'>
-          <p className='text-heading text-text-default m-0 font-semibold'>
+        <div className='max-w-50 min-w-0 sm:max-w-none'>
+          <p className='text-body sm:text-heading text-text-default m-0 font-semibold'>
             Welcome back, {firstName}
           </p>
           <p className='text-caption text-text-neutral mt-0.5 mb-0'>

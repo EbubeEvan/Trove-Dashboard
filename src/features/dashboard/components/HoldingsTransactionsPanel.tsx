@@ -44,11 +44,17 @@ export function HoldingsTransactionsPanel({
       </div>
 
       {activeTab === 'holdings' ? (
-        <div key={activeTab} className='animate-[fadeIn_300ms_ease-out]'>
+        <div
+          key={activeTab}
+          className='flex min-h-0 flex-1 animate-[fadeIn_300ms_ease-out] flex-col'
+        >
           <HoldingsTab holdings={holdings} />
         </div>
       ) : (
-        <div key={activeTab} className='animate-[fadeIn_300ms_ease-out]'>
+        <div
+          key={activeTab}
+          className='flex min-h-0 flex-1 animate-[fadeIn_300ms_ease-out] flex-col'
+        >
           <TransactionsTab transactions={transactions} />
         </div>
       )}
