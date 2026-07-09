@@ -121,7 +121,7 @@ export function LoginPage() {
           <p className='text-caption text-text-disabled mt-0 mb-3 w-full text-center'>
             Don{"'"}t have an account?
           </p>
-          <Button type='button' variant='secondary' fullWidth>
+          <Button type='button' variant='secondary' fullWidth disabled>
             Create a Trove account
           </Button>
         </div>
